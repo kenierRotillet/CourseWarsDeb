@@ -6,8 +6,7 @@
     <ProjectGuid>125ecfa0-507f-4d4f-a236-73a1f098874e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>courceWars.py</StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <SearchPath>\python27\Lib\site-packages\pygame</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>courceWars</Name>
@@ -22,13 +21,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Core\Personaje.py" />
+    <Compile Include="Core\State.py" />
     <Compile Include="Core\__init__.py" />
     <Compile Include="courceWars.py" />
+    <Compile Include="Tools\eventos.py" />
+    <Compile Include="Tools\FastMethods.py" />
+    <Compile Include="Tools\__init__.py" />
+    <Compile Include="Screens\Seleccion_Personaje.py" />
     <Compile Include="Screens\__init__.py" />
     <Compile Include="Sound\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
+    <Folder Include="Tools\" />
     <Folder Include="Screens\" />
     <Folder Include="Sound\" />
   </ItemGroup>
