@@ -4,6 +4,7 @@
 Módulo principal, se encarga de llevar el control y flujo del juego, además de conectar el núcleo con la visualización"""
 
 import Core
+import Tools
 
 print "start"
 
@@ -13,3 +14,7 @@ raw_input()
 
 
 
+comandos = Tools.FastMethods.LoadAnimData("chars/Medic/Medic.anim")
+raw_input()
+print comandos
+raw_input()

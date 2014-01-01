@@ -1,0 +1,9 @@
+Stand:
+0,chars/Medic/Sprites/stand_00.png
+15,chars/Medics/imgs/Stand_01.png;
+LightPunch:
+0,chars/Atk/Medis/imgs/lp_00.png
+2,Chars/imgs/mediatklp_01.png
+5,char/sad/sadjio.png;
+jump:
+0,Chars/imgs/photo_jump.png

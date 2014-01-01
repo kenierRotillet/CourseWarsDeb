@@ -21,4 +21,33 @@ def load_image(name, colorkey=None):
     return image, image.get_rect()
 
 def LoadAnimData(name):
-    return
+    anims = {}
+    arch = open(name,'r')
+    data = ""
+    for i in arch:
+        data+=i
+        #print i
+    animsdata = data.split(';')
+    #raw_input()
+
+    for an in animsdata:
+        #print an
+        animname = an.split(':')[0].replace('\n', "")
+        
+        #print animname
+        animdata = []
+        #raw_input()
+        for line in an.split(':')[1].split('\n'):
+            #print line
+            #raw_input()
+            lin = line.split(',')
+            #print lin
+            if(len(lin) >= 2):
+                animdata.append((lin[0],lin[1]))
+                #print animdata
+
+        anims[animname] = animdata
+        #print anims[animname]
+    arch.close()
+    #print anims
+    return anims
