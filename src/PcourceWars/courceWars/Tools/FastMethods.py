@@ -31,12 +31,16 @@ def LoadAnimData(name):
     #raw_input()
 
     for an in animsdata:
-        #print an
+        if (len(an) < 2):
+            continue
+
         animname = an.split(':')[0].replace('\n', "")
         
         #print animname
         animdata = []
         #raw_input()
+        #print an.split(':')
+        #print " su tamaño es: " + str(len(an.split(':')))
         for line in an.split(':')[1].split('\n'):
             #print line
             #raw_input()
