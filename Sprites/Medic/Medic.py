@@ -2,79 +2,79 @@ import pygame
 Medic={}
 sprite=[]
 for i in range(1,5):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic000_00"+str(i)+".png"
     sprite.append(a)
 Medic[0]=sprite
 sprite=[]
 for i in range(1,4):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic001_00"+str(i)+".png"
     sprite.append(a)
 Medic[1]=sprite
 sprite=[]
 for i in range(1,6):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic002_00"+str(i)+".png"
     sprite.append(a)
 Medic[2]=sprite
 sprite=[]
 for i in range(1,4):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic003_00"+str(i)+".png"
     sprite.append(a)
 Medic[3]=sprite
 sprite=[]
 for i in range(1,8):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic004_00"+str(i)+".png"
     sprite.append(a)
 Medic[4]=sprite
 sprite=[]
 for i in range(1,2):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic005_00"+str(i)+".png"
     sprite.append(a)
 Medic[5]=sprite
 sprite=[]
 for i in range(1,4):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic006_00"+str(i)+".png"
     sprite.append(a)
 Medic[6]=sprite
 sprite=[]
 for i in range(1,3):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic007_00"+str(i)+".png"
     sprite.append(a)
 Medic[7]=sprite
 sprite=[]
 for i in range(1,3):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic008_00"+str(i)+".png"
     sprite.append(a)
 Medic[8]=sprite
 sprite=[]
 for i in range(1,2):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic009_00"+str(i)+".png"
     sprite.append(a)
 Medic[9]=sprite
 sprite=[]
 for i in range(1,5):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic010_00"+str(i)+".png"
     sprite.append(a)
 Medic[10]=sprite
 sprite=[]
 for i in range(1,2):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic011_00"+str(i)+".png"
     sprite.append(a)
 Medic[11]=sprite
 sprite=[]
 for i in range(1,2):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic012_00"+str(i)+".png"
     sprite.append(a)
 Medic[12]=sprite
 sprite=["Medic013_001.png"]
 Medic[13]=sprite
 sprite=[]
 for i in range(1,2):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic014_00"+str(i)+".png"
     sprite.append(a)
 Medic[14]=sprite
 sprite=[]
 for i in range(1,2):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic015_00"+str(i)+".png"
     sprite.append(a)
 Medic[15]=sprite
 sprite=["Medic016_001.png"]
@@ -85,7 +85,7 @@ sprite=["Medic018_001.png"]
 Medic[18]=sprite
 sprite=[]
 for i in range(1,6):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic019_00"+str(i)+".png"
     sprite.append(a)
 Medic[19]=sprite
 sprite=["Medic020_001.png"]
@@ -96,27 +96,27 @@ sprite=["Medic022_001.png"]
 Medic[22]=sprite
 sprite=[]
 for i in range(1,3):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic023_00"+str(i)+".png"
     sprite.append(a)
 Medic[23]=sprite
 sprite=[]
 for i in range(1,3):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic024_00"+str(i)+".png"
     sprite.append(a)
 Medic[24]=sprite
 sprite=[]
 for i in range(1,8):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic025_00"+str(i)+".png"
     sprite.append(a)
 Medic[25]=sprite
 sprite=[]
 for i in range(1,4):
-    a = "Medic000_00"+str(i)+".png "
+    a = "Medic026_00"+str(i)+".png"
     sprite.append(a)
 Medic[26]=sprite
-class Medic(pygame.sprite.Sprite):
+class Medic_class(pygame.sprite.Sprite):
     def __init__(self,player):
-        
+        pygame.sprite.Sprite.__init__(self)
         
         self.x=0
         self.max_speed=10
@@ -153,8 +153,8 @@ class Medic(pygame.sprite.Sprite):
         self.taunt=Medic[24]
         self.especial=Medic[25]
         self.effect=Medic[26]
-        self.image=self.clip(self.stand,self.estado)
-
+        self.image=""
+        self.clip(self.stand,self.estado)
     def update_posicion(self,x,y):
         self.x = self.x + x
         self.y = self.y + y
@@ -162,9 +162,9 @@ class Medic(pygame.sprite.Sprite):
     def clip(self,lista,estado):
         sprite = lista
         a = len(sprite)
-        if estado > a:
-            estado = 0            
-        return sprite[estado]
+        if estado >= a:
+            self.estado = 0            
+        self.image = sprite[self.estado]
     
     def update(self, direction):
         if direction == 'caminar':
@@ -224,11 +224,11 @@ class Medic(pygame.sprite.Sprite):
                 self.update_posicion(5,0)          
 
  
-        if event.type == pygame.KEYUP:   
-            if event.key == pygame.K_a or event.key==pygame.K_d:
-                self.update('stand')            
-            if event.key == pygame.K_RIGHT or event.key==pygame.K_LEFT:
-                self.update('stand')
+        #if event.type == pygame.KEYUP:   
+         #   if event.key == pygame.K_a or event.key==pygame.K_d:
+          #      self.update('stand')            
+           # if event.key == pygame.K_RIGHT or event.key==pygame.K_LEFT:
+            #    self.update('stand')
 
  
 

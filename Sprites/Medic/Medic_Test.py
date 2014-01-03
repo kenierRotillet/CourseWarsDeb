@@ -1,4 +1,5 @@
 import pygame
+from pygame import *
 import Medic
                
 pygame.init()
@@ -6,17 +7,23 @@ fondo='Fondo.jpg'
 screen = pygame.display.set_mode((1024, 768))
 pygame.display.set_caption("Medic_Test")
 clock = pygame.time.Clock()
-player = Medic.Medic((0, 135))
-game_over == False 
-while game_over == False:    
+player = Medic.Medic_class(1)
+game_over = False 
+while game_over == False:
+    clock.tick_busy_loop(40) 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_over = True
         
     player.handle_event(event)
     background=pygame.image.load(fondo).convert()
-    screen.blit(background,(0,0)) 
-    screen.blit(pygame.image.load(player.image).convert_alpha(),(player.x,player.y))
-    pygame.display.flip()              
-    clock.tick(40) 
+    screen.blit(background,(0,0))
+##    print(player.image)
+    surf = pygame.image.load(player.image).convert_alpha()
+##    print(player.estado)
+    screen.blit(surf,(player.x,player.y))
+    print(clock.get_fps())
+    pygame.display.flip()
+    
+    
 pygame.quit ()
