@@ -11,10 +11,10 @@ class Personaje(pygame.sprite.Sprite):
     """ Clase de personaje. Recibe número de jugador """
     def __init__(self, player):
         pygame.sprite.Sprite.__init__(self)
-        self.currentState = State.State() #estado en el que se encuentra el personaje actualmente
+        self.currentState = State.State(0,True) #estado en el que se encuentra el personaje actualmente
         self.anims = {}
-        self.currentAnim = "Stand"
-        self.staticAnim = ""
+        self.currentAnim = "Stand" #Estado por defecto en el cual se inicia
+        self.staticAnim = "Stand" #Nombre de la animación al estar quieto, default Stand
         self.maxSpeed = 0
         self.jumpSpeed =0
         self.player = player
@@ -28,17 +28,15 @@ class Personaje(pygame.sprite.Sprite):
     def move(self, x,y):
         self.rect.move_ip((x, y))
         
-       
+        
 
 
     def update(self):
         if (self.currentAnimFrame >= len(self.anims[self.currentAnim])):
-            if (self.framecount == self.anims[self.currentAnim][self.currentAnimFrame][0]):
-                self.framecount=0
-                self.currentAnim=self.staticAnim
-                self.currentAnimFrame=0
-            else:
-                self.framecount+=1
+            self.framecount=0
+            self.currentAnim=self.staticAnim
+            self.currentAnimFrame=0
+
         else:
             if (self.framecount == self.anims[self.currentAnim][self.currentAnimFrame][0]):
                 self.currentAnimFrame+=1

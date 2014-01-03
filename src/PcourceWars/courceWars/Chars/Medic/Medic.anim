@@ -106,6 +106,7 @@ Special:
 9,Chars/Medic/Sprites/Medic025_007.png
 10,Chars/Medic/Sprites/Medic025_008.png;
 Special_Effect:
+<<<<<<< HEAD
 0,Chars/Medic/Sprites/Medic026_001.png
 2,Chars/Medic/Sprites/Medic026_002.png
 4,Chars/Medic/Sprites/Medic026_003.png
@@ -115,3 +116,9 @@ Special_Effect:
 
 
 
+=======
+0,Sprites/Medic/Medic026_001.png
+2,Sprites/Medic/Medic026_002.png
+2,Sprites/Medic/Medic026_003.png
+2,Sprites/Medic/Medic026_004.png;
+>>>>>>> 06eb08eb07032c59bd13bbe591499bb534e36f58
