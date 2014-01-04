@@ -7,6 +7,9 @@ screen_w = 1024
 screen_h = 768
 
 def main():
+    pygame.mixer.init()
+    pygame.mixer.music.load("BGM_0002.mp3")
+    pygame.mixer.music.play(-1)
     
     pygame.init()
     estado_pj1 = 0
