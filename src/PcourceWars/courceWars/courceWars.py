@@ -5,16 +5,25 @@ Módulo principal, se encarga de llevar el control y flujo del juego, además de c
 
 import Core
 import Tools
+import pygame
+import Screens
+
+pygame.init()
+pygame.display.init()
 
 print "start"
+Tools.FastMethods.PlayAux()
 
-gak = Core.Personaje.Personaje(1)
+
+gak = Core.Medic.Medic(1)
+
 print("fin")
 raw_input()
 
 
 
-comandos = Tools.FastMethods.LoadAnimData("chars/Medic/Medic.anim")
+
+print gak.commands
 raw_input()
-print comandos
-raw_input()
+
+Screens.PlayWindow.main()

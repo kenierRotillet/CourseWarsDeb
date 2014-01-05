@@ -5,6 +5,7 @@ import sys
 import os
 from pygame.locals import *
 
+
 #Better image loading
 def load_image(name, colorkey=None):
     
@@ -12,8 +13,11 @@ def load_image(name, colorkey=None):
         image = pygame.image.load(name)
     except pygame.error, message:
         print 'Cannot load image:', name
+        print message
+        raw_input()
+
         raise SystemExit, message
-    image = image.convert()
+    #image = image.convert()
     if colorkey is not None:
         if colorkey is -1:
             colorkey = image.get_at((0,0))
@@ -31,7 +35,7 @@ def LoadAnimData(name):
     #raw_input()
 
     for an in animsdata:
-        if (len(an) < 2):
+        if (len(an.split(':')) < 2):
             continue
 
         animname = an.split(':')[0].replace('\n', "")
@@ -55,3 +59,90 @@ def LoadAnimData(name):
     arch.close()
     #print anims
     return anims
+
+
+def detectKeys(keys):
+    return
+
+def convertKeys(keys):
+    if len(keys) > 1:
+        recat = ""
+        for k in keys:
+            kkp = []
+            kkp.append(k)
+            recat += convertKeys(kkp) + "+"
+
+        if recat[-1] == '+':
+            recat=recat[:-1]
+            return recat
+        
+            
+
+
+    key = keys[0]
+    if (key == K_LEFT):
+        return "B"
+    elif(key == K_RIGHT):
+        return "F"
+    elif(key == K_DOWN):
+        return "D"
+    elif(key == K_UP):
+        return "U"
+    elif(key == K_z):
+        return "a"
+    elif(key == K_x):
+        return "b"
+    elif(key == K_c):
+        return "c"
+    elif(key == K_s):
+        return "x"
+    elif(key == K_RETURN):
+        return "s"
+    else:
+        return "plop"
+
+
+
+
+
+
+
+
+def load_commands(name):
+    all = ""
+    arch = open(name,'r')
+    for line in arch:
+        all+=line
+
+    arch.close()
+    cmds = all.split('\n')
+    commands = {}
+    for cmd in cmds:
+        if (len(cmd.split(':')) != 3):
+            continue
+        cmdname = cmd.split(':')[0]
+        cmdtime=cmd.split(':')[1]
+        cmdkeys = []
+        for k in cmd.split(':')[2].split(','):
+            cmdkeys.append(k)
+        commands[cmdname] = (cmdtime,cmdkeys)
+    return commands
+
+
+
+
+
+
+
+
+
+
+
+
+
+def PlayAux():
+    pygame.mixer.init()
+    pygame.mixer.Sound("sfx/out-0001.wav").play()
+
+
+

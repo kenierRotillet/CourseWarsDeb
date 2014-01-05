@@ -12,16 +12,23 @@ class Personaje(pygame.sprite.Sprite):
     def __init__(self, player):
         pygame.sprite.Sprite.__init__(self)
         self.currentState = State.State(0,True) #estado en el que se encuentra el personaje actualmente
+        self.maxHP = 100
+        self.currentHP = self.maxHP
+        self.atk = 100
+        self.deff= 100
+
         self.anims = {}
         self.currentAnim = "Stand" #Estado por defecto en el cual se inicia
         self.staticAnim = "Stand" #Nombre de la animación al estar quieto, default Stand
         self.maxSpeed = 0
         self.jumpSpeed =0
         self.player = player
-        self.currentAnimFrame = 0
-        self.image = pygame.Surface((10,10))
-        self.rect=self.image.get_rect()
+        self.commands = {}        
         self.framecount =0
+        self.image = ""
+        self.rect = ""
+        self.currentAnimFrame=0
+        
 
 
 
@@ -44,4 +51,47 @@ class Personaje(pygame.sprite.Sprite):
             else:
                 self.framecount+=1
         self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1])
+
+
+    def lookCommand(self, keys,currentTime):
+        if (self.currentState.control == False):
+            return
+
+        for cmd in self.commands.items():
+            keystroke = []
+            if (len(cmd[1][1]) > len(keys)):
+                continue
+
+            for k in range(0..len(cmd[1][1])):
+                keystroke.append(keys.pop())
+
+            if(currentTime - keystroke[-1][0] <= cmd[1][0]):
+                match = True
+                for k in range(0..len(keystroke)):
+                    if keystroke[k][1] != cmd[1][1][-1 - k]:
+                        match=False
+
+                if match == True:
+                    self.currentAnim = cmd[0]
+
+
+
+
+
+
+                
+
+
+
+
+
+
+
+
+
+    def DoAction(self,oponent):
+        if self.currentAnim=='LightPunch':
+            Tools.FastMethods.PlayAux()
+
+
 
