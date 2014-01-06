@@ -18,8 +18,6 @@ def main():
     final_pj2 = 0
     v = 1
     w = 3
-    V= 1
-    W= 3
     n = 35
     ID_pj1 = 1 
     ID_pj2 = 3
@@ -49,13 +47,16 @@ def main():
     Cuadro[2]=("IDK_Sel.png")
     Cuadro[3]=("Medic_Sel.png")
     Cuadro[4]=("Musician_Sel.png")
+
+    pj1=pygame.image.load("1p.png").convert_alpha()
+    pj2=pygame.image.load("2p.png").convert_alpha()
     
-    #Nombre={}
-    #Nombre[0]=(pygame.image.load("Caster.png").convert_alpha())
-    #Nombre[1]=(pygame.image.load("Lancer.png").convert_alpha())
-    #Nombre[2]=(pygame.image.load("Saber.png").convert_alpha())
-    #Nombre[3]=(pygame.image.load("IDK.png").convert_alpha())
-    #Nombre[4]=(pygame.image.load("Archer.png").convert_alpha())
+    Nombre={}
+    Nombre[0]=(pygame.image.load("Psyco.png").convert_alpha())
+    Nombre[1]=(pygame.image.load("Engineer.png").convert_alpha())
+    Nombre[2]=(pygame.image.load("IDK.png").convert_alpha())
+    Nombre[3]=(pygame.image.load("Medic.png").convert_alpha())
+    Nombre[4]=(pygame.image.load("Musician.png").convert_alpha())
       
     while True:
         for event in pygame.event.get():
@@ -118,9 +119,9 @@ def main():
             if estado_pj2 == 1:
                 w += 1
                 ID_pj2 += 1
-                if w == 4:
+                if w == 3:
                     w = 1
-                if ID_pj2 == 4:
+                if ID_pj2 == 3:
                     ID_pj2 = 1
             #if estado_pj2 == 1:
              #   w += 1
@@ -168,10 +169,12 @@ def main():
         cuadro2 = pygame.image.load(Cuadro[w]).convert_alpha()
         screen.blit(cuadro1,(142,100))
         screen.blit(sel_name1,(120,370))
-        #screen.blit(Nombre[v],(20,280))
+        screen.blit(Nombre[v],(120,350))
         screen.blit(cuadro2,(682,100))
         screen.blit(sel_name2,(648,370))
-        #screen.blit(Nombre[w],(364,280))
+        screen.blit(Nombre[w],(650,350))
+        screen.blit(pj1,(112,415))
+        screen.blit(pj2,(882,415))
         
         screen.blit(Pysco,(142,550))
         screen.blit(Engineer,(302,550))
@@ -183,17 +186,9 @@ def main():
         y=142
         x = x + v*160
         screen.blit(sel_pj1,(x,550))
-        if V!=v:
-            pygame.mixer.music.load("DATA_0169.wav")
-            pygame.mixer.music.play(1)
-            V=v      
         y = y + w*160
         screen.blit(sel_pj2,(y,550))
-        if W!=w:
-            pygame.mixer.music.load("DATA_0169.wav")
-            pygame.mixer.music.play(1)
-            W=w
-
+      
         
         pygame.display.flip()
         pygame.time.wait(50)
