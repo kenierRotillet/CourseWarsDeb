@@ -116,9 +116,9 @@ def main():
             if estado_pj2 == 1:
                 w += 1
                 ID_pj2 += 1
-                if w == 3:
+                if w == 4:
                     w = 1
-                if ID_pj2 == 3:
+                if ID_pj2 == 4:
                     ID_pj2 = 1
             #if estado_pj2 == 1:
              #   w += 1
