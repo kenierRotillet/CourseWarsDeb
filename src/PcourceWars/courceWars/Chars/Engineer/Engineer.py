@@ -1,120 +1,115 @@
 import pygame
-Medic={}
+Engineer={}
 sprite=[]
 for i in range(1,5):
-    a = "C:sprites/Medic000_00"+str(i)+".png"
+    a = "C:sprites/Enginer000_00"+str(i)+".png"
     sprite.append(a)
-Medic[0]=sprite
+Engineer[0]=sprite
 sprite=[]
-for i in range(1,4):
-    a = "C:sprites/Medic001_00"+str(i)+".png"
+for i in range(1,3):
+    a = "C:sprites/Enginer001_00"+str(i)+".png"
     sprite.append(a)
-Medic[1]=sprite
+Engineer[1]=sprite
 sprite=[]
 for i in range(1,6):
-    a = "C:sprites/Medic002_00"+str(i)+".png"
+    a = "C:sprites/Enginer002_00"+str(i)+".png"
     sprite.append(a)
-Medic[2]=sprite
-sprite=[]
-for i in range(1,4):
-    a = "C:sprites/Medic003_00"+str(i)+".png"
-    sprite.append(a)
-Medic[3]=sprite
-sprite=[]
-for i in range(1,8):
-    a = "C:sprites/Medic004_00"+str(i)+".png"
-    sprite.append(a)
-Medic[4]=sprite
-sprite=[]
-for i in range(1,2):
-    a = "C:sprites/Medic005_00"+str(i)+".png"
-    sprite.append(a)
-Medic[5]=sprite
-sprite=[]
-for i in range(1,4):
-    a = "C:sprites/Medic006_00"+str(i)+".png"
-    sprite.append(a)
-Medic[6]=sprite
-sprite=[]
-for i in range(1,3):
-    a = "C:sprites/Medic007_00"+str(i)+".png"
-    sprite.append(a)
-Medic[7]=sprite
-sprite=[]
-for i in range(1,3):
-    a = "C:sprites/Medic008_00"+str(i)+".png"
-    sprite.append(a)
-Medic[8]=sprite
-sprite=[]
-for i in range(1,2):
-    a = "C:sprites/Medic009_00"+str(i)+".png"
-    sprite.append(a)
-Medic[9]=sprite
-sprite=[]
-for i in range(1,5):
-    a = "C:sprites/Medic010_00"+str(i)+".png"
-    sprite.append(a)
-Medic[10]=sprite
-sprite=[]
-for i in range(1,2):
-    a = "C:sprites/Medic011_00"+str(i)+".png"
-    sprite.append(a)
-Medic[11]=sprite
-sprite=[]
-for i in range(1,2):
-    a = "C:sprites/Medic012_00"+str(i)+".png"
-    sprite.append(a)
-Medic[12]=sprite
-sprite=["C:sprites/Medic013_001.png"]
-Medic[13]=sprite
-sprite=[]
-for i in range(1,2):
-    a = "C:sprites/Medic014_00"+str(i)+".png"
-    sprite.append(a)
-Medic[14]=sprite
-sprite=[]
-for i in range(1,2):
-    a = "C:sprites/Medic015_00"+str(i)+".png"
-    sprite.append(a)
-Medic[15]=sprite
-sprite=["C:sprites/Medic016_001.png"]
-Medic[16]=sprite
-sprite=["C:sprites/Medic017_001.png"]
-Medic[17]=sprite
-sprite=["C:sprites/Medic018_001.png"]
-Medic[18]=sprite
+Engineer[2]=sprite
 sprite=[]
 for i in range(1,6):
-    a = "C:sprites/Medic019_00"+str(i)+".png"
+    a = "C:sprites/Enginer003_00"+str(i)+".png"
     sprite.append(a)
-Medic[19]=sprite
-sprite=["C:sprites/Medic020_001.png"]
-Medic[20]=sprite
-sprite=["C:sprites/Medic021_001.png"]
-Medic[21]=sprite
-sprite=["C:sprites/Medic022_001.png"]
-Medic[22]=sprite
-sprite=[]
-for i in range(1,3):
-    a = "C:sprites/Medic023_00"+str(i)+".png"
-    sprite.append(a)
-Medic[23]=sprite
-sprite=[]
-for i in range(1,3):
-    a = "C:sprites/Medic024_00"+str(i)+".png"
-    sprite.append(a)
-Medic[24]=sprite
+Engineer[3]=sprite
 sprite=[]
 for i in range(1,8):
-    a = "C:sprites/Medic025_00"+str(i)+".png"
+    a = "C:sprites/Enginer004_00"+str(i)+".png"
     sprite.append(a)
-Medic[25]=sprite
+Engineer[4]=sprite
+sprite=[]
+for i in range(1,3):
+    a = "C:sprites/Enginer005_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[5]=sprite
 sprite=[]
 for i in range(1,4):
-    a = "C:sprites/Medic026_00"+str(i)+".png"
+    a = "C:sprites/Enginer006_00"+str(i)+".png"
     sprite.append(a)
-Medic[26]=sprite
-class Medic_class(pygame.sprite.Sprite):
+Engineer[6]=sprite
+sprite=[]
+for i in range(1,4):
+    a = "C:sprites/Enginer007_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[7]=sprite
+sprite=[]
+for i in range(1,3):
+    a = "C:sprites/Enginer008_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[8]=sprite
+sprite=[]
+for i in range(1,3):
+    a = "C:sprites/Enginer009_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[9]=sprite
+sprite=[]
+for i in range(1,4):
+    a = "C:sprites/Enginer010_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[10]=sprite
+sprite=[]
+for i in range(1,2):
+    a = "C:sprites/Enginer011_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[11]=sprite
+sprite=["C:sprites/Enginer012_001.png"]
+Engineer[12]=sprite
+sprite=["C:sprites/Enginer013_001.png"]
+Engineer[13]=sprite
+sprite=[]
+sprite=["C:sprites/Enginer014_001.png"]
+Engineer[14]=sprite
+sprite=[]
+for i in range(1,3):
+    a = "C:sprites/Enginer015_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[15]=sprite
+sprite=["C:sprites/Enginer016_001.png"]
+Engineer[16]=sprite
+sprite=["C:sprites/Enginer017_001.png"]
+Engineer[17]=sprite
+sprite=["C:sprites/Enginer018_001.png"]
+Engineer[18]=sprite
+sprite=[]
+for i in range(1,6):
+    a = "C:sprites/Enginer019_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[19]=sprite
+sprite=["C:sprites/Enginer020_001.png"]
+Engineer[20]=sprite
+sprite=["C:sprites/Enginer021_001.png"]
+Engineer[21]=sprite
+sprite=["C:sprites/Enginer022_001.png"]
+Engineer[22]=sprite
+sprite=[]
+for i in range(1,3):
+    a = "C:sprites/Enginer023_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[23]=sprite
+sprite=[]
+for i in range(1,3):
+    a = "C:sprites/Enginer024_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[24]=sprite
+sprite=[]
+for i in range(1,12):
+    a = "C:sprites/Enginer025_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[25]=sprite
+sprite=[]
+for i in range(1,9):
+    a = "C:sprites/Enginer026_00"+str(i)+".png"
+    sprite.append(a)
+Engineer[26]=sprite
+class Engineer_class(pygame.sprite.Sprite):
     def __init__(self,player):
         pygame.sprite.Sprite.__init__(self)
         
@@ -126,33 +121,33 @@ class Medic_class(pygame.sprite.Sprite):
         self.player=player
         self.estado=0
         
-        self.stand=Medic[0]
-        self.lightpunch=Medic[1]
-        self.mediumpunch=Medic[2]
-        self.highpunch=Medic[3]
-        self.jump=Medic[4]
-        self.j_lightpunch=Medic[5]
-        self.j_mediumpunch=Medic[6]
-        self.j_highpunch=Medic[7]
-        self.down=Medic[8]
-        self.d_lightpunch=Medic[9]
-        self.d_mediumpunch=Medic[10]
-        self.guard=Medic[11]
-        self.d_guard=Medic[12]
-        self.j_guard=Medic[13]
-        self.dashfront=Medic[14]
-        self.dashback=Medic[15]
-        self.defense=Medic[16]
-        self.d_defense=Medic[17]
-        self.j_defense=Medic[18]
-        self.walk=Medic[19]
-        self.hit=Medic[20]
-        self.d_hit=Medic[21]
-        self.j_hit=Medic[22]
-        self.recover=Medic[23]
-        self.taunt=Medic[24]
-        self.especial=Medic[25]
-        self.effect=Medic[26]
+        self.stand=Engineer[0]
+        self.lightpunch=Engineer[1]
+        self.mediumpunch=Engineer[2]
+        self.highpunch=Engineer[3]
+        self.jump=Engineer[4]
+        self.j_lightpunch=Engineer[5]
+        self.j_mediumpunch=Engineer[6]
+        self.j_highpunch=Engineer[7]
+        self.down=Engineer[8]
+        self.d_lightpunch=Engineer[9]
+        self.d_mediumpunch=Engineer[10]
+        self.guard=Engineer[11]
+        self.d_guard=Engineer[12]
+        self.j_guard=Engineer[13]
+        self.dashfront=Engineer[14]
+        self.dashback=Engineer[15]
+        self.defense=Engineer[16]
+        self.d_defense=Engineer[17]
+        self.j_defense=Engineer[18]
+        self.walk=Engineer[19]
+        self.hit=Engineer[20]
+        self.d_hit=Engineer[21]
+        self.j_hit=Engineer[22]
+        self.recover=Engineer[23]
+        self.taunt=Engineer[24]
+        self.especial=Engineer[25]
+        self.effect=Engineer[26]
         self.image=""
         self.clip(self.stand,self.estado)
     def update_posicion(self,x,y):
