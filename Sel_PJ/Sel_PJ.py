@@ -18,6 +18,8 @@ def main():
     final_pj2 = 0
     v = 1
     w = 3
+    V= 1
+    W= 3
     n = 35
     ID_pj1 = 1 
     ID_pj2 = 3
@@ -181,9 +183,17 @@ def main():
         y=142
         x = x + v*160
         screen.blit(sel_pj1,(x,550))
+        if V!=v:
+            pygame.mixer.music.load("DATA_0169.wav")
+            pygame.mixer.music.play(1)
+            V=v      
         y = y + w*160
         screen.blit(sel_pj2,(y,550))
-      
+        if W!=w:
+            pygame.mixer.music.load("DATA_0169.wav")
+            pygame.mixer.music.play(1)
+            W=w
+
         
         pygame.display.flip()
         pygame.time.wait(50)
