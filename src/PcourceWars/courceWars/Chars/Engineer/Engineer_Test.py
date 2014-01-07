@@ -1,13 +1,13 @@
 import pygame
 from pygame import *
-import Medic
+import Engineer
                
 pygame.init()
 fondo='Fondo.jpg' 
 screen = pygame.display.set_mode((1024, 768))
-pygame.display.set_caption("Medic_Test")
+pygame.display.set_caption("Engineer_Test")
 clock = pygame.time.Clock()
-player = Medic.Medic_class(1)
+player = Engineer.Engineer_class(1)
 game_over = False 
 while game_over == False:
     clock.tick_busy_loop(40) 
