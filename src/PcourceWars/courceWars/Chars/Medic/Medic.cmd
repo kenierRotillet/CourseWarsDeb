@@ -1,8 +1,10 @@
-LightPunch:10:a
-MediumPunch:10:b
-HighPunch:10:c
+LightPunch:1:a
+MediumPunch:1:b
+HighPunch:1:c
 Jump:1:U
-Jump_LightPunch:10:a
+Jump_LightPunch:1:s
 Down:1:D
-FrontDash:5:F,F
+FrontDash:10:b,c
 Special:30:D,F,D,B,a+b
+md:30:b+c
+md:30:c+b

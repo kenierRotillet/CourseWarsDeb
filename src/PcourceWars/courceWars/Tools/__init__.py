@@ -4,3 +4,4 @@
 """Paquete que contiene herramientas y módulos con funciones útiles, o que apresuran funcionamientos"""
 import eventos
 import FastMethods
+import Logger

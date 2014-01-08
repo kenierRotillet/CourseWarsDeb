@@ -54,25 +54,43 @@ class Personaje(pygame.sprite.Sprite):
 
 
     def lookCommand(self, keys,currentTime):
+        Tools.Logger.escribir("teclas ingresadas en el tiempo: " + str(currentTime))
+        Tools.Logger.escribir(str(keys))
         if (self.currentState.control == False):
             return
-
+        tolerancy = 0
         for cmd in self.commands.items():
             keystroke = []
-            if (len(cmd[1][1]) > len(keys)):
+            
+            
+            if (len(cmd[1][1]) > len(keys)) or len(cmd[1][1]) <= tolerancy:
                 continue
+            lencmd = len(cmd[1][1])
 
-            for k in range(0..len(cmd[1][1])):
+
+            for k in range(0,lencmd):
                 keystroke.append(keys.pop())
 
-            if(currentTime - keystroke[-1][0] <= cmd[1][0]):
+            match = False
+            if((int(currentTime) - int(keystroke[-1][0])) <= int(cmd[1][0])):
+                Tools.Logger.escribir("el resultado de la resta de tiempo entre " + str(currentTime) + " " + str(keystroke[-1][0]) + " es:" + str(currentTime - keystroke[-1][0] ) + " menor que " + str(cmd[1][0]))
                 match = True
-                for k in range(0..len(keystroke)):
+                for k in range(0,len(keystroke)):
                     if keystroke[k][1] != cmd[1][1][-1 - k]:
                         match=False
+                        #print "no hay tecla"
 
-                if match == True:
-                    self.currentAnim = cmd[0]
+            if match == True:
+                self.currentAnim = cmd[0]
+                tolerancy=len(cmd[1][1])
+                    #print "hay tecla"
+                #else:
+            for k in range(0,len(keystroke)):
+                keys.append(keystroke[-1 - k])
+
+
+
+
 
 
 
@@ -90,8 +108,15 @@ class Personaje(pygame.sprite.Sprite):
 
 
     def DoAction(self,oponent):
+        Tools.Logger.escribir("actual estado es " + self.currentAnim)
         if self.currentAnim=='LightPunch':
             Tools.FastMethods.PlayAux()
-
+            self.currentAnim='Stand'
+        if self.currentAnim =='md':
+            Tools.FastMethods.PlayAux(1)
+            self.currentAnim='Stand'
+        if self.currentAnim == 'FrontDash':
+            Tools.FastMethods.PlayAux(2)
+            self.currentAnim='Stand'
 
 

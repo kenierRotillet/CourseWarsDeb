@@ -4,8 +4,11 @@ import pygame
 import sys
 import os
 from pygame.locals import *
+import Tools.Logger
 
-
+snd1 = pygame.mixer.Sound("sfx/out-0001.wav")
+snd2 = pygame.mixer.Sound("sfx/out-0003.wav")
+snd3 = pygame.mixer.Sound("sfx/out-0005.wav")
 #Better image loading
 def load_image(name, colorkey=None):
     
@@ -65,21 +68,34 @@ def detectKeys(keys):
     return
 
 def convertKeys(keys):
+    Tools.Logger.escribir("llegaron las teclas")
+    Tools.Logger.escribir(str(keys))
+
     if len(keys) > 1:
         recat = ""
         for k in keys:
             kkp = []
             kkp.append(k)
-            recat += convertKeys(kkp) + "+"
+            if convertKeys(kkp) != "":
 
-        if recat[-1] == '+':
+
+                recat += convertKeys(kkp) + "+"
+
+        if len(recat) > 1 and  recat[-1] == '+':
             recat=recat[:-1]
             return recat
         
             
 
 
-    key = keys[0]
+
+    key = ""
+    if len(keys) > 0:
+
+        key = keys[0]
+    else:
+        key = keys
+
     if (key == K_LEFT):
         return "B"
     elif(key == K_RIGHT):
@@ -99,7 +115,7 @@ def convertKeys(keys):
     elif(key == K_RETURN):
         return "s"
     else:
-        return "plop"
+        return ""
 
 
 
@@ -140,9 +156,15 @@ def load_commands(name):
 
 
 
-def PlayAux():
-    pygame.mixer.init()
-    pygame.mixer.Sound("sfx/out-0001.wav").play()
+def PlayAux(pl = 0 ):
+    if pl == 0 :
+
+        snd1.play()
+    elif pl == 1:
+        snd2.play()
+    elif pl == 2:
+        snd3.play()
+
 
 
 
