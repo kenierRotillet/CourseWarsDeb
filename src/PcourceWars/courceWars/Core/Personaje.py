@@ -16,6 +16,8 @@ class Personaje(pygame.sprite.Sprite):
         self.currentHP = self.maxHP
         self.atk = 100
         self.deff= 100
+        self.power=0
+        self.maxpower=100
 
         self.anims = {}
         self.currentAnim = "Stand" #Estado por defecto en el cual se inicia
@@ -28,12 +30,14 @@ class Personaje(pygame.sprite.Sprite):
         self.image = ""
         self.rect = ""
         self.currentAnimFrame=0
+        self.pos = (0,0)
         
 
 
 
     def move(self, x,y):
-        self.rect.move_ip((x, y))
+        self.pos=(self.pos[0]+x,self.pos[1]+y)
+        
         
         
 
@@ -51,7 +55,8 @@ class Personaje(pygame.sprite.Sprite):
                 self.framecount+=1
             else:
                 self.framecount+=1
-        self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1])
+        self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1],-1)
+        self.rect.center=self.pos
 
 
     def lookCommand(self, keys,currentTime):

@@ -42,7 +42,7 @@ def main():
             #Tools.Logger.escribir("no hay teclas en este loop")
 
         personaje.update()
-        pantalla.blit(personaje.image,(personaje.rect.x,personaje.rect.y))
+        pantalla.blit(personaje.image,personaje.rect.center)
 
 
 

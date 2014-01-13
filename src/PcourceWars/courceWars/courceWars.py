@@ -19,7 +19,7 @@ print "start"
 Tools.FastMethods.PlayAux()
 
 
-gak = Core.Medic.Medic(1)
+#gak = Core.Medic.Medic(1)
 
 print("fin")
 raw_input()
@@ -27,10 +27,10 @@ raw_input()
 
 
 
-print gak.commands
+#print gak.commands
 raw_input()
 
-print gak.anims
+#print gak.anims
 raw_input()
 
 Screens.PlayWindow.main()
