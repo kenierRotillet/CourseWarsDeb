@@ -20,7 +20,7 @@ def load_image(name, colorkey=None):
         raw_input()
 
         raise SystemExit, message
-    #image = image.convert()
+    image = image.convert()
     if colorkey is not None:
         if colorkey is -1:
             colorkey = image.get_at((0,0))
