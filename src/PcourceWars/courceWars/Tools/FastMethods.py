@@ -15,8 +15,8 @@ def load_image(name, colorkey=None):
     try:
         image = pygame.image.load(name)
     except pygame.error, message:
-        print 'Cannot load image:', name
-        print message
+        Tools.Logger.escribir('Cannot load image:', name)
+        Tools.Logger.escribir(message)
         raw_input()
 
         raise SystemExit, message

@@ -30,4 +30,7 @@ raw_input()
 print gak.commands
 raw_input()
 
+print gak.anims
+raw_input()
+
 Screens.PlayWindow.main()

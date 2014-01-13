@@ -11,6 +11,8 @@ class Medic(Core.Personaje.Personaje):
         self.anims = Core.Personaje.Tools.FastMethods.LoadAnimData("chars/Medic/Medic.anim")
         self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1])
         self.commands=Tools.FastMethods.load_commands("Chars/Medic/Medic.cmd")
+        self.rect.x = 0
+        self.rect.y = 300
 
 
 

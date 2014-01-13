@@ -25,7 +25,8 @@ def main():
         
         for event in pygame.event.get():
             if event.type == pygame.quit:
-                pygame.display.quit()
+                return
+
 
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
@@ -37,8 +38,12 @@ def main():
 
             teclastotales.append((tiempo,Tools.FastMethods.convertKeys(teclas)))
             personaje.lookCommand(teclastotales,tiempo)
-        else:
-            Tools.Logger.escribir("no hay teclas en este loop")
+        #else:
+            #Tools.Logger.escribir("no hay teclas en este loop")
+
+        personaje.update()
+        pantalla.blit(personaje.image,(personaje.rect.x,personaje.rect.y))
+
 
 
         personaje.DoAction(personaje)

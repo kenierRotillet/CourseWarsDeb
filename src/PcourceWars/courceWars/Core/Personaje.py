@@ -39,23 +39,24 @@ class Personaje(pygame.sprite.Sprite):
 
 
     def update(self):
-        if (self.currentAnimFrame >= len(self.anims[self.currentAnim])):
+        Tools.Logger.escribir("animacion " + self.currentAnim + ", en su imagen " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
+        if (self.currentAnimFrame >= len(self.anims[self.currentAnim])-1):
             self.framecount=0
             self.currentAnim=self.staticAnim
             self.currentAnimFrame=0
 
         else:
-            if (self.framecount == self.anims[self.currentAnim][self.currentAnimFrame][0]):
+            if (self.framecount == int(self.anims[self.currentAnim][self.currentAnimFrame][0])):
                 self.currentAnimFrame+=1
-                self.framecount=0
+                self.framecount+=1
             else:
                 self.framecount+=1
         self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1])
 
 
     def lookCommand(self, keys,currentTime):
-        Tools.Logger.escribir("teclas ingresadas en el tiempo: " + str(currentTime))
-        Tools.Logger.escribir(str(keys))
+        #Tools.Logger.escribir("teclas ingresadas en el tiempo: " + str(currentTime))
+        #Tools.Logger.escribir(str(keys))
         if (self.currentState.control == False):
             return
         tolerancy = 0
@@ -73,7 +74,7 @@ class Personaje(pygame.sprite.Sprite):
 
             match = False
             if((int(currentTime) - int(keystroke[-1][0])) <= int(cmd[1][0])):
-                Tools.Logger.escribir("el resultado de la resta de tiempo entre " + str(currentTime) + " " + str(keystroke[-1][0]) + " es:" + str(currentTime - keystroke[-1][0] ) + " menor que " + str(cmd[1][0]))
+                #Tools.Logger.escribir("el resultado de la resta de tiempo entre " + str(currentTime) + " " + str(keystroke[-1][0]) + " es:" + str(currentTime - keystroke[-1][0] ) + " menor que " + str(cmd[1][0]))
                 match = True
                 for k in range(0,len(keystroke)):
                     if keystroke[k][1] != cmd[1][1][-1 - k]:
@@ -82,6 +83,8 @@ class Personaje(pygame.sprite.Sprite):
 
             if match == True:
                 self.currentAnim = cmd[0]
+                self.currentAnimFrame=0
+                self.framecount=0
                 tolerancy=len(cmd[1][1])
                     #print "hay tecla"
                 #else:
@@ -111,12 +114,12 @@ class Personaje(pygame.sprite.Sprite):
         Tools.Logger.escribir("actual estado es " + self.currentAnim)
         if self.currentAnim=='LightPunch':
             Tools.FastMethods.PlayAux()
-            self.currentAnim='Stand'
+            #self.currentAnim='Stand'
         if self.currentAnim =='md':
             Tools.FastMethods.PlayAux(1)
-            self.currentAnim='Stand'
+            #self.currentAnim='Stand'
         if self.currentAnim == 'FrontDash':
             Tools.FastMethods.PlayAux(2)
-            self.currentAnim='Stand'
+            #self.currentAnim='Stand'
 
 
