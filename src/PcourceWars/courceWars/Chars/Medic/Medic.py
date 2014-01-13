@@ -194,41 +194,42 @@ class Medic_class(pygame.sprite.Sprite):
         if event.type == pygame.QUIT:
             game_over = True        
         if event.type == pygame.KEYDOWN and self.player == 1:           
-
-            if key[pygame.K_LEFT]:
-                self.update('caminar')
-                self.update_posicion(-10,0)
+                
             if key[pygame.K_f]:
                 self.update('LP')
             if key[pygame.K_g]:
                 self.update('MP')
             if key[pygame.K_h]:
                 self.update('HP')
+            if key[pygame.K_LEFT]:
+                self.update('caminar')
+                self.update_posicion(-10,0)
+                self.defensa=True
             if key[pygame.K_RIGHT]:
                 self.update('caminar')
                 self.update_posicion(10,0)
                 
         if event.type == pygame.KEYDOWN and self.player == 2:           
 
-            if key[pygame.K_a]:
-                self.update('caminar')
-                self.update_posicion(-10,0)
             if key[pygame.K_u]:
                 self.update('LP')
             if key[pygame.K_i]:
                 self.update('MP')
             if key[pygame.K_o]:
                 self.update('HP')
+            if key[pygame.K_a]:
+                self.update('caminar')
+                self.update_posicion(-10,0)
             if key[pygame.K_d]:
                 self.update('caminar')
-                self.update_posicion(10,0)          
-
+                self.update_posicion(10,0)
+                self.defensa=True
  
-        #if event.type == pygame.KEYUP:   
-         #   if event.key == pygame.K_a or event.key==pygame.K_d:
-          #      self.update('stand')            
-           # if event.key == pygame.K_RIGHT or event.key==pygame.K_LEFT:
-            #    self.update('stand')
+        if event.type == pygame.KEYUP:   
+            if event.key == pygame.K_a or event.key==pygame.K_d:
+                self.update('stand')            
+            if event.key == pygame.K_RIGHT or event.key==pygame.K_LEFT:
+                self.update('stand')
 
  
 
