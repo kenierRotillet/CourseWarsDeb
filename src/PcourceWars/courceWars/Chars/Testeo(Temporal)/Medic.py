@@ -226,10 +226,10 @@ class Medic_class(pygame.sprite.Sprite):
                 self.defensa=True
  
         if event.type == pygame.KEYUP:   
-            if event.key == pygame.K_a or event.key==pygame.K_d:
-                self.update('stand')            
-            if event.key == pygame.K_RIGHT or event.key==pygame.K_LEFT:
-                self.update('stand')
+            #if event.key == pygame.K_a or event.key==pygame.K_d:
+            self.update('stand')            
+            #if event.key == pygame.K_RIGHT or event.key==pygame.K_LEFT:
+             #   self.update('stand')
 
  
 

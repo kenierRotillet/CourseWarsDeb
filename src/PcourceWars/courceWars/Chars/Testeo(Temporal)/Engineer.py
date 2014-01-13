@@ -116,6 +116,7 @@ class Engineer_class(pygame.sprite.Sprite):
         self.max_speed=10        
         self.jump=False
         self.defensa=False
+        self.cadena=False
         self.player=player
         self.estado=0        
         self.x=0
@@ -175,7 +176,7 @@ class Engineer_class(pygame.sprite.Sprite):
         if direction == 'LP':
             self.clip(self.lightpunch,self.estado)
             self.estado+=1
-
+            
         if direction=='MP':
             self.clip(self.mediumpunch,self.estado)
             self.estado+=1
@@ -193,7 +194,8 @@ class Engineer_class(pygame.sprite.Sprite):
         if event.type == pygame.KEYDOWN and self.player == 1:
 
             if key[pygame.K_f]:
-                self.update('LP')
+                #self.cadena = True
+                self.update('LP')                
             if key[pygame.K_g]:
                 self.update('MP')
             if key[pygame.K_h]:
