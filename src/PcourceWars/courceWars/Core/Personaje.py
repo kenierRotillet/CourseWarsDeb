@@ -30,7 +30,7 @@ class Personaje(pygame.sprite.Sprite):
         self.image = ""
         self.rect = ""
         self.currentAnimFrame=0
-        self.pos = (0,0)
+        self.pos = (0,100)
         
 
 
@@ -55,7 +55,7 @@ class Personaje(pygame.sprite.Sprite):
                 self.framecount+=1
             else:
                 self.framecount+=1
-        self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1],-1)
+        self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1],None,True)
         self.rect.center=self.pos
 
 

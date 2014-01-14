@@ -19,7 +19,9 @@ def main():
     relojito = pygame.time.Clock()
     tiempo = 0
     teclastotales = []
+    fondo,rect = Tools.FastMethods.load_image("Screens/imgs/Fondo.jpg")
     while True:
+	pantalla.blit(fondo,(0,0))
         teclas= []
         relojito.tick_busy_loop(40)
         
@@ -47,6 +49,7 @@ def main():
 
 
         personaje.DoAction(personaje)
+	pygame.display.flip()
 
         tiempo+=1
 

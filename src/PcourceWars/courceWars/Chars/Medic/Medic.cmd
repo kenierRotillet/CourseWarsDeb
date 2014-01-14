@@ -1,10 +1,10 @@
 LightPunch:1:a
 MediumPunch:1:b
 HighPunch:1:c
-Jump:1:U
-Jump_LightPunch:1:s
-Down:1:D
-FrontDash:10:b,c
-Special:30:D,F,D,B,a+b
-md:30:b+c
-md:30:c+b
+
+FrontDash:10:F,F
+BackDash:10:B,B
+Special:45:D,F,D,F,c
+Taunt:30:s
+Walk:1:F
+BWalk:1:B

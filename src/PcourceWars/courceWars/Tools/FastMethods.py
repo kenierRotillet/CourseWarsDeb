@@ -10,17 +10,20 @@ snd1 = pygame.mixer.Sound("sfx/out-0001.wav")
 snd2 = pygame.mixer.Sound("sfx/out-0003.wav")
 snd3 = pygame.mixer.Sound("sfx/out-0005.wav")
 #Better image loading
-def load_image(name, colorkey=None):
+def load_image(name, colorkey=None,resize=False):
     
     try:
         image = pygame.image.load(name)
     except pygame.error, message:
-        Tools.Logger.escribir('Cannot load image:', name)
-        Tools.Logger.escribir(message)
+        Tools.Logger.escribir('Cannot load image:' +  str(name))
+        Tools.Logger.escribir(str(message))
         raw_input()
 
         raise SystemExit, message
-    image = image.convert()
+    image = image.convert_alpha()
+    if resize == True:
+	image = pygame.transform.scale(image,(700,700))
+	
     if colorkey is not None:
         if colorkey is -1:
             colorkey = image.get_at((0,0))
