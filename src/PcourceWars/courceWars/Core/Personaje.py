@@ -20,6 +20,8 @@ class Personaje(pygame.sprite.Sprite):
         self.maxpower=100
 
         self.anims = {}
+        self.sounds = {}
+        self.currentSounds = []
         self.currentAnim = "Stand" #Estado por defecto en el cual se inicia
         self.staticAnim = "Stand" #Nombre de la animación al estar quieto, default Stand
         self.maxSpeed = 0
@@ -43,8 +45,8 @@ class Personaje(pygame.sprite.Sprite):
 
 
     def update(self):
-        Tools.Logger.escribir("animacion " + self.currentAnim + ", en su imagen " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
-        if (self.currentAnimFrame >= len(self.anims[self.currentAnim])-1):
+        
+        if (self.currentAnimFrame > len(self.anims[self.currentAnim])-1):
             self.framecount=0
             self.currentAnim=self.staticAnim
             self.currentAnimFrame=0
@@ -53,10 +55,18 @@ class Personaje(pygame.sprite.Sprite):
             if (self.framecount == int(self.anims[self.currentAnim][self.currentAnimFrame][0])):
                 self.currentAnimFrame+=1
                 self.framecount+=1
+                if self.currentAnimFrame >= len(self.anims[self.currentAnim]):
+                    self.currentAnim=self.staticAnim
+                    self.currentAnimFrame=0
+                    self.framecount=0
+
+
             else:
                 self.framecount+=1
         self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1],None,True)
         self.rect.center=self.pos
+        Tools.Logger.escribir("animacion " + self.currentAnim + ", en su imagen " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
+
 
 
     def lookCommand(self, keys,currentTime):
@@ -126,5 +136,16 @@ class Personaje(pygame.sprite.Sprite):
         if self.currentAnim == 'FrontDash':
             Tools.FastMethods.PlayAux(2)
             #self.currentAnim='Stand'
+
+
+    def setSounds(self):
+        if self.sounds.has_key(self.currentAnim):
+            for snditem in self.sounds[self.currentAnim]:
+                if int(snditem[0]) == self.framecount:
+                    self.currentSounds.append(snditem[1])
+                    if self.currentState.flags.has_key('Hit'):
+                        self.currentSounds.append(snditem[2])
+
+
 
 

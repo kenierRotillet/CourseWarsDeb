@@ -4,7 +4,7 @@
 import pygame
 class State(object):
     """Clase que define un estado posible y sus características para cada personaje e instancia de la pelea"""
-    def __init__(self, typenumber, control=True, jump=False,Block=False,crouch=False, *flags):
+    def __init__(self, typenumber, control=True, jump=False,Block=False,crouch=False, **flags):
         object.__init__(self)
         self.control = control
         self.typenumber = typenumber

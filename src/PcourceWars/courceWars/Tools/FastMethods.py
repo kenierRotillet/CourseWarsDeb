@@ -17,12 +17,12 @@ def load_image(name, colorkey=None,resize=False):
     except pygame.error, message:
         Tools.Logger.escribir('Cannot load image:' +  str(name))
         Tools.Logger.escribir(str(message))
-        raw_input()
+        #raw_input()
 
         raise SystemExit, message
     image = image.convert_alpha()
     if resize == True:
-	image = pygame.transform.scale(image,(700,700))
+        image = pygame.transform.scale(image,(700,700))
 	
     if colorkey is not None:
         if colorkey is -1:
@@ -159,15 +159,55 @@ def load_commands(name):
 
 
 
-def PlayAux(pl = 0 ):
-    if pl == 0 :
+def PlayAux(pl = 0):
+    lala="lala"
+    #if pl == 0 :
 
-        snd1.play()
-    elif pl == 1:
-        snd2.play()
-    elif pl == 2:
-        snd3.play()
+        #snd1.play()
+    #elif pl == 1:
+        #snd2.play()
+    #elif pl == 2:
+        #snd3.play()
 
 
+
+
+
+def LoadSounds(name):
+    sounds = {}
+    arch = open(name,'r')
+    data = ""
+    for i in arch:
+        data+=i
+        #print i
+    arch.close()
+    soundsdata = data.split(';')
+    #raw_input()
+
+    for an in soundsdata:
+        if (len(an.split(':')) < 2):
+            continue
+
+        animname = an.split(':')[0].replace('\n', "")
+        
+        #print animname
+        animdata = []
+        #raw_input()
+        #print an.split(':')
+        #print " su tamaño es: " + str(len(an.split(':')))
+        for line in an.split(':')[1].split('\n'):
+            #print line
+            #raw_input()
+            lin = line.split(',')
+            #print lin
+            if(len(lin) >= 3):
+                animdata.append((lin[0],lin[1],lin[2]))
+                #print animdata
+
+        sounds[animname] = animdata
+        #print anims[animname]
+    
+    #print anims
+    return sounds
 
 
