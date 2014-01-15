@@ -1,0 +1,14 @@
+LightPunch:
+4,sfx/lpl.wav,sfx/hp.wav;
+MediumPunch:
+10,sfx/mpl.wav,sfx/mp1.wav;
+HighPunch:
+10,sfx/hpl.wav,sfx/hp1.wav;
+FrontDash:
+5,sfx/frontdash.wav,;
+BackDash:
+5,sfx/backdash.wav,;
+Special:
+0,sfx/spcharge.wav,
+0,sfx/teleport.wav,
+50,sfx/explode1.wav,;
