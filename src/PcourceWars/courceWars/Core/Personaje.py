@@ -135,20 +135,113 @@ class Personaje(pygame.sprite.Sprite):
 
 
     def DoAction(self,oponent):
+        """método en el cual se programan cada uno de los movimientos de los ataques y acciones básicas de un personaje, movimiento, golpes básicos, y coliciones. El método recibe al oponente, siendo capaz de alterar su posición y estado, e incluso animación."""
+
         if oponent.pos[0] < self.pos[0]:
             self.flip=True
         else:
             self.flip=False
         Tools.Logger.escribir("actual estado es " + self.currentAnim)
-        if self.currentAnim=='LightPunch':
-            Tools.FastMethods.PlayAux()
-            #self.currentAnim='Stand'
-        if self.currentAnim =='md':
-            Tools.FastMethods.PlayAux(1)
-            #self.currentAnim='Stand'
-        if self.currentAnim == 'FrontDash':
-            Tools.FastMethods.PlayAux(2)
-            #self.currentAnim='Stand'
+        if self.currentAnim=='Walk':
+            self.currentState.control=False
+            if pygame.sprite.collide_mask(self,oponent) != None:
+                self.currentState.control=True
+                self.currentAnim=self.staticAnim
+                self.framecount=0
+                self.currentAnimFrame=0
+            else:
+                if not self.flip:
+                    for i in range(0,self.maxSpeed):
+                        oldpos=self.pos
+                        oldrect=self.rect
+                        oldmask = self.masc
+                        self.pos=(self.pos[0]+1,self.pos[1])
+                        self.rect.center=self.pos
+                        self.masc=pygame.mask.from_surface(self.image)
+
+                        if pygame.sprite.collide_mask(self,oponent) != None:
+                            self.pos=oldpos
+                            self.rect=oldrect
+                            self.masc=oldmask
+                            self.currentAnim=self.staticAnim
+                            self.framecount=0
+                            self.currentAnimFrame=0
+                            self.currentState.control=True
+                            self.framecount=0
+                            break
+
+                else:
+                    for i in range(0,self.maxSpeed):
+                        oldpos=self.pos
+                        oldrect=self.rect
+                        oldmask = self.masc
+                        self.pos=(self.pos[0]-1,self.pos[1])
+                        self.rect.center=self.pos
+                        self.masc=pygame.mask.from_surface(self.image)
+
+                        if pygame.sprite.collide_mask(self,oponent) != None:
+                            self.pos=oldpos
+                            self.rect=oldrect
+                            self.masc=oldmask
+                            self.currentAnim=self.staticAnim
+                            self.framecount=0
+                            self.currentAnimFrame=0
+                            self.currentState.control=True
+                            self.framecount=0
+                            break
+
+
+
+        if self.currentAnim=="BWalk":
+            self.currentState.control=False
+            self.currentState.block=True
+            
+            if  self.flip:
+                for i in range(0,self.maxSpeed):
+                    oldpos=self.pos
+                    oldrect=self.rect
+                    oldmask = self.masc
+                    self.pos=(self.pos[0]+1,self.pos[1])
+                    self.rect.center=self.pos
+                    self.masc=pygame.mask.from_surface(self.image)
+
+                    if self.pos[0] == 1020:
+                        self.pos=oldpos
+                        self.rect=oldrect
+                        self.masc=oldmask
+                        self.currentAnim=self.staticAnim
+                        self.framecount=0
+                        self.currentAnimFrame=0
+                        self.currentState.control=True
+                        self.framecount=0
+                        break
+
+            else:
+                for i in range(0,self.maxSpeed):
+                    oldpos=self.pos
+                    oldrect=self.rect
+                    oldmask = self.masc
+                    self.pos=(self.pos[0]-1,self.pos[1])
+                    self.rect.center=self.pos
+                    self.masc=pygame.mask.from_surface(self.image)
+
+                    if self.pos[0] == 0:
+                        self.pos=oldpos
+                        self.rect=oldrect
+                        self.masc=oldmask
+                        self.currentAnim=self.staticAnim
+                        self.framecount=0
+                        self.currentAnimFrame=0
+                        self.currentState.control=True
+                        self.framecount=0
+                        break
+
+
+
+        #if self.currentAnim == 'FrontDash':
+            #print "wac"
+
+            
 
 
     def setSounds(self):

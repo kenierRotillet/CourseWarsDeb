@@ -17,6 +17,9 @@ class Engineer(Core.Personaje.Personaje):
         self.sounds = Tools.FastMethods.LoadSounds("Chars/Engineer/Engineer.snd")
         self.pos=initPos
         self.rect.center = (self.pos)
+        self.maxSpeed=5
+        self.dashspeed=8
+
         
         
 
