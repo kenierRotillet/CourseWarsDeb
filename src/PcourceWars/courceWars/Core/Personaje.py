@@ -34,7 +34,7 @@ class Personaje(pygame.sprite.Sprite):
         self.framecount =0 #número de frame que lleva la animación actual
         self.image = "" #surface representante del sprite
         self.rect = "" #rect representante del sprite
-        self.masc = "" #máscara reprecentante de la imagen del sprite
+        self.mask = "" #máscara reprecentante de la imagen del sprite
         self.currentAnimFrame=0 #número de imagen actual de la animación actual
         self.pos = (0,100) #posición por defecto de inicio
         self.flip = False #flag que indica si es necesario o no voltear la imagen
@@ -72,7 +72,7 @@ class Personaje(pygame.sprite.Sprite):
             else:
                 self.framecount+=1
         self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1],None,True, self.flip)
-        self.masc=pygame.mask.from_surface(self.image)
+        self.mask=pygame.mask.from_surface(self.image)
         self.rect.center=self.pos
         Tools.Logger.escribir("animacion " + self.currentAnim + ", en su imagen " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
 
@@ -142,6 +142,10 @@ class Personaje(pygame.sprite.Sprite):
         else:
             self.flip=False
         Tools.Logger.escribir("actual estado es " + self.currentAnim)
+        if self.currentAnim=='Stand':
+            self.currentState=State.State(0,True)
+
+
         if self.currentAnim=='Walk':
             self.currentState.control=False
             if pygame.sprite.collide_mask(self,oponent) != None:
@@ -154,15 +158,15 @@ class Personaje(pygame.sprite.Sprite):
                     for i in range(0,self.maxSpeed):
                         oldpos=self.pos
                         oldrect=self.rect
-                        oldmask = self.masc
+                        oldmask = self.mask
                         self.pos=(self.pos[0]+1,self.pos[1])
                         self.rect.center=self.pos
-                        self.masc=pygame.mask.from_surface(self.image)
+                        self.mask=pygame.mask.from_surface(self.image)
 
                         if pygame.sprite.collide_mask(self,oponent) != None:
                             self.pos=oldpos
                             self.rect=oldrect
-                            self.masc=oldmask
+                            self.mask=oldmask
                             self.currentAnim=self.staticAnim
                             self.framecount=0
                             self.currentAnimFrame=0
@@ -174,15 +178,15 @@ class Personaje(pygame.sprite.Sprite):
                     for i in range(0,self.maxSpeed):
                         oldpos=self.pos
                         oldrect=self.rect
-                        oldmask = self.masc
+                        oldmask = self.mask
                         self.pos=(self.pos[0]-1,self.pos[1])
                         self.rect.center=self.pos
-                        self.masc=pygame.mask.from_surface(self.image)
+                        self.mask=pygame.mask.from_surface(self.image)
 
                         if pygame.sprite.collide_mask(self,oponent) != None:
                             self.pos=oldpos
                             self.rect=oldrect
-                            self.masc=oldmask
+                            self.mask=oldmask
                             self.currentAnim=self.staticAnim
                             self.framecount=0
                             self.currentAnimFrame=0
@@ -200,40 +204,42 @@ class Personaje(pygame.sprite.Sprite):
                 for i in range(0,self.maxSpeed):
                     oldpos=self.pos
                     oldrect=self.rect
-                    oldmask = self.masc
+                    oldmask = self.mask
                     self.pos=(self.pos[0]+1,self.pos[1])
                     self.rect.center=self.pos
-                    self.masc=pygame.mask.from_surface(self.image)
+                    self.mask=pygame.mask.from_surface(self.image)
 
                     if self.pos[0] == 1020:
                         self.pos=oldpos
                         self.rect=oldrect
-                        self.masc=oldmask
+                        self.mask=oldmask
                         self.currentAnim=self.staticAnim
                         self.framecount=0
                         self.currentAnimFrame=0
                         self.currentState.control=True
                         self.framecount=0
+                        self.currentState.block=False
                         break
 
             else:
                 for i in range(0,self.maxSpeed):
                     oldpos=self.pos
                     oldrect=self.rect
-                    oldmask = self.masc
+                    oldmask = self.mask
                     self.pos=(self.pos[0]-1,self.pos[1])
                     self.rect.center=self.pos
-                    self.masc=pygame.mask.from_surface(self.image)
+                    self.mask=pygame.mask.from_surface(self.image)
 
                     if self.pos[0] == 0:
                         self.pos=oldpos
                         self.rect=oldrect
-                        self.masc=oldmask
+                        self.mask=oldmask
                         self.currentAnim=self.staticAnim
                         self.framecount=0
                         self.currentAnimFrame=0
                         self.currentState.control=True
                         self.framecount=0
+                        self.currentState.block=False
                         break
 
 

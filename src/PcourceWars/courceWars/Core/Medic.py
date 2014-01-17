@@ -12,7 +12,7 @@ class Medic(Core.Personaje.Personaje):
         """constructor de la clase del médico, recibe por entrada el número de jugador que le corresponde y su posición inicial"""
         self.anims = Core.Personaje.Tools.FastMethods.LoadAnimData("chars/Medic/Medic.anim")
         self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1])
-        self.masc = pygame.mask.from_surface(self.image)
+        self.mask = pygame.mask.from_surface(self.image)
         self.commands=Tools.FastMethods.load_commands("Chars/Medic/Medic.cmd")
         self.sounds = Tools.FastMethods.LoadSounds("Chars/Medic/Medic.snd")
 
