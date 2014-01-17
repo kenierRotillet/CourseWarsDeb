@@ -1,17 +1,23 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
+""" módulo con herramientas de carga, converción, y revición rápidas para el juego."""
+
 import pygame
 import sys
 import os
 from pygame.locals import *
 import Tools.Logger
 
+
 snd1 = pygame.mixer.Sound("sfx/out-0001.wav")
 snd2 = pygame.mixer.Sound("sfx/out-0003.wav")
 snd3 = pygame.mixer.Sound("sfx/out-0005.wav")
 #Better image loading
-def load_image(name, colorkey=None,resize=False):
-    
+
+def load_image(name, colorkey=None,resize=False,flip=False):
+    """ método de carga de imágenes. Recibe los argumentos name, path de la imagen, colorkey de la imagen, recize si necesita ser aumentado su tamaño, y flip, si necesita ser volteada."""
+
+    #intento de carga de la imagen
     try:
         image = pygame.image.load(name)
     except pygame.error, message:
@@ -20,30 +26,46 @@ def load_image(name, colorkey=None,resize=False):
         #raw_input()
 
         raise SystemExit, message
+    #converción de alphas de la imagen
     image = image.convert_alpha()
     if resize == True:
+        #Aumento de tamaño de la imagen
         image = pygame.transform.scale(image,(700,700))
-	
+
     if colorkey is not None:
+        #Aplicación del colorkey
         if colorkey is -1:
             colorkey = image.get_at((0,0))
         image.set_colorkey(colorkey, RLEACCEL)
+    if flip == True:
+        #En caso de ser indicado, la imagen se voltea
+        image = pygame.transform.flip(image,1,0)
+
     return image, image.get_rect()
 
 def LoadAnimData(name):
+    """método para cargar el diccionario de imágenes a partir de un archivo *.anim"""
+    #anims, diccionario base a retornar con las imágenes 
+
     anims = {}
+    #carga del archivo
     arch = open(name,'r')
     data = ""
     for i in arch:
         data+=i
         #print i
+        
+    arch.close()
+    #Separación de cada movimiento en una entrada de animsdata
     animsdata = data.split(';')
     #raw_input()
 
     for an in animsdata:
+        #en caso de ser línea bacía se salta
         if (len(an.split(':')) < 2):
             continue
 
+        #extración del nombre de la animación
         animname = an.split(':')[0].replace('\n', "")
         
         #print animname
@@ -60,19 +82,24 @@ def LoadAnimData(name):
                 animdata.append((lin[0],lin[1]))
                 #print animdata
 
+        #se añade la información optenida
         anims[animname] = animdata
         #print anims[animname]
-    arch.close()
+    
     #print anims
     return anims
 
 
 def detectKeys(keys):
+    """método de detección y separación de teclas de jugador 1, y de jugador dos. no implementado aún """
     return
 
 def convertKeys(keys):
+    """converción de teclas del formato pygame, al formato cws. Sirve para configurar cualquier tecla"""
     Tools.Logger.escribir("llegaron las teclas")
     Tools.Logger.escribir(str(keys))
+    #El método se  ejecuta recursivamente en caso de recibir más de una tecla. es para poder escribirlas en el formato x+y en el caso de ser presionadas más de una tecla en el mismo frame, y conciderarse como presión simultánea.
+
 
     if len(keys) > 1:
         recat = ""
@@ -99,6 +126,7 @@ def convertKeys(keys):
     else:
         key = keys
 
+    #En caso de querer alterar una tecla o la configuración de estas, simplemente cambiar los if subsiguientes
     if (key == K_LEFT):
         return "B"
     elif(key == K_RIGHT):
@@ -128,6 +156,7 @@ def convertKeys(keys):
 
 
 def load_commands(name):
+    """método para la carga de comandos de los movimientos, a partir de los archivos *.cmd . Los nombres de movimientos deben de coincidir con los de las animaciones para funcionar todo bien. La secuencia de teclas se cargan utilizando los nombres empleados en convertKeys."""
     all = ""
     arch = open(name,'r')
     for line in arch:
@@ -160,6 +189,8 @@ def load_commands(name):
 
 
 def PlayAux(pl = 0):
+    """método para acciones auxiliares de debug"""
+
     lala="lala"
     #if pl == 0 :
 
@@ -174,6 +205,7 @@ def PlayAux(pl = 0):
 
 
 def LoadSounds(name):
+    """método de carga de sonidos, a través de los archivos *.snd. cada sonido se asocia con una animación a través de los nombres."""
     sounds = {}
     arch = open(name,'r')
     data = ""

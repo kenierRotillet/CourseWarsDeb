@@ -11,28 +11,36 @@ class Personaje(pygame.sprite.Sprite):
     """ Clase de personaje. Recibe número de jugador """
     def __init__(self, player):
         pygame.sprite.Sprite.__init__(self)
-        self.currentState = State.State(0,True) #estado en el que se encuentra el personaje actualmente
-        self.maxHP = 100
-        self.currentHP = self.maxHP
-        self.atk = 100
-        self.deff= 100
-        self.power=0
-        self.maxpower=100
+        """constructor de la clase del personaje. maneja y tiene todas las funcionalidades en común para cada personaje, como reconocimiento de convinación de teclas, actualización de frames, interpretación de sonidos y programación de movimientos comunes."""
 
-        self.anims = {}
-        self.sounds = {}
-        self.currentSounds = []
-        self.currentAnim = "Stand" #Estado por defecto en el cual se inicia
+        self.currentState = State.State(0,True) #estado en el que se encuentra el personaje actualmente #estado en el que se encuentra actualmente, se inicializa como estado 0 y con control.
+        self.maxHP = 100
+        self.currentHP = self.maxHP #cantidad máxima de hp y cantidad actual de hp
+        self.atk = 100 #poder de ataque, para cálculo de daño futuro
+        self.deff= 100 #valor de defensa  para cálculo de daño futuro
+        self.power=0 #cantidad de carga inicial
+        self.maxpower=100 #cantidad de poder máximo
+
+        self.anims = {} #diccionario de animaciones
+        self.sounds = {} #diccionario de sonidos por animación 
+        self.currentSounds = [] #stack de sonidos encadenados para un frame en específico
+        self.currentAnim = "Stand" #Estado por defecto en el cual se inicia la animación, y esta variable muestra la animación correspondiente a un frame
         self.staticAnim = "Stand" #Nombre de la animación al estar quieto, default Stand
-        self.maxSpeed = 0
-        self.jumpSpeed =0
-        self.player = player
-        self.commands = {}        
-        self.framecount =0
-        self.image = ""
-        self.rect = ""
-        self.currentAnimFrame=0
-        self.pos = (0,100)
+        self.maxSpeed = 0 #velocidad a la cual el personaje se mueve
+        self.dashspeed = 0 #velocidad de dash del personaje
+        self.jumpSpeed =0 #velocidad de salto
+        self.player = player #número de jugador
+        self.commands = {}        #diccionario de comandos 
+        self.framecount =0 #número de frame que lleva la animación actual
+        self.image = "" #surface representante del sprite
+        self.rect = "" #rect representante del sprite
+        self.masc = "" #máscara reprecentante de la imagen del sprite
+        self.currentAnimFrame=0 #número de imagen actual de la animación actual
+        self.pos = (0,100) #posición por defecto de inicio
+        self.flip = False #flag que indica si es necesario o no voltear la imagen
+        if self.player == 2:
+            self.flip=True #si se es jugador dos, habilitar el flip 
+
         
 
 
@@ -63,7 +71,8 @@ class Personaje(pygame.sprite.Sprite):
 
             else:
                 self.framecount+=1
-        self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1],None,True)
+        self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1],None,True, self.flip)
+        self.masc=pygame.mask.from_surface(self.image)
         self.rect.center=self.pos
         Tools.Logger.escribir("animacion " + self.currentAnim + ", en su imagen " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
 
@@ -126,6 +135,10 @@ class Personaje(pygame.sprite.Sprite):
 
 
     def DoAction(self,oponent):
+        if oponent.pos[0] < self.pos[0]:
+            self.flip=True
+        else:
+            self.flip=False
         Tools.Logger.escribir("actual estado es " + self.currentAnim)
         if self.currentAnim=='LightPunch':
             Tools.FastMethods.PlayAux()

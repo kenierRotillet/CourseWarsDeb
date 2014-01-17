@@ -11,4 +11,6 @@ BackDash:
 Special:
 0,sfx/spcharge.wav,
 4,sfx/teleport.wav,
+16,sfx/prepare.wav,
+44,sfx/launch.wav,
 50,sfx/explode1.wav,;
