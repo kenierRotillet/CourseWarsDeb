@@ -16,7 +16,7 @@ def main():
     pantalla = pygame.display.set_mode((screen_w,screen_h))
     personaje = Core.Medic.Medic(1,(0,100))
     p2 = Core.Engineer.Engineer(2,(500,100))
-    Tools.Logger.escribir(str(personaje.sounds))
+    #Tools.Logger.escribir(str(personaje.sounds))
 
     pygame.display.set_caption("lalalal test")
     relojito = pygame.time.Clock()
@@ -59,7 +59,7 @@ def main():
 
 
 
-        personaje.DoAction(personaje)
+        personaje.DoAction(p2)
         pygame.display.flip()
 
         tiempo+=1

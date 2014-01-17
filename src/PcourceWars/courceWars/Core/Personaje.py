@@ -74,7 +74,7 @@ class Personaje(pygame.sprite.Sprite):
         self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1],None,True, self.flip)
         self.mask=pygame.mask.from_surface(self.image)
         self.rect.center=self.pos
-        Tools.Logger.escribir("animacion " + self.currentAnim + ", en su imagen " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
+        #Tools.Logger.escribir("animacion " + self.currentAnim + ", en su imagen " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
 
 
 
@@ -149,12 +149,19 @@ class Personaje(pygame.sprite.Sprite):
         if self.currentAnim=='Walk':
             self.currentState.control=False
             if pygame.sprite.collide_mask(self,oponent) != None:
+                Tools.Logger.escribir("ubo colición! no se puede avanzar")
+                Tools.Logger.escribir(str(pygame.sprite.collide_mask(self,oponent)))
+                Tools.Logger.escribir("datos de los rectángulos: " + str(self.mask) + " y " + str(oponent.mask))
+                Tools.Logger.escribir("sus posisiones son " + str(self.pos) + " y " + str(oponent.pos) + " y según rectángulos: " + str(self.rect.center) + " y " + str(oponent.rect.center))
+
+
+
                 self.currentState.control=True
                 self.currentAnim=self.staticAnim
                 self.framecount=0
                 self.currentAnimFrame=0
             else:
-                if not self.flip:
+                if  self.flip == False:
                     for i in range(0,self.maxSpeed):
                         oldpos=self.pos
                         oldrect=self.rect

@@ -3,11 +3,16 @@
 """módulo de control de loggin, para reportar errores o acciones durante el debug"""
 
 import time
+
+flag = True
+
 def escribir(texto):
     """método para escribir un mensaje en el log. Simple, y sensillo, recibe la cadena a escribir."""
-    arch = open("log.log", 'a')
-    arch.write(texto+"\n")
-    arch.close()
+    if flag==True:
+
+        arch = open("log.log", 'a')
+        arch.write(texto+"\n")
+        arch.close()
 
 
 
