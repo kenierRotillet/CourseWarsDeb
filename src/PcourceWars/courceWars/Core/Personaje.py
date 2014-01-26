@@ -1,42 +1,43 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
-"""Clase base que define aspectos b·sicos y funciones est·ndar para cada personaje"""
+"""Clase base que define aspectos b√°sicos y funciones est√°ndar para cada personaje"""
 import pygame
 from pygame.locals import *
 import State
 import Tools
+import Colisiones
 
 
 class Personaje(pygame.sprite.Sprite):
-    """ Clase de personaje. Recibe n˙mero de jugador """
+    """ Clase de personaje. Recibe n√∫mero de jugador """
     def __init__(self, player):
         pygame.sprite.Sprite.__init__(self)
-        """constructor de la clase del personaje. maneja y tiene todas las funcionalidades en com˙n para cada personaje, como reconocimiento de convinaciÛn de teclas, actualizaciÛn de frames, interpretaciÛn de sonidos y programaciÛn de movimientos comunes."""
+        """constructor de la clase del personaje. maneja y tiene todas las funcionalidades en com√∫n para cada personaje, como reconocimiento de convinaci√≥n de teclas, actualizaci√≥n de frames, interpretaci√≥n de sonidos y programaci√≥n de movimientos comunes."""
 
         self.currentState = State.State(0,True) #estado en el que se encuentra el personaje actualmente #estado en el que se encuentra actualmente, se inicializa como estado 0 y con control.
         self.maxHP = 100
-        self.currentHP = self.maxHP #cantidad m·xima de hp y cantidad actual de hp
-        self.atk = 100 #poder de ataque, para c·lculo de daÒo futuro
-        self.deff= 100 #valor de defensa  para c·lculo de daÒo futuro
+        self.currentHP = self.maxHP #cantidad m√°xima de hp y cantidad actual de hp
+        self.atk = 100 #poder de ataque, para c√°lculo de da√±o futuro
+        self.deff= 100 #valor de defensa  para c√°lculo de da√±o futuro
         self.power=0 #cantidad de carga inicial
-        self.maxpower=100 #cantidad de poder m·ximo
+        self.maxpower=100 #cantidad de poder m√°ximo
 
         self.anims = {} #diccionario de animaciones
-        self.sounds = {} #diccionario de sonidos por animaciÛn 
-        self.currentSounds = [] #stack de sonidos encadenados para un frame en especÌfico
-        self.currentAnim = "Stand" #Estado por defecto en el cual se inicia la animaciÛn, y esta variable muestra la animaciÛn correspondiente a un frame
-        self.staticAnim = "Stand" #Nombre de la animaciÛn al estar quieto, default Stand
+        self.sounds = {} #diccionario de sonidos por animaci√≥n 
+        self.currentSounds = [] #stack de sonidos encadenados para un frame en espec√≠fico
+        self.currentAnim = "Stand" #Estado por defecto en el cual se inicia la animaci√≥n, y esta variable muestra la animaci√≥n correspondiente a un frame
+        self.staticAnim = "Stand" #Nombre de la animaci√≥n al estar quieto, default Stand
         self.maxSpeed = 0 #velocidad a la cual el personaje se mueve
         self.dashspeed = 0 #velocidad de dash del personaje
         self.jumpSpeed =0 #velocidad de salto
-        self.player = player #n˙mero de jugador
+        self.player = player #n√∫mero de jugador
         self.commands = {}        #diccionario de comandos 
-        self.framecount =0 #n˙mero de frame que lleva la animaciÛn actual
+        self.framecount =0 #n√∫mero de frame que lleva la animaci√≥n actual
         self.image = "" #surface representante del sprite
         self.rect = "" #rect representante del sprite
-        self.mask = "" #m·scara reprecentante de la imagen del sprite
-        self.currentAnimFrame=0 #n˙mero de imagen actual de la animaciÛn actual
-        self.pos = (0,100) #posiciÛn por defecto de inicio
+        self.mask = "" #m√°scara reprecentante de la imagen del sprite
+        self.currentAnimFrame=0 #n√∫mero de imagen actual de la animaci√≥n actual
+        self.pos = (0,100) #posici√≥n por defecto de inicio
         self.flip = False #flag que indica si es necesario o no voltear la imagen
         if self.player == 2:
             self.flip=True #si se es jugador dos, habilitar el flip 
@@ -135,7 +136,50 @@ class Personaje(pygame.sprite.Sprite):
 
 
     def DoAction(self,oponent):
-        """mÈtodo en el cual se programan cada uno de los movimientos de los ataques y acciones b·sicas de un personaje, movimiento, golpes b·sicos, y coliciones. El mÈtodo recibe al oponente, siendo capaz de alterar su posiciÛn y estado, e incluso animaciÛn."""
+
+        # return 1 es da√±o nulo
+        # return 2 es da√±o completo
+        # return 0 es da√±o reducido por defensa
+
+        def Golpe_Superior(colision, altura_1, altura_2, defensa):
+            if defensa == True:
+                if colision == None:
+                    return 1
+                else:
+                    for x in range((altura_1 + 200)/3, (altura_1 + 200)*2/3):
+                        for y in range(altura_2, altura_2 + 200):
+                            if x == y:
+                                return 0
+            else:
+                if colision == None:
+                    return 1
+                else:
+                    for x in range((altura_1 + 200)/3, (altura_1 + 200)*2/3):
+                        for y in range(altura_2, altura_2 + 200):
+                            if x == y:
+                                return 2
+                    return 1
+
+        def Golpe_Inferior(colision, altura_1, altura_2, defensa):
+            if defensa == True:
+                if colision == None:
+                    return 1
+                else:
+                    for x in range((altura_1 + 200)2/3, (altura_1 + 200)):
+                        for y in range(altura_2, altura_2 + 200):
+                            if x == y:
+                                return 0
+            else:
+                if colision == None:
+                    return 1
+                else:
+                    for x in range((altura_1 + 200)2/3, (altura_1 + 200)):
+                        for y in range(altura_2, altura_2 + 200):
+                            if x == y:
+                                return 2
+                    return 1
+
+        """m√©todo en el cual se programan cada uno de los movimientos de los ataques y acciones b√°sicas de un personaje, movimiento, golpes b√°sicos, y coliciones. El m√©todo recibe al oponente, siendo capaz de alterar su posici√≥n y estado, e incluso animaci√≥n."""
 
         if oponent.pos[0] < self.pos[0]:
             self.flip=True
@@ -145,14 +189,31 @@ class Personaje(pygame.sprite.Sprite):
         if self.currentAnim=='Stand':
             self.currentState=State.State(0,True)
 
+        if self.curretnAnim == 'StandAtk':
+            self.currentState.control = False
+            if Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
+                return INFORMACION_QUE_DIGA_QUE_EL_DA√ëO_ES_REDUCIDO_POR_DEFENSA
+            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
+                return INFORMACION_QUE_DIGA_QUE_EL_DA√ëO_ES_NULO
+            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
+                return INFORMACION_QUE_DIGA_QUE_EL_DA√ëO_ES_COMPLETO
+
+        if self.curretnAnim == 'DownAtk':
+            self.currentState.control = False
+            if Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
+                return INFORMACION_QUE_DIGA_QUE_EL_DA√ëO_ES_REDUCIDO_POR_DEFENSA
+            elif Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
+                return INFORMACION_QUE_DIGA_QUE_EL_DA√ëO_ES_NULO
+            elif Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
+                return INFORMACION_QUE_DIGA_QUE_EL_DA√ëO_ES_COMPLETO
 
         if self.currentAnim=='Walk':
             self.currentState.control=False
             if pygame.sprite.collide_mask(self,oponent) != None:
-                Tools.Logger.escribir("ubo coliciÛn! no se puede avanzar")
+                Tools.Logger.escribir("ubo colici√≥n! no se puede avanzar")
                 Tools.Logger.escribir(str(pygame.sprite.collide_mask(self,oponent)))
-                Tools.Logger.escribir("datos de los rect·ngulos: " + str(self.mask) + " y " + str(oponent.mask))
-                Tools.Logger.escribir("sus posisiones son " + str(self.pos) + " y " + str(oponent.pos) + " y seg˙n rect·ngulos: " + str(self.rect.center) + " y " + str(oponent.rect.center))
+                Tools.Logger.escribir("datos de los rect√°ngulos: " + str(self.mask) + " y " + str(oponent.mask))
+                Tools.Logger.escribir("sus posisiones son " + str(self.pos) + " y " + str(oponent.pos) + " y seg√∫n rect√°ngulos: " + str(self.rect.center) + " y " + str(oponent.rect.center))
 
 
 
