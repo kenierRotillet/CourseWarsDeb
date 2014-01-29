@@ -87,11 +87,11 @@ Walk:
 8,Chars/Engineer/Sprites/Enginer019_005.png
 10,Chars/Engineer/Sprites/Enginer019_006.png;
 Hit:
-0,Chars/Engineer/Sprites/Enginer020_001.png;
+2,Chars/Engineer/Sprites/Enginer020_001.png;
 Hit_Down:
-0,Chars/Engineer/Sprites/Enginer021_001.png;
+2,Chars/Engineer/Sprites/Enginer021_001.png;
 Hit_Jump:
-0,Chars/Engineer/Sprites/Enginer022_001.png;
+2,Chars/Engineer/Sprites/Enginer022_001.png;
 Recover:
 0,Chars/Engineer/Sprites/Enginer023_001.png
 2,Chars/Engineer/Sprites/Enginer023_002.png
@@ -123,7 +123,3 @@ Special_Effect:
 18,Chars/Engineer/Sprites/Enginer026_007.png
 21,Chars/Engineer/Sprites/Enginer026_008.png
 24,Chars/Engineer/Sprites/Enginer026_009.png;
-
-
-
-

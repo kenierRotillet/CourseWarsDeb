@@ -1,9 +1,9 @@
 LightPunch:
-4,sfx/lpl.wav,sfx/hp.wav;
+2,sfx/lpl.wav,sfx/lp.wav;
 MediumPunch:
-10,sfx/mpl.wav,sfx/mp1.wav;
+1,sfx/mpl.wav,sfx/mp1.wav;
 HighPunch:
-10,sfx/hpl.wav,sfx/hp1.wav;
+1,sfx/hpl.wav,sfx/hp1.wav;
 FrontDash:
 5,sfx/frontdash.wav,;
 BackDash:

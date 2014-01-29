@@ -90,11 +90,11 @@ BWalk:
 24,Chars/Medic/Sprites/Medic019_005.png
 30,Chars/Medic/Sprites/Medic019_006.png;
 Hit:
-0,Chars/Medic/Sprites/Medic020_001.png;
+3,Chars/Medic/Sprites/Medic020_001.png;
 Hit_Down:
-0,Chars/Medic/Sprites/Medic021_001.png;
+3,Chars/Medic/Sprites/Medic021_001.png;
 Hit_Jump:
-0,Chars/Medic/Sprites/Medic022_001.png;
+3,Chars/Medic/Sprites/Medic022_001.png;
 Recover:
 1,Chars/Medic/Sprites/Medic023_001.png
 2,Chars/Medic/Sprites/Medic023_002.png

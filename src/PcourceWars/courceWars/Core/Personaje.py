@@ -201,6 +201,12 @@ class Personaje(pygame.sprite.Sprite):
                 Tools.Logger.escribir("falló el golpe")
             elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
                 self.currentState.flags['Hit']=True
+                oponent.currentAnim='Hit'
+                oponent.currentAnimFrame=0
+                oponent.framecount=0
+
+
+
                 Tools.Logger.escribir("le achuntó")
 
         if self.currentAnim== 'DownAtk':
@@ -211,6 +217,10 @@ class Personaje(pygame.sprite.Sprite):
                 return ""
             elif Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
                 self.currentState.flags['hit']=True
+                oponent.currentAnim='Hit'
+                oponent.currentAnimFrame=0
+                oponent.framecount=0
+
                 
 
         if self.currentAnim=='Walk':

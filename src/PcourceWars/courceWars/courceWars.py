@@ -16,10 +16,9 @@ pygame.mixer.init(frequency=22050, size=16, channels=2, buffer=32)
 pygame.display.init()
 
 print "start"
-Tools.FastMethods.PlayAux()
 
 
-#gak = Core.Medic.Medic(1)
+
 
 print("fin")
 #raw_input()
@@ -27,10 +26,6 @@ print("fin")
 
 
 
-#print gak.commands
-#raw_input()
-
-#print gak.anims
-#raw_input()
+Tools.FastMethods.loadKeys()
 
 Screens.PlayWindow.main()

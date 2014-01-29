@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
-""" módulo con herramientas de carga, converción, y revición rápidas para el juego."""
+""" módulo con herramientas de carga, converción, y revición rápidas para el juego,además de elementos de configuración."""
 
 import pygame
 import sys
@@ -9,9 +9,54 @@ from pygame.locals import *
 import Tools.Logger
 
 
-snd1 = pygame.mixer.Sound("sfx/out-0001.wav")
-snd2 = pygame.mixer.Sound("sfx/out-0003.wav")
-snd3 = pygame.mixer.Sound("sfx/out-0005.wav")
+#teclas para cada jugador:
+p1keys = []
+p2keys = []
+
+#carga de teclas
+def loadKeys():
+    arch = open("cfg/keis.ini",'r')
+    data = ""
+    for i in arch:
+        data+=i
+    arch.close()
+    players = data.split(';')
+    for p in players:
+        plist = []
+        Tools.Logger.escribir("línea dividida por ; " + p)
+        
+        if p.startswith('\n') == True:
+            p = p[1:]
+
+
+        if p.split(':')[0] == 'p1':
+            plist = p1keys
+            Tools.Logger.escribir("analizando teclas del p1")
+        elif p.split(':')[0] == 'p2':
+            plist = p2keys
+            Tools.Logger.escribir("cargando teclas del p2")
+        else:
+            Tools.Logger.escribir("no es jugador")
+            continue
+        for k in p.split(':')[1].split('\n'):
+            Tools.Logger.escribir("analizando la línea " + k)
+            if len(k) < 2:
+                continue
+            plist.append((k.split(',')[0],int(k.split(',')[1])))
+
+    Tools.Logger.escribir(str(p1keys))
+    Tools.Logger.escribir(str(p2keys))
+
+
+
+
+
+
+
+
+
+
+
 #Better image loading
 
 def load_image(name, colorkey=None,resize=False,flip=False):
@@ -94,22 +139,22 @@ def detectKeys(keys):
     """método de detección y separación de teclas de jugador 1, y de jugador dos. no implementado aún """
     return
 
-def convertKeys(keys):
+def convertKeys(keys,p=1):
     """converción de teclas del formato pygame, al formato cws. Sirve para configurar cualquier tecla"""
     Tools.Logger.escribir("llegaron las teclas")
     Tools.Logger.escribir(str(keys))
     #El método se  ejecuta recursivamente en caso de recibir más de una tecla. es para poder escribirlas en el formato x+y en el caso de ser presionadas más de una tecla en el mismo frame, y conciderarse como presión simultánea.
 
-
+    #if para tomar en cuenta las teclas que se presionan al mismo tiempo
     if len(keys) > 1:
         recat = ""
         for k in keys:
             kkp = []
             kkp.append(k)
-            if convertKeys(kkp) != "":
+            if convertKeys(kkp,p) != "":
 
 
-                recat += convertKeys(kkp) + "+"
+                recat += convertKeys(kkp,p) + "+"
 
         if len(recat) > 1 and  recat[-1] == '+':
             recat=recat[:-1]
@@ -126,27 +171,22 @@ def convertKeys(keys):
     else:
         key = keys
 
-    #En caso de querer alterar una tecla o la configuración de estas, simplemente cambiar los if subsiguientes
-    if (key == K_LEFT):
-        return "B"
-    elif(key == K_RIGHT):
-        return "F"
-    elif(key == K_DOWN):
-        return "D"
-    elif(key == K_UP):
-        return "U"
-    elif(key == K_z):
-        return "a"
-    elif(key == K_x):
-        return "b"
-    elif(key == K_c):
-        return "c"
-    elif(key == K_s):
-        return "x"
-    elif(key == K_RETURN):
-        return "s"
-    else:
-        return ""
+    #la detección ahora es mediante el recorrido de los for, correspondientes al personaje del cual se busquen teclas.
+    selectP = p1keys
+    if p == 2:
+        selectP = p2keys
+        Tools.Logger.escribir("buscando comando de p2")
+
+
+    for k in selectP:
+        Tools.Logger.escribir("comparando tecla ingresada " + str(key) + " con la tecla actual " + str(k))
+
+        if k[1] == key:
+            return k[0]
+
+    return ""
+        
+
 
 
 
@@ -192,14 +232,7 @@ def PlayAux(pl = 0):
     """método para acciones auxiliares de debug"""
 
     lala="lala"
-    #if pl == 0 :
-
-        #snd1.play()
-    #elif pl == 1:
-        #snd2.play()
-    #elif pl == 2:
-        #snd3.play()
-
+    
 
 
 

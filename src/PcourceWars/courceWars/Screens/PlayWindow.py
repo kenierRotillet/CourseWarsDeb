@@ -22,6 +22,7 @@ def main():
     relojito = pygame.time.Clock()
     tiempo = 0
     teclastotales = []
+    teclastotalesp2=[]
     fondo,rect = Tools.FastMethods.load_image("Screens/imgs/Fondo.jpg")
     while True:
         pantalla.blit(fondo,(0,0))
@@ -42,10 +43,10 @@ def main():
         if len(teclas)>0:
 
             teclastotales.append((tiempo,Tools.FastMethods.convertKeys(teclas)))
+            teclastotalesp2.append((tiempo, Tools.FastMethods.convertKeys(teclas,2)))
             personaje.lookCommand(teclastotales,tiempo)
-        #else:
-            #Tools.Logger.escribir("no hay teclas en este loop")
-
+            p2.lookCommand(teclastotalesp2,tiempo)
+        
         personaje.setSounds()
         p2.setSounds()
 
@@ -55,11 +56,16 @@ def main():
         pantalla.blit(personaje.image,personaje.rect.center)
         pantalla.blit(p2.image,p2.rect.center)
         Sound.soundPlayer.playSounds(personaje)
+        Sound.soundPlayer.playSounds(p2)
+
 
 
 
 
         personaje.DoAction(p2)
+        p2.DoAction(personaje)
+
+
         pygame.display.flip()
 
         tiempo+=1

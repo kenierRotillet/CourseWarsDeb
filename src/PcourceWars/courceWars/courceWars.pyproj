@@ -31,6 +31,7 @@
     <Compile Include="Sound\soundPlayer.py" />
     <Compile Include="Tools\eventos.py" />
     <Compile Include="Tools\FastMethods.py" />
+    <Compile Include="Tools\KeyConfig.py" />
     <Compile Include="Tools\Logger.py" />
     <Compile Include="Tools\__init__.py" />
     <Compile Include="Screens\Seleccion_Personaje.py" />
