@@ -5,7 +5,7 @@ import pygame
 from pygame.locals import *
 import State
 import Tools
-import Colisiones
+#import Colisiones
 
 
 class Personaje(pygame.sprite.Sprite):
@@ -142,6 +142,7 @@ class Personaje(pygame.sprite.Sprite):
         # return 0 es daÃ±o reducido por defensa
 
         def Golpe_Superior(colision, altura_1, altura_2, defensa):
+            Tools.Logger.escribir("verificando coliciones en método")
             if defensa == True:
                 if colision == None:
                     return 1
@@ -165,7 +166,7 @@ class Personaje(pygame.sprite.Sprite):
                 if colision == None:
                     return 1
                 else:
-                    for x in range((altura_1 + 200)2/3, (altura_1 + 200)):
+                    for x in range((altura_1 + 200)*2/3, (altura_1 + 200)):
                         for y in range(altura_2, altura_2 + 200):
                             if x == y:
                                 return 0
@@ -173,7 +174,7 @@ class Personaje(pygame.sprite.Sprite):
                 if colision == None:
                     return 1
                 else:
-                    for x in range((altura_1 + 200)2/3, (altura_1 + 200)):
+                    for x in range((altura_1 + 200)*2/3, (altura_1 + 200)):
                         for y in range(altura_2, altura_2 + 200):
                             if x == y:
                                 return 2
@@ -189,23 +190,28 @@ class Personaje(pygame.sprite.Sprite):
         if self.currentAnim=='Stand':
             self.currentState=State.State(0,True)
 
-        if self.curretnAnim == 'StandAtk':
+        if self.currentAnim == 'LightPunch':
             self.currentState.control = False
-            if Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
-                return INFORMACION_QUE_DIGA_QUE_EL_DAÃ‘O_ES_REDUCIDO_POR_DEFENSA
-            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
-                return INFORMACION_QUE_DIGA_QUE_EL_DAÃ‘O_ES_NULO
-            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
-                return INFORMACION_QUE_DIGA_QUE_EL_DAÃ‘O_ES_COMPLETO
+            Tools.Logger.escribir("comprovando golpes")
 
-        if self.curretnAnim == 'DownAtk':
+            if Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
+                self.currentState.flags['Hit']=True
+                Tools.Logger.escribir("ubo colición de golpe bloqueado")
+            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
+                Tools.Logger.escribir("falló el golpe")
+            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
+                self.currentState.flags['Hit']=True
+                Tools.Logger.escribir("le achuntó")
+
+        if self.currentAnim== 'DownAtk':
             self.currentState.control = False
             if Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
-                return INFORMACION_QUE_DIGA_QUE_EL_DAÃ‘O_ES_REDUCIDO_POR_DEFENSA
+                self.currentState.flags['Hit']=True
             elif Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
-                return INFORMACION_QUE_DIGA_QUE_EL_DAÃ‘O_ES_NULO
+                return ""
             elif Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
-                return INFORMACION_QUE_DIGA_QUE_EL_DAÃ‘O_ES_COMPLETO
+                self.currentState.flags['hit']=True
+                
 
         if self.currentAnim=='Walk':
             self.currentState.control=False

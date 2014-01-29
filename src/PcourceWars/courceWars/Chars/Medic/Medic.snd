@@ -1,5 +1,5 @@
 LightPunch:
-4,sfx/lpl.wav,sfx/hp.wav;
+4,sfx/lpl.wav,sfx/lp.wav;
 MediumPunch:
 10,sfx/mpl.wav,sfx/mp1.wav;
 HighPunch:

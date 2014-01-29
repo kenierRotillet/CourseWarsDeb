@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: latin-1 -*-
+
+
 def choque(estado, x_p1_izq, x_p2_izq, x_p1_der, x_p2_der, borde_mapa):
 	#VERSION BETA, POR AHORA SOLO CHEQUEA CUANDO HAY MOVIMEINTO LATERAL, NO CUANDO ESTAN SALTANDO.
 	#esta funcion chequea si dos objetos tan chocando de acuerdo a sus coordenadas de los extremos de los sprites (de ahi los terminos "x_izq" e "x_der")
