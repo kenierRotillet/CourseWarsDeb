@@ -80,7 +80,7 @@ Block_Down:
 Block_Jump:
 0,Chars/Engineer/Sprites/Enginer018_001.png;
 Walk:
-0,Chars/Engineer/Sprites/Enginer019_001.png
+1,Chars/Engineer/Sprites/Enginer019_001.png
 2,Chars/Engineer/Sprites/Enginer019_002.png
 4,Chars/Engineer/Sprites/Enginer019_003.png
 6,Chars/Engineer/Sprites/Enginer019_004.png
