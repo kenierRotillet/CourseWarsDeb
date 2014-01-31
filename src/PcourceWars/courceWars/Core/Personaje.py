@@ -84,6 +84,9 @@ class Personaje(pygame.sprite.Sprite):
         #Tools.Logger.escribir(str(keys))
         if (self.currentState.control == False):
             return
+        
+
+
         tolerancy = 0
         for cmd in self.commands.items():
             keystroke = []
@@ -95,7 +98,14 @@ class Personaje(pygame.sprite.Sprite):
 
 
             for k in range(0,lencmd):
-                keystroke.append(keys.pop())
+                kk = keys.pop()
+                if self.flip==True:
+                    if kk == 'B':
+                        kk = 'F'
+                    elif kk=='F':
+                        kk ='B'
+                keystroke.append(kk)
+
 
             match = False
             if((int(currentTime) - int(keystroke[-1][0])) <= int(cmd[1][0])):

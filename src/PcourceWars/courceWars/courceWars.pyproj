@@ -21,6 +21,36 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Chars\Engineer\Engineer.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Chars\Engineer\Engineer_Test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Chars\Engineer\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Chars\Medic\Medic.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Chars\Medic\Medic_Test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Chars\Medic\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Chars\Testeo%28Temporal%29\Engineer.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Chars\Testeo%28Temporal%29\Medic.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Chars\Testeo%28Temporal%29\Pelea_Test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Chars\Testeo%28Temporal%29\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Core\Engineer.py" />
     <Compile Include="Core\Medic.py" />
     <Compile Include="Core\Personaje.py" />
@@ -29,6 +59,16 @@
     <Compile Include="courceWars.py" />
     <Compile Include="Screens\PlayWindow.py" />
     <Compile Include="Sound\soundPlayer.py" />
+    <Compile Include="Tools\Chars\Engineer\Engineer.py" />
+    <Compile Include="Tools\Chars\Engineer\Engineer_Test.py" />
+    <Compile Include="Tools\Chars\Engineer\__init__.py" />
+    <Compile Include="Tools\Chars\Medic\Medic.py" />
+    <Compile Include="Tools\Chars\Medic\Medic_Test.py" />
+    <Compile Include="Tools\Chars\Medic\__init__.py" />
+    <Compile Include="Tools\Chars\Testeo(Temporal)\Engineer.py" />
+    <Compile Include="Tools\Chars\Testeo(Temporal)\Medic.py" />
+    <Compile Include="Tools\Chars\Testeo(Temporal)\Pelea_Test.py" />
+    <Compile Include="Tools\Chars\Testeo(Temporal)\__init__.py" />
     <Compile Include="Tools\eventos.py" />
     <Compile Include="Tools\FastMethods.py" />
     <Compile Include="Tools\KeyConfig.py" />
@@ -39,17 +79,1544 @@
     <Compile Include="Sound\__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="cfg\" />
     <Folder Include="Chars\" />
+    <Folder Include="Chars\Engineer\" />
+    <Folder Include="Chars\Engineer\Sprites\" />
     <Folder Include="Chars\Medic\" />
+    <Folder Include="Chars\Medic\Sprites\" />
+    <Folder Include="Chars\Testeo%28Temporal%29\" />
+    <Folder Include="Chars\Testeo%28Temporal%29\Sprites\" />
     <Folder Include="Core\" />
     <Folder Include="Tools\" />
     <Folder Include="Screens\" />
     <Folder Include="Sound\" />
+    <Folder Include="Tools\cfg\" />
+    <Folder Include="Tools\Chars\" />
+    <Folder Include="Tools\Chars\Engineer\" />
+    <Folder Include="Tools\Chars\Engineer\Sprites\" />
+    <Folder Include="Tools\Chars\Medic\" />
+    <Folder Include="Tools\Chars\Medic\Sprites\" />
+    <Folder Include="Tools\Chars\Testeo%28Temporal%29\" />
+    <Folder Include="Tools\Chars\Testeo%28Temporal%29\Sprites\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cfg\keis.ini">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Engineer.anim">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Engineer.cmd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Engineer.snd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Fondo.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer000_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer000_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer000_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer000_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer000_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer001_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer001_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer001_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer002_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer002_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer002_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer002_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer002_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer002_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer003_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer003_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer003_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer003_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer003_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer003_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer004_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer004_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer004_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer004_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer004_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer004_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer004_007.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer004_008.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer005_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer005_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer005_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer006_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer006_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer006_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer006_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer007_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer007_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer007_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer007_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer008_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer008_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer008_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer009_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer009_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer009_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer010_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer010_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer010_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer010_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer011_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer011_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer012_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer013_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer014_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer014_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer014_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer015_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer015_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer015_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer016_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer017_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer018_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer019_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer019_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer019_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer019_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer019_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer019_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer020_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer021_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer022_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer023_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer023_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer023_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer024_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer024_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer024_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_007.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_008.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_009.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_010.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_011.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer025_012.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer026_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer026_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer026_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer026_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer026_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer026_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer026_007.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer026_008.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Engineer\Sprites\Enginer026_009.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Fondo.jpg">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Chars\Medic\Medic.anim">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Chars\Medic\Medic.cmd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Medic.snd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic000_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic000_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic000_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic000_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic000_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic001_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic001_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic001_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic001_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic002_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic002_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic002_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic002_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic002_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic002_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic003_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic003_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic003_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic003_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic004_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic004_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic004_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic004_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic004_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic004_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic004_007.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic004_008.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic005_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic005_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic006_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic006_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic006_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic006_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic007_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic007_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic007_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic008_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic008_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic008_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic009_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic009_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic010_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic010_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic010_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic010_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic010_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic011_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic011_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic012_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic012_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic013_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic014_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic014_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic015_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic015_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic016_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic017_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic018_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic019_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic019_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic019_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic019_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic019_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic019_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic020_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic021_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic022_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic023_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic023_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic023_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic024_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic024_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic024_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic025_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic025_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic025_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic025_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic025_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic025_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic025_007.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic025_008.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic026_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic026_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic026_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Medic\Sprites\Medic026_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Engineer.anim">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Fondo.jpg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Medic.anim">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Medic.cmd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer000_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer000_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer000_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer000_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer000_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer001_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer001_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer001_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer002_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer002_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer002_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer002_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer002_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer002_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer003_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer003_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer003_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer003_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer003_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer003_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer004_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer004_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer004_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer004_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer004_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer004_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer004_007.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer004_008.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer005_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer005_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer005_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer006_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer006_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer006_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer006_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer007_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer007_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer007_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer007_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer008_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer008_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer008_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer009_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer009_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer009_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer010_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer010_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer010_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer010_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer011_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer011_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer012_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer013_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer014_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer014_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer014_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer015_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer015_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer015_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer016_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer017_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer018_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer019_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer019_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer019_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer019_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer019_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer019_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer020_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer021_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer022_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer023_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer023_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer023_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer024_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer024_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer024_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_007.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_008.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_009.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_010.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_011.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer025_012.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer026_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer026_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer026_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer026_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer026_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer026_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer026_007.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer026_008.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Enginer026_009.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic000_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic000_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic000_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic000_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic000_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic001_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic001_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic001_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic001_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic002_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic002_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic002_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic002_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic002_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic002_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic003_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic003_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic003_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic003_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic004_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic004_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic004_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic004_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic004_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic004_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic004_007.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic004_008.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic005_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic005_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic006_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic006_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic006_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic006_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic007_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic007_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic007_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic008_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic008_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic008_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic009_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic009_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic010_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic010_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic010_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic010_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic010_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic011_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic011_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic012_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic012_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic013_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic014_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic014_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic015_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic015_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic016_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic017_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic018_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic019_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic019_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic019_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic019_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic019_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic019_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic020_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic021_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic022_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic023_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic023_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic023_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic024_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic024_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic024_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic025_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic025_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic025_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic025_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic025_005.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic025_006.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic025_007.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic025_008.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic026_001.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic026_002.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic026_003.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic026_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Tools\cfg\keis.ini" />
+    <Content Include="Tools\Chars\Engineer\Engineer.anim" />
+    <Content Include="Tools\Chars\Engineer\Engineer.cmd" />
+    <Content Include="Tools\Chars\Engineer\Engineer.snd" />
+    <Content Include="Tools\Chars\Engineer\Fondo.jpg" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer000_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer000_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer000_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer000_004.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer000_005.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer001_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer001_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer001_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer002_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer002_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer002_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer002_004.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer002_005.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer002_006.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer003_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer003_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer003_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer003_004.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer003_005.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer003_006.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer004_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer004_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer004_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer004_004.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer004_005.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer004_006.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer004_007.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer004_008.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer005_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer005_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer005_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer006_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer006_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer006_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer006_004.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer007_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer007_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer007_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer007_004.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer008_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer008_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer008_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer009_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer009_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer009_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer010_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer010_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer010_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer010_004.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer011_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer011_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer012_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer013_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer014_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer014_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer014_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer015_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer015_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer015_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer016_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer017_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer018_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer019_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer019_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer019_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer019_004.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer019_005.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer019_006.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer020_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer021_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer022_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer023_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer023_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer023_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer024_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer024_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer024_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_004.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_005.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_006.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_007.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_008.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_009.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_010.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_011.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer025_012.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer026_001.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer026_002.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer026_003.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer026_004.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer026_005.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer026_006.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer026_007.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer026_008.png" />
+    <Content Include="Tools\Chars\Engineer\Sprites\Enginer026_009.png" />
+    <Content Include="Tools\Chars\Medic\Fondo.jpg" />
+    <Content Include="Tools\Chars\Medic\Medic.anim" />
+    <Content Include="Tools\Chars\Medic\Medic.cmd" />
+    <Content Include="Tools\Chars\Medic\Medic.snd" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic000_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic000_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic000_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic000_004.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic000_005.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic001_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic001_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic001_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic001_004.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic002_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic002_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic002_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic002_004.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic002_005.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic002_006.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic003_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic003_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic003_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic003_004.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic004_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic004_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic004_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic004_004.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic004_005.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic004_006.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic004_007.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic004_008.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic005_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic005_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic006_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic006_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic006_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic006_004.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic007_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic007_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic007_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic008_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic008_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic008_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic009_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic009_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic010_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic010_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic010_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic010_004.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic010_005.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic011_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic011_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic012_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic012_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic013_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic014_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic014_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic015_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic015_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic016_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic017_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic018_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic019_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic019_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic019_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic019_004.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic019_005.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic019_006.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic020_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic021_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic022_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic023_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic023_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic023_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic024_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic024_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic024_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic025_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic025_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic025_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic025_004.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic025_005.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic025_006.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic025_007.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic025_008.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic026_001.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic026_002.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic026_003.png" />
+    <Content Include="Tools\Chars\Medic\Sprites\Medic026_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Engineer.anim" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Fondo.jpg" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Medic.anim" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Medic.cmd" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer000_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer000_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer000_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer000_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer000_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer001_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer001_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer001_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer002_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer002_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer002_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer002_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer002_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer002_006.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer003_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer003_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer003_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer003_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer003_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer003_006.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer004_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer004_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer004_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer004_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer004_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer004_006.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer004_007.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer004_008.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer005_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer005_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer005_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer006_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer006_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer006_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer006_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer007_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer007_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer007_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer007_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer008_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer008_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer008_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer009_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer009_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer009_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer010_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer010_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer010_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer010_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer011_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer011_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer012_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer013_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer014_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer014_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer014_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer015_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer015_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer015_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer016_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer017_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer018_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer019_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer019_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer019_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer019_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer019_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer019_006.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer020_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer021_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer022_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer023_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer023_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer023_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer024_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer024_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer024_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_006.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_007.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_008.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_009.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_010.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_011.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer025_012.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer026_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer026_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer026_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer026_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer026_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer026_006.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer026_007.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer026_008.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Enginer026_009.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic000_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic000_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic000_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic000_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic000_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic001_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic001_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic001_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic001_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic002_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic002_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic002_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic002_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic002_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic002_006.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic003_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic003_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic003_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic003_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic004_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic004_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic004_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic004_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic004_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic004_006.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic004_007.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic004_008.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic005_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic005_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic006_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic006_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic006_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic006_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic007_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic007_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic007_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic008_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic008_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic008_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic009_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic009_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic010_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic010_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic010_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic010_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic010_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic011_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic011_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic012_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic012_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic013_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic014_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic014_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic015_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic015_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic016_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic017_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic018_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic019_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic019_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic019_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic019_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic019_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic019_006.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic020_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic021_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic022_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic023_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic023_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic023_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic024_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic024_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic024_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic025_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic025_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic025_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic025_004.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic025_005.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic025_006.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic025_007.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic025_008.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic026_001.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic026_002.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic026_003.png" />
+    <Content Include="Tools\Chars\Testeo(Temporal)\Sprites\Medic026_004.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
