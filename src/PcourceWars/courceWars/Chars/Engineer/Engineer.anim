@@ -86,6 +86,13 @@ Walk:
 6,Chars/Engineer/Sprites/Enginer019_004.png
 8,Chars/Engineer/Sprites/Enginer019_005.png
 10,Chars/Engineer/Sprites/Enginer019_006.png;
+BWalk:
+0,Chars/Engineer/Sprites/Enginer019_001.png
+2,Chars/Engineer/Sprites/Enginer019_002.png
+4,Chars/Engineer/Sprites/Enginer019_003.png
+6,Chars/Engineer/Sprites/Enginer019_004.png
+8,Chars/Engineer/Sprites/Enginer019_005.png
+10,Chars/Engineer/Sprites/Enginer019_006.png;
 Hit:
 2,Chars/Engineer/Sprites/Enginer020_001.png;
 Hit_Down:

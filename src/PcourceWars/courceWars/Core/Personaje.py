@@ -99,20 +99,23 @@ class Personaje(pygame.sprite.Sprite):
 
             for k in range(0,lencmd):
                 kk = keys.pop()
-                if self.flip==True:
-                    if kk == 'B':
-                        kk = 'F'
-                    elif kk=='F':
-                        kk ='B'
                 keystroke.append(kk)
-
+                
 
             match = False
             if((int(currentTime) - int(keystroke[-1][0])) <= int(cmd[1][0])):
                 #Tools.Logger.escribir("el resultado de la resta de tiempo entre " + str(currentTime) + " " + str(keystroke[-1][0]) + " es:" + str(currentTime - keystroke[-1][0] ) + " menor que " + str(cmd[1][0]))
                 match = True
                 for k in range(0,len(keystroke)):
-                    if keystroke[k][1] != cmd[1][1][-1 - k]:
+                    keypress=""
+                    keypress = cmd[1][1][-1 - k]
+                    
+                    if self.flip==True and keypress.__contains__('B')==True:
+                        keypress = keypress.replace('B','F')
+                    elif self.flip==True and keypress.__contains__('F')==True:
+                        keypress=keypress.replace('F','B')
+
+                    if keystroke[k][1] != keypress:
                         match=False
                         #print "no hay tecla"
 
@@ -236,10 +239,10 @@ class Personaje(pygame.sprite.Sprite):
         if self.currentAnim=='Walk':
             self.currentState.control=False
             if pygame.sprite.collide_mask(self,oponent) != None:
-                Tools.Logger.escribir("ubo colición! no se puede avanzar")
-                Tools.Logger.escribir(str(pygame.sprite.collide_mask(self,oponent)))
-                Tools.Logger.escribir("datos de los rectángulos: " + str(self.mask) + " y " + str(oponent.mask))
-                Tools.Logger.escribir("sus posisiones son " + str(self.pos) + " y " + str(oponent.pos) + " y según rectángulos: " + str(self.rect.center) + " y " + str(oponent.rect.center))
+                #Tools.Logger.escribir("ubo colición! no se puede avanzar")
+                #Tools.Logger.escribir(str(pygame.sprite.collide_mask(self,oponent)))
+                #Tools.Logger.escribir("datos de los rectángulos: " + str(self.mask) + " y " + str(oponent.mask))
+                #Tools.Logger.escribir("sus posisiones son " + str(self.pos) + " y " + str(oponent.pos) + " y según rectángulos: " + str(self.rect.center) + " y " + str(oponent.rect.center))
 
 
 
@@ -248,46 +251,31 @@ class Personaje(pygame.sprite.Sprite):
                 self.framecount=0
                 self.currentAnimFrame=0
             else:
-                if  self.flip == False:
-                    for i in range(0,self.maxSpeed):
-                        oldpos=self.pos
-                        oldrect=self.rect
-                        oldmask = self.mask
-                        self.pos=(self.pos[0]+1,self.pos[1])
-                        self.rect.center=self.pos
-                        self.mask=pygame.mask.from_surface(self.image)
 
-                        if pygame.sprite.collide_mask(self,oponent) != None:
-                            self.pos=oldpos
-                            self.rect=oldrect
-                            self.mask=oldmask
-                            self.currentAnim=self.staticAnim
-                            self.framecount=0
-                            self.currentAnimFrame=0
-                            self.currentState.control=True
-                            self.framecount=0
-                            break
-
-                else:
-                    for i in range(0,self.maxSpeed):
-                        oldpos=self.pos
-                        oldrect=self.rect
-                        oldmask = self.mask
+                for i in range(0,self.maxSpeed):
+                    oldpos=self.pos
+                    oldrect=self.rect
+                    oldmask = self.mask
+                    if self.flip==True:
                         self.pos=(self.pos[0]-1,self.pos[1])
-                        self.rect.center=self.pos
-                        self.mask=pygame.mask.from_surface(self.image)
+                    else:
 
-                        if pygame.sprite.collide_mask(self,oponent) != None:
-                            self.pos=oldpos
-                            self.rect=oldrect
-                            self.mask=oldmask
-                            self.currentAnim=self.staticAnim
-                            self.framecount=0
-                            self.currentAnimFrame=0
-                            self.currentState.control=True
-                            self.framecount=0
-                            break
+                        self.pos=(self.pos[0]+1,self.pos[1])
+                    self.rect.center=self.pos
+                    self.mask=pygame.mask.from_surface(self.image)
 
+                    if pygame.sprite.collide_mask(self,oponent) != None:
+                        self.pos=oldpos
+                        self.rect=oldrect
+                        self.mask=oldmask
+                        self.currentAnim=self.staticAnim
+                        self.framecount=0
+                        self.currentAnimFrame=0
+                        self.currentState.control=True
+                        self.framecount=0
+                        break
+
+                
 
 
         if self.currentAnim=="BWalk":
@@ -303,7 +291,7 @@ class Personaje(pygame.sprite.Sprite):
                     self.rect.center=self.pos
                     self.mask=pygame.mask.from_surface(self.image)
 
-                    if self.pos[0] == 1020:
+                    if self.pos[0] >= 1020:
                         self.pos=oldpos
                         self.rect=oldrect
                         self.mask=oldmask
@@ -324,7 +312,7 @@ class Personaje(pygame.sprite.Sprite):
                     self.rect.center=self.pos
                     self.mask=pygame.mask.from_surface(self.image)
 
-                    if self.pos[0] == 0:
+                    if self.pos[0] <= 0:
                         self.pos=oldpos
                         self.rect=oldrect
                         self.mask=oldmask
