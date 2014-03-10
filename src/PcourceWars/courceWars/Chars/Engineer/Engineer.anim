@@ -106,7 +106,11 @@ Recover:
 Taunt:
 10,Chars/Engineer/Sprites/Enginer024_001.png
 20,Chars/Engineer/Sprites/Enginer024_002.png
-30,Chars/Engineer/Sprites/Enginer024_003.png;
+30,Chars/Engineer/Sprites/Enginer024_003.png
+40,Chars/Engineer/Sprites/Enginer024_002.png
+50,Chars/Engineer/Sprites/Enginer024_003.png
+60,Chars/Engineer/Sprites/Enginer024_002.png
+70,Chars/Engineer/Sprites/Enginer024_003.png;
 Special:
 3,Chars/Engineer/Sprites/Enginer025_001.png
 6,Chars/Engineer/Sprites/Enginer025_002.png
