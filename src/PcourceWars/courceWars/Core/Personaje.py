@@ -39,6 +39,8 @@ class Personaje(pygame.sprite.Sprite):
         self.currentAnimFrame=0 #número de imagen actual de la animación actual
         self.pos = (0,100) #posición por defecto de inicio
         self.flip = False #flag que indica si es necesario o no voltear la imagen
+        self.hold = False #flag que se sabe si es un comando que requiere mantener tecla
+
         if self.player == 2:
             self.flip=True #si se es jugador dos, habilitar el flip 
 
@@ -47,6 +49,7 @@ class Personaje(pygame.sprite.Sprite):
 
 
     def move(self, x,y):
+        """m�todo para mover la posici�n """
         self.pos=(self.pos[0]+x,self.pos[1]+y)
         
         
@@ -79,9 +82,28 @@ class Personaje(pygame.sprite.Sprite):
 
 
 
-    def lookCommand(self, keys,currentTime):
+    def lookCommand(self, keys,currentTime,KeyUP = False):
         #Tools.Logger.escribir("teclas ingresadas en el tiempo: " + str(currentTime))
         #Tools.Logger.escribir(str(keys))
+        if KeyUP==True:
+            for k in keys:
+                if self.currentAnim=='Walk' or self.currentAnim == 'FrontDash':
+                    if k == 'F' or (k == 'B' and self.flip == True):
+                        self.currentAnim='Stand'
+                        self.currentAnimFrame=0
+                        self.framecount=0
+                elif self.currentAnim=='BWalk' or self.currentAnim=='BackDash':
+                    if k == 'B' or (k == 'F' and self.flip == True):
+                        self.currentAnim='Stand'
+                        self.currentAnimFrame=0
+                        self.framecount=0
+
+
+
+
+
+
+
         if (self.currentState.control == False):
             return
         
@@ -238,6 +260,12 @@ class Personaje(pygame.sprite.Sprite):
 
         if self.currentAnim=='Walk':
             self.currentState.control=False
+            if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
+                self.currentAnimFrame= 0
+                self.framecount=0
+
+
+
             if pygame.sprite.collide_mask(self,oponent) != None:
                 #Tools.Logger.escribir("ubo colición! no se puede avanzar")
                 #Tools.Logger.escribir(str(pygame.sprite.collide_mask(self,oponent)))
@@ -280,7 +308,14 @@ class Personaje(pygame.sprite.Sprite):
 
         if self.currentAnim=="BWalk":
             self.currentState.control=False
+            
+
             self.currentState.block=True
+            if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
+                self.currentAnimFrame= 0
+                self.framecount=0
+
+
             
             if  self.flip:
                 for i in range(0,self.maxSpeed):
@@ -291,7 +326,7 @@ class Personaje(pygame.sprite.Sprite):
                     self.rect.center=self.pos
                     self.mask=pygame.mask.from_surface(self.image)
 
-                    if self.pos[0] >= 1020:
+                    if self.pos[0] >= 620:
                         self.pos=oldpos
                         self.rect=oldrect
                         self.mask=oldmask
@@ -312,7 +347,7 @@ class Personaje(pygame.sprite.Sprite):
                     self.rect.center=self.pos
                     self.mask=pygame.mask.from_surface(self.image)
 
-                    if self.pos[0] <= 0:
+                    if self.pos[0] <= -260:
                         self.pos=oldpos
                         self.rect=oldrect
                         self.mask=oldmask

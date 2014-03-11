@@ -27,6 +27,7 @@ def main():
     while True:
         pantalla.blit(fondo,(0,0))
         teclas= []
+        teclup = []
         relojito.tick_busy_loop(40)
         
         for event in pygame.event.get():
@@ -39,6 +40,9 @@ def main():
                     pygame.display.quit()
                 else:
                     teclas.append(event.key)
+            if event.type == KEYUP:
+                teclup.append(event.key)
+
 
         if len(teclas)>0:
 
@@ -46,7 +50,16 @@ def main():
             teclastotalesp2.append((tiempo, Tools.FastMethods.convertKeys(teclas,2)))
             personaje.lookCommand(teclastotales,tiempo)
             p2.lookCommand(teclastotalesp2,tiempo)
-        
+        elif len(teclup) > 0:
+            keyup1 = Tools.FastMethods.convertKeys(teclup)
+            keyup2 = Tools.FastMethods.convertKeys(teclup,2)
+            personaje.lookCommand(keyup1,tiempo,True)
+            p2.lookCommand(keyup2,tiempo,True)
+
+
+
+
+
         personaje.setSounds()
         p2.setSounds()
 

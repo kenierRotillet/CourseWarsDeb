@@ -18,8 +18,8 @@ class Medic(Core.Personaje.Personaje):
 
         self.pos=initPos
         self.rect.center = (self.pos)
-        self.maxSpeed = 3
-        self.dashspeed=8
+        self.maxSpeed = 5
+        self.dashspeed=7
         
         
         
