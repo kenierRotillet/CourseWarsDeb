@@ -19,6 +19,7 @@ class Engineer(Core.Personaje.Personaje):
         self.rect.center = (self.pos)
         self.maxSpeed=4
         self.dashspeed=6
+        
 
         
         

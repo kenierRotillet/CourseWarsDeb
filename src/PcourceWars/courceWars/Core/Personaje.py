@@ -97,6 +97,9 @@ class Personaje(pygame.sprite.Sprite):
                         self.currentAnim='Stand'
                         self.currentAnimFrame=0
                         self.framecount=0
+            self.currentState.control=True
+
+            return
 
 
 
