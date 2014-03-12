@@ -347,10 +347,96 @@ class Personaje(pygame.sprite.Sprite):
 
 
 
-        #if self.currentAnim == 'FrontDash':
-            #print "wac"
-
+        if self.currentAnim == 'FrontDash':
             
+            if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
+                self.currentAnimFrame= 0
+                self.framecount=0
+
+            if pygame.sprite.collide_mask(self,oponent) != None:
+                #Tools.Logger.escribir("ubo coliciÃ³n! no se puede avanzar")
+                #Tools.Logger.escribir(str(pygame.sprite.collide_mask(self,oponent)))
+                #Tools.Logger.escribir("datos de los rectÃ¡ngulos: " + str(self.mask) + " y " + str(oponent.mask))
+                #Tools.Logger.escribir("sus posisiones son " + str(self.pos) + " y " + str(oponent.pos) + " y segÃºn rectÃ¡ngulos: " + str(self.rect.center) + " y " + str(oponent.rect.center))
+
+                self.currentState.control=True
+                self.currentAnim=self.staticAnim
+                self.framecount=0
+                self.currentAnimFrame=0
+            else:
+
+                for i in range(0,self.dashspeed):
+                    oldpos=self.pos
+                    oldrect=self.rect
+                    oldmask = self.mask
+                    if self.flip==True:
+                        self.pos=(self.pos[0]-3,self.pos[1])
+                    else:
+
+                        self.pos=(self.pos[0]+3,self.pos[1])
+                    self.rect.center=self.pos
+                    self.mask=pygame.mask.from_surface(self.image)
+
+                    if pygame.sprite.collide_mask(self,oponent) != None:
+                        self.pos=oldpos
+                        self.rect=oldrect
+                        self.mask=oldmask
+                        self.currentAnim=self.staticAnim
+                        self.framecount=0
+                        self.currentAnimFrame=0
+                        self.currentState.control=True
+                        self.framecount=0
+                        break
+
+        if self.currentAnim=="BackDash":           
+            
+
+            self.currentState.block=True
+            if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
+                self.currentAnimFrame= 0
+                self.framecount=0
+            
+            if  self.flip:
+                for i in range(0,self.dashspeed):
+                    oldpos=self.pos
+                    oldrect=self.rect
+                    oldmask = self.mask
+                    self.pos=(self.pos[0]+3,self.pos[1])
+                    self.rect.center=self.pos
+                    self.mask=pygame.mask.from_surface(self.image)
+
+                    if self.pos[0] >= 620:
+                        self.pos=oldpos
+                        self.rect=oldrect
+                        self.mask=oldmask
+                        self.currentAnim=self.staticAnim
+                        self.framecount=0
+                        self.currentAnimFrame=0
+                        self.currentState.control=True
+                        self.framecount=0
+                        self.currentState.block=False
+                        break
+
+            else:
+                for i in range(0,self.dashspeed):
+                    oldpos=self.pos
+                    oldrect=self.rect
+                    oldmask = self.mask
+                    self.pos=(self.pos[0]-3,self.pos[1])
+                    self.rect.center=self.pos
+                    self.mask=pygame.mask.from_surface(self.image)
+
+                    if self.pos[0] <= -260:
+                        self.pos=oldpos
+                        self.rect=oldrect
+                        self.mask=oldmask
+                        self.currentAnim=self.staticAnim
+                        self.framecount=0
+                        self.currentAnimFrame=0
+                        self.currentState.control=True
+                        self.framecount=0
+                        self.currentState.block=False
+                        break            
 
 
     def setSounds(self):
