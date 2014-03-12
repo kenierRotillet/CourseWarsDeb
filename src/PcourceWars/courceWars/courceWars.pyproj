@@ -6,7 +6,8 @@
     <ProjectGuid>125ecfa0-507f-4d4f-a236-73a1f098874e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>courceWars.py</StartupFile>
-    <SearchPath>C:\Python27\Lib\site-packages\pygame</SearchPath>
+    <SearchPath>
+    </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>courceWars</Name>
@@ -51,6 +52,7 @@
     <Compile Include="Chars\Testeo%28Temporal%29\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Collicion.py" />
     <Compile Include="Core\Engineer.py" />
     <Compile Include="Core\Medic.py" />
     <Compile Include="Core\Personaje.py" />
