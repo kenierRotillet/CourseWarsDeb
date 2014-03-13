@@ -70,7 +70,7 @@ BackDash:
 0,Chars/Medic/Sprites/Medic015_001.png
 5,Chars/Medic/Sprites/Medic015_002.png;
 Block:
-0,Chars/Medic/Sprites/Medic016_001.png;
+2,Chars/Medic/Sprites/Medic016_001.png;
 Block_Down:
 0,SChars/Medic/Sprites/Medic017_001.png;
 Block_Jump:

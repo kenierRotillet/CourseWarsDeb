@@ -97,6 +97,7 @@ class Personaje(pygame.sprite.Sprite):
                         self.currentAnim='Stand'
                         self.currentAnimFrame=0
                         self.framecount=0
+                        self.currentState.block=False
             self.currentState.control=True
 
             return
@@ -167,13 +168,23 @@ class Personaje(pygame.sprite.Sprite):
             self.flip=False
         Tools.Logger.escribir("actual estado es " + self.currentAnim)
         if self.currentAnim=='Stand':
-            self.currentState=State.State(0,True)
+            self.currentState.control = True
+            self.currentState.typenumber=0
+
+        if self.currentAnim != self.staticAnim:
+            self.currentState.block=False
 
         if self.currentAnim == 'LightPunch':
             self.currentState.control = False
             Tools.Logger.escribir("comprovando golpes")
             if Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
-                self.currentState.flags['Hit']=True
+                oponent.currentState.flags['Hit'] = True
+                oponent.currentAnim = 'Block'
+                oponent.framecount=0
+                oponent.currentAnimFrame=0
+                
+
+
                 Tools.Logger.escribir("hubo colición de golpe bloqueado")
             elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
                 Tools.Logger.escribir("falló el golpe")
@@ -188,7 +199,11 @@ class Personaje(pygame.sprite.Sprite):
             self.currentState.control = False
             Tools.Logger.escribir("comprovando golpes")
             if Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
-                self.currentState.flags['Hit']=True
+                oponent.currentState.flags['Hit'] = True
+                oponent.currentAnim = 'Block'
+                oponent.framecount=0
+                oponent.currentAnimFrame=0
+
                 Tools.Logger.escribir("hubo colición de golpe bloqueado")
             elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
                 Tools.Logger.escribir("falló el golpe")
@@ -203,7 +218,11 @@ class Personaje(pygame.sprite.Sprite):
             self.currentState.control = False
             Tools.Logger.escribir("comprovando golpes")
             if Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
-                self.currentState.flags['Hit']=True
+                oponent.currentState.flags['Hit'] = True
+                oponent.currentAnim = 'Block'
+                oponent.framecount=0
+                oponent.currentAnimFrame=0
+
                 Tools.Logger.escribir("hubo colición de golpe bloqueado")
             elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
                 Tools.Logger.escribir("falló el golpe")
@@ -319,9 +338,6 @@ class Personaje(pygame.sprite.Sprite):
                         self.currentAnim=self.staticAnim
                         self.framecount=0
                         self.currentAnimFrame=0
-                        self.currentState.control=True
-                        self.framecount=0
-                        self.currentState.block=False
                         break
 
             else:
@@ -340,9 +356,6 @@ class Personaje(pygame.sprite.Sprite):
                         self.currentAnim=self.staticAnim
                         self.framecount=0
                         self.currentAnimFrame=0
-                        self.currentState.control=True
-                        self.framecount=0
-                        self.currentState.block=False
                         break
 
 
@@ -360,6 +373,7 @@ class Personaje(pygame.sprite.Sprite):
                     self.currentSounds.append(snditem[1])
                     if self.currentState.flags.has_key('Hit'):
                         self.currentSounds.append(snditem[2])
+                        del self.currentState.flags['Hit']
 
 
 
