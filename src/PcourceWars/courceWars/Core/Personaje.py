@@ -245,7 +245,7 @@ class Personaje(pygame.sprite.Sprite):
                 
 
         if self.currentAnim=='Walk':
-            self.currentState.control=False
+            
             if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
                 self.currentAnimFrame= 0
                 self.framecount=0
@@ -293,7 +293,7 @@ class Personaje(pygame.sprite.Sprite):
 
 
         if self.currentAnim=="BWalk":
-            self.currentState.control=False
+            
             
 
             self.currentState.block=True
