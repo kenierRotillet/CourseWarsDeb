@@ -5,7 +5,7 @@ import pygame
 from pygame.locals import *
 import State
 import Tools
-#import Colisiones
+import Collicion
 
 
 class Personaje(pygame.sprite.Sprite):
@@ -150,73 +150,14 @@ class Personaje(pygame.sprite.Sprite):
                 self.framecount=0
                 tolerancy=len(cmd[1][1])
                     #print "hay tecla"
-                #else:
+                
             for k in range(0,len(keystroke)):
                 keys.append(keystroke[-1 - k])
 
 
 
-
-
-
-
-
-
-
-                
-
-
-
-
-
-
-
-
-
     def DoAction(self,oponent):
-
-        # return 1 es daÃ±o nulo
-        # return 2 es daÃ±o completo
-        # return 0 es daÃ±o reducido por defensa
-
-        def Golpe_Superior(colision, altura_1, altura_2, defensa):
-            Tools.Logger.escribir("verificando coliciones en método")
-            if defensa == True:
-                if colision == None:
-                    return 1
-                else:
-                    for x in range((altura_1 + 200)/3, (altura_1 + 200)*2/3):
-                        for y in range(altura_2, altura_2 + 200):
-                            if x == y:
-                                return 0
-            else:
-                if colision == None:
-                    return 1
-                else:
-                    for x in range((altura_1 + 200)/3, (altura_1 + 200)*2/3):
-                        for y in range(altura_2, altura_2 + 200):
-                            if x == y:
-                                return 2
-                    return 1
-
-        def Golpe_Inferior(colision, altura_1, altura_2, defensa):
-            if defensa == True:
-                if colision == None:
-                    return 1
-                else:
-                    for x in range((altura_1 + 200)*2/3, (altura_1 + 200)):
-                        for y in range(altura_2, altura_2 + 200):
-                            if x == y:
-                                return 0
-            else:
-                if colision == None:
-                    return 1
-                else:
-                    for x in range((altura_1 + 200)*2/3, (altura_1 + 200)):
-                        for y in range(altura_2, altura_2 + 200):
-                            if x == y:
-                                return 2
-                    return 1
+        """M�todo que registra y revisa los diferentes comandos para los personajes """
 
         """mÃ©todo en el cual se programan cada uno de los movimientos de los ataques y acciones bÃ¡sicas de un personaje, movimiento, golpes bÃ¡sicos, y coliciones. El mÃ©todo recibe al oponente, siendo capaz de alterar su posiciÃ³n y estado, e incluso animaciÃ³n."""
 
@@ -231,12 +172,12 @@ class Personaje(pygame.sprite.Sprite):
         if self.currentAnim == 'LightPunch':
             self.currentState.control = False
             Tools.Logger.escribir("comprovando golpes")
-            if Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
+            if Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
                 self.currentState.flags['Hit']=True
                 Tools.Logger.escribir("hubo colición de golpe bloqueado")
-            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
+            elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
                 Tools.Logger.escribir("falló el golpe")
-            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
+            elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
                 self.currentState.flags['Hit']=True
                 oponent.currentAnim='Hit'
                 oponent.currentAnimFrame=0
@@ -246,12 +187,12 @@ class Personaje(pygame.sprite.Sprite):
         if self.currentAnim == 'MediumPunch':
             self.currentState.control = False
             Tools.Logger.escribir("comprovando golpes")
-            if Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
+            if Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
                 self.currentState.flags['Hit']=True
                 Tools.Logger.escribir("hubo colición de golpe bloqueado")
-            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
+            elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
                 Tools.Logger.escribir("falló el golpe")
-            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
+            elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
                 self.currentState.flags['Hit']=True
                 oponent.currentAnim='Hit'
                 oponent.currentAnimFrame=0
@@ -261,12 +202,12 @@ class Personaje(pygame.sprite.Sprite):
         if self.currentAnim == 'HighPunch':
             self.currentState.control = False
             Tools.Logger.escribir("comprovando golpes")
-            if Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
+            if Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
                 self.currentState.flags['Hit']=True
                 Tools.Logger.escribir("hubo colición de golpe bloqueado")
-            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
+            elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
                 Tools.Logger.escribir("falló el golpe")
-            elif Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
+            elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
                 self.currentState.flags['Hit']=True
                 oponent.currentAnim='Hit'
                 oponent.currentAnimFrame=0
@@ -275,12 +216,12 @@ class Personaje(pygame.sprite.Sprite):
 
         if self.currentAnim== 'Down_LightPunch':
             self.currentState.control = False
-            if Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
+            if Collicion.Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
                 self.currentState.flags['Hit']=True
                 Tools.Logger.escribir("hubo colición de golpe bloqueado")
-            elif Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
+            elif Collicion.Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
                 Tools.Logger.escribir("falló el golpe")
-            elif Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
+            elif Collicion.Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
                 self.currentState.flags['hit']=True
                 oponent.currentAnim='Hit'
                 oponent.currentAnimFrame=0
@@ -289,12 +230,12 @@ class Personaje(pygame.sprite.Sprite):
 
         if self.currentAnim== 'Down_HighPunch':
             self.currentState.control = False
-            if Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
+            if Collicion.Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
                 self.currentState.flags['Hit']=True
                 Tools.Logger.escribir("hubo colición de golpe bloqueado")
             elif Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
                 Tools.Logger.escribir("falló el golpe")
-            elif Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
+            elif Collicion.Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
                 self.currentState.flags['hit']=True
                 oponent.currentAnim='Hit'
                 oponent.currentAnimFrame=0

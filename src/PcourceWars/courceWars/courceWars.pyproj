@@ -52,6 +52,7 @@
     <Compile Include="Chars\Testeo%28Temporal%29\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Collicion.py" />
     <Compile Include="Core\Engineer.py" />
     <Compile Include="Core\Medic.py" />
     <Compile Include="Core\Personaje.py" />
