@@ -171,7 +171,7 @@ class Personaje(pygame.sprite.Sprite):
             self.currentState.control = True
             self.currentState.typenumber=0
 
-        if self.currentAnim != self.staticAnim:
+        if self.currentAnim != 'Stand' and self.currentAnim != 'Block' and self.currentAnim != 'BackDash' and self.currentAnim != 'BWalk':
             self.currentState.block=False
 
         if self.currentAnim == 'LightPunch':
@@ -182,6 +182,7 @@ class Personaje(pygame.sprite.Sprite):
                 oponent.currentAnim = 'Block'
                 oponent.framecount=0
                 oponent.currentAnimFrame=0
+                oponent.currentState.control=False
                 
 
 
@@ -203,6 +204,7 @@ class Personaje(pygame.sprite.Sprite):
                 oponent.currentAnim = 'Block'
                 oponent.framecount=0
                 oponent.currentAnimFrame=0
+                oponent.currentState.control=False
 
                 Tools.Logger.escribir("hubo colición de golpe bloqueado")
             elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
@@ -222,6 +224,7 @@ class Personaje(pygame.sprite.Sprite):
                 oponent.currentAnim = 'Block'
                 oponent.framecount=0
                 oponent.currentAnimFrame=0
+                oponent.currentState.control=False
 
                 Tools.Logger.escribir("hubo colición de golpe bloqueado")
             elif Collicion.Golpe_Superior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
