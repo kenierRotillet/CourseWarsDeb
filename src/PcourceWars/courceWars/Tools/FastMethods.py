@@ -47,16 +47,6 @@ def loadKeys():
     Tools.Logger.escribir(str(p1keys))
     Tools.Logger.escribir(str(p2keys))
 
-
-
-
-
-
-
-
-
-
-
 #Better image loading
 
 def load_image(name, colorkey=None,resize=False,flip=False):
@@ -188,13 +178,6 @@ def convertKeys(keys,p=1):
         
 
 
-
-
-
-
-
-
-
 def load_commands(name):
     """método para la carga de comandos de los movimientos, a partir de los archivos *.cmd . Los nombres de movimientos deben de coincidir con los de las animaciones para funcionar todo bien. La secuencia de teclas se cargan utilizando los nombres empleados en convertKeys."""
     all = ""
@@ -215,18 +198,6 @@ def load_commands(name):
             cmdkeys.append(k)
         commands[cmdname] = (cmdtime,cmdkeys)
     return commands
-
-
-
-
-
-
-
-
-
-
-
-
 
 def PlayAux(pl = 0):
     """método para acciones auxiliares de debug"""

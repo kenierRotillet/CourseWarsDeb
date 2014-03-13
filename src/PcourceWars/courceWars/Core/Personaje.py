@@ -92,7 +92,7 @@ class Personaje(pygame.sprite.Sprite):
                         self.currentAnim='Stand'
                         self.currentAnimFrame=0
                         self.framecount=0
-                elif self.currentAnim=='BWalk' or self.currentAnim=='BackDash':
+                elif self.currentAnim=='BWalk' or self.currentAnim=='BackDash' or self.currentAnim=='Block':
                     if k == 'B' or (k == 'F' and self.flip == True):
                         self.currentAnim='Stand'
                         self.currentAnimFrame=0
