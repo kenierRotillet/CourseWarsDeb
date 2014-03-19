@@ -7,8 +7,8 @@ screen_w = 1024
 screen_h = 768
 
 def main():
-    pygame.mixer.init()
-    pygame.mixer.music.load("BGM_0002.mp3")
+    pygame.mixer.init(frequency= 22050, size=-16, channels=2, buffer=64)
+    pygame.mixer.music.load("Title Screen.mp3")
     pygame.mixer.music.play(-1)
     
     pygame.init()
