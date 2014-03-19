@@ -370,11 +370,6 @@ class Personaje(pygame.sprite.Sprite):
                 self.framecount=0
 
             if pygame.sprite.collide_mask(self,oponent) != None:
-                #Tools.Logger.escribir("ubo coliciÃ³n! no se puede avanzar")
-                #Tools.Logger.escribir(str(pygame.sprite.collide_mask(self,oponent)))
-                #Tools.Logger.escribir("datos de los rectÃ¡ngulos: " + str(self.mask) + " y " + str(oponent.mask))
-                #Tools.Logger.escribir("sus posisiones son " + str(self.pos) + " y " + str(oponent.pos) + " y segÃºn rectÃ¡ngulos: " + str(self.rect.center) + " y " + str(oponent.rect.center))
-
                 self.currentState.control=True
                 self.currentAnim=self.staticAnim
                 self.framecount=0
@@ -386,17 +381,20 @@ class Personaje(pygame.sprite.Sprite):
                     oldrect=self.rect
                     oldmask = self.mask
                     if self.flip==True:
-                        self.pos=(self.pos[0]-3,self.pos[1])
+                        self.pos=(self.pos[0]-i,self.pos[1])
                     else:
 
-                        self.pos=(self.pos[0]+3,self.pos[1])
+                        self.pos=(self.pos[0]+i,self.pos[1])
                     self.rect.center=self.pos
                     self.mask=pygame.mask.from_surface(self.image)
 
                     if pygame.sprite.collide_mask(self,oponent) != None:
-                        self.pos=oldpos
-                        self.rect=oldrect
-                        self.mask=oldmask
+                        self.pos=(self.pos[0]+42,self.pos[1])
+                        self.rect.center=self.pos
+                        self.mask=pygame.mask.from_surface(self.image)
+                        #self.pos=oldpos
+                        #self.rect=oldrect
+                        #self.mask=oldmask
                         self.currentAnim=self.staticAnim
                         self.framecount=0
                         self.currentAnimFrame=0

@@ -25,6 +25,8 @@ def main():
     teclastotalesp2=[]
     fondo,rect = Tools.FastMethods.load_image("Screens/imgs/Fondo.jpg")
     while True:
+        #print("posp1" + str(personaje.pos[0]) + ", " + str(personaje.pos[1]))
+        #print("posp2" + str(p2.pos[0]) + ", " + str(p2.pos[1]))
         pantalla.blit(fondo,(0,0))
         teclas= []
         teclup = []
