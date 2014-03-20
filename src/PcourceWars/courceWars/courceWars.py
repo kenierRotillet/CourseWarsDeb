@@ -9,15 +9,17 @@ import Core
 import Tools
 
 import Screens
+import Sound
 
 pygame.init()
-pygame.mixer.init(frequency=22050, size=16, channels=2, buffer=32)
+
 
 pygame.display.init()
 
 print "start"
 
-
+pygame.mixer.music.load("bgm/ale.mp3")
+pygame.mixer.music.play(-1)
 
 
 print("fin")

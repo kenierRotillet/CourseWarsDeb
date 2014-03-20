@@ -70,6 +70,9 @@ def main():
         p2.update()
         pantalla.blit(personaje.image,personaje.rect.center)
         pantalla.blit(p2.image,p2.rect.center)
+        personaje.DoAction(p2)
+        p2.DoAction(personaje)
+
         Sound.soundPlayer.playSounds(personaje)
         Sound.soundPlayer.playSounds(p2)
 
@@ -77,9 +80,7 @@ def main():
 
 
 
-        personaje.DoAction(p2)
-        p2.DoAction(personaje)
-
+        
 
         pygame.display.flip()
 
