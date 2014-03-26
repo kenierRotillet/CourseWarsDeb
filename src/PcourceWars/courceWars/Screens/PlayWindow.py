@@ -61,7 +61,8 @@ def main():
 
 
 
-
+        personaje.checkStatus(p2)
+        p2.checkStatus(personaje)
         personaje.setSounds()
         p2.setSounds()
 

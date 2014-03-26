@@ -3,6 +3,7 @@
 """Clase en la cual se incluyen diferentes mÈtodos para detectar coliciones entre golpes de los personajes. En un futuro aquÌ se implementar· de manera m·s Ûptima la utilizaciÛn de hitboxes"""
 import pygame
 import Tools
+import Core.Personaje
 
 # return 1 es da√?¬±o nulo
 # return 2 es da√?¬±o completo
@@ -46,4 +47,41 @@ def Golpe_Inferior(colision, altura_1, altura_2, defensa):
                     if x == y:
                         return 2
             return 1
+
+def ejecutarHit(ataca,oponent):
+    if Golpe_Superior(pygame.sprite.collide_mask(ataca,oponent), ataca.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
+        oponent.currentState.flags['Hit'] = True
+        oponent.currentAnim = 'Block'
+        oponent.framecount=0
+        oponent.currentAnimFrame=0
+        oponent.currentState.control=False
+
+        #Tools.Logger.escribir("hubo colici√≥n de golpe bloqueado")
+    #elif Golpe_Superior(pygame.sprite.collide_mask(ataca,oponent), ataca.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
+        #Tools.Logger.escribir("fall√≥ el golpe")
+    elif Golpe_Superior(pygame.sprite.collide_mask(ataca,oponent), ataca.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
+        ataca.currentState.flags['Hit']=True
+        oponent.currentAnim='Hit'
+        oponent.currentAnimFrame=0
+        oponent.framecount=0
+        #Tools.Logger.escribir("le achunt√≥")
+
+
+def ejecutarDownHit(ataca,oponent):
+    if Golpe_Inferior(pygame.sprite.collide_mask(ataca,oponent), ataca.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
+        oponent.currentState.flags['Hit'] = True
+        oponent.currentAnim = 'Block'
+        oponent.framecount=0
+        oponent.currentAnimFrame=0
+        oponent.currentState.control=False
+
+        #Tools.Logger.escribir("hubo colici√≥n de golpe bloqueado")
+    #elif Golpe_Superior(pygame.sprite.collide_mask(ataca,oponent), ataca.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
+        #Tools.Logger.escribir("fall√≥ el golpe")
+    elif Golpe_Inferior(pygame.sprite.collide_mask(ataca,oponent), ataca.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
+        ataca.currentState.flags['Hit']=True
+        oponent.currentAnim='Hit'
+        oponent.currentAnimFrame=0
+        oponent.framecount=0
+        #Tools.Logger.escribir("le achunt√≥")
 
