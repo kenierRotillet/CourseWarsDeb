@@ -1,0 +1,9 @@
+-funcion de special
+-helpers
+-barra vida
+-sistema de carga(conversable)
+-reloj
+-escenario
+-cargar inicio pelea
+-cargar muerte
+-JUNTAR TODO
