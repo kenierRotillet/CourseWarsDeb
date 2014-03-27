@@ -18,10 +18,6 @@ pygame.display.init()
 
 print "start"
 
-pygame.mixer.music.load("bgm/ale.mp3")
-pygame.mixer.music.play(-1)
-pygame.mixer.music.set_volume(0.3)
-
 print("fin")
 #raw_input()
 
@@ -34,4 +30,12 @@ player = Screens.Start_Menu.main()
 pygame.init()
 
 seleccion = Screens.Sel_PJ.main()
+pygame.mixer.music.load("bgm/ale.mp3")
+pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(0.3)
+
+
 Screens.PlayWindow.main(seleccion)
+
+
+

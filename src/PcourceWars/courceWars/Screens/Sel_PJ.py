@@ -58,27 +58,27 @@ def main():
     Nombre[2]=(pygame.image.load("Screens/Sel_pj/IDK.png").convert_alpha())
     Nombre[3]=(pygame.image.load("Screens/Sel_pj/Medic.png").convert_alpha())
     Nombre[4]=(pygame.image.load("Screens/Sel_pj/Musician.png").convert_alpha())
-      
-    while True:
+    Salida=False
+    while Salida==False:
         for event in pygame.event.get():
             if event.type == KEYDOWN:
-                if pygame.key.get_pressed()[K_RIGHT]:
+                if event.key == K_RIGHT:
                     estado_pj1 = 1
-                elif pygame.key.get_pressed()[K_LEFT]:
+                elif event.key == K_LEFT:
                     estado_pj1 = 2           
-                if pygame.key.get_pressed()[K_d]:
+                if event.key == K_d:
                     estado_pj2 = 1
-                elif pygame.key.get_pressed()[K_a]:
+                elif event.key == K_a:
                     estado_pj2 = 2
-                if pygame.key.get_pressed()[K_RETURN]:
+                if event.key == K_RETURN:
                     final_pj1 = 1
-                if pygame.key.get_pressed()[K_BACKSPACE]:
+                if event.key == K_BACKSPACE:
                     final_pj1 = 0
-                if pygame.key.get_pressed()[K_SPACE]:
+                if event.key == K_SPACE:
                     final_pj2 = 1
-                if pygame.key.get_pressed()[K_TAB]:
+                if event.key == K_TAB:
                     final_pj2 = 0
-                if pygame.key.get_pressed()[K_ESCAPE]:
+                if event.key == K_ESCAPE:
                     pygame.quit()
                     sys.exit()
 
@@ -146,22 +146,8 @@ def main():
                 #if ID_pj2 == -1:
                  #   ID_pj2 = 4       
 
-        if final_pj1 == 1  and final_pj2 == 1:                
-            if ID_pj1 == 2:                                        
-                while not ID_pj1 == 2:                         
-                    #ID_pj1 = random.randint(0,4)
-                    ID_pj1 = random.randint(1,3)
-            if ID_pj2 == 2:                           
-                while not ID_pj2 == 2:
-                    #ID_pj2 = random.randint(0,4)
-                    ID_pj2 = random.randint(1,3)
-
-            return (ID_pj1,ID_pj2)
-        # 0->Pysco
-        # 1->Engineer
-        # 2->IDK
-        # 3->Medic
-        # 4->Musician
+        if final_pj1 == 1  and final_pj2 == 1:
+            Salida=True                
         
         screen.blit((fondo),(0,0))
         screen.blit((vs),(436,300))
@@ -198,7 +184,22 @@ def main():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()            
-                
+    if ID_pj1 == 2:                                        
+        while not ID_pj1 == 2:                         
+            #ID_pj1 = random.randint(0,4)
+            ID_pj1 = random.randint(1,3)
+    if ID_pj2 == 2:                           
+        while not ID_pj2 == 2:
+            #ID_pj2 = random.randint(0,4)
+            ID_pj2 = random.randint(1,3)
+
+    return (ID_pj1,ID_pj2)
+        # 0->Pysco
+        # 1->Engineer
+        # 2->IDK
+        # 3->Medic
+        # 4->Musician
+
 if __name__== "__main__":
     main()
 

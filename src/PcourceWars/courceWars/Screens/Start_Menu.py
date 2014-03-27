@@ -9,7 +9,9 @@ screen_h = 768
 def main():
     pygame.mixer.init(frequency= 22050, size=-16, channels=2, buffer=64)
     pygame.mixer.music.load("bgm/Title.mp3")
-    #pygame.mixer.music.play(-1)
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(0.3)
+
     
     pygame.init()
     pygame.mouse.set_visible(False)
@@ -65,7 +67,7 @@ def main():
     if estado_pj1 == 1 or estado_pj2 == 1:
         print "saliendo"
 
-        pygame.quit()
+        #pygame.quit()
         
 
         return [ID_pj1,ID_pj2]
