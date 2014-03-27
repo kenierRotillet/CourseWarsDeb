@@ -10,8 +10,9 @@ def main():
     pygame.mixer.init()
     pygame.mixer.music.load("BGM_0007.mp3")
     pygame.mixer.music.play(-1)
-    
+
     pygame.init()
+    pygame.mouse.set_visible(False)
     estado_pj1 = 0
     estado_pj2 = 0
     final_pj1 = 0
@@ -21,7 +22,7 @@ def main():
     n = 35
     ID_pj1 = 1 
     ID_pj2 = 3
-    screen = pygame.display.set_mode((screen_w,screen_h))
+    screen = pygame.display.set_mode((screen_w,screen_h),FULLSCREEN)
     pygame.display.set_caption("Course_Wars")
     fondo=pygame.image.load("Fondo_MenuStart.jpg").convert()
     screen.blit((fondo),(0,0))
