@@ -30,4 +30,6 @@ print("fin")
 
 Tools.FastMethods.loadKeys()
 
-Screens.PlayWindow.main()
+Screens.Start_Menu.main()
+seleccion = Screens.Sel_PJ.main()
+Screens.PlayWindow.main(seleccion)

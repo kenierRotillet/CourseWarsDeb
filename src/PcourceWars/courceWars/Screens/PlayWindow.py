@@ -9,13 +9,27 @@ screen_w = 1024
 screen_h = 768
 
 
-def main():
+def main(seleccion):
     pygame.init()
     
 
     pantalla = pygame.display.set_mode((screen_w,screen_h))
-    personaje = Core.Medic.Medic(1,(0,100))
-    p2 = Core.Engineer.Engineer(2,(500,100))
+    if seleccion[0] == 1:
+
+        personaje = Core.Medic.Medic(1,(0,100))
+    elif seleccion[0] == 3:
+        personaje = Core.Engineer.Engineer(1,(0,100))
+
+
+        if seleccion[1] == 1:
+
+        p2 = Core.Medic.Medic(2,(500,100))
+    elif seleccion[1] == 3:
+        p2 = Core.Engineer.Engineer(2,(500,100))
+
+    
+
+    
     #Tools.Logger.escribir(str(personaje.sounds))
 
     pygame.display.set_caption("lalalal test")
