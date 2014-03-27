@@ -60,6 +60,12 @@
     <Compile Include="Core\__init__.py" />
     <Compile Include="courceWars.py" />
     <Compile Include="Screens\PlayWindow.py" />
+    <Compile Include="Screens\Sel_PJ.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Screens\Start_Menu.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Sound\soundPlayer.py" />
     <Compile Include="Tools\Chars\Engineer\Engineer.py" />
     <Compile Include="Tools\Chars\Engineer\Engineer_Test.py" />
