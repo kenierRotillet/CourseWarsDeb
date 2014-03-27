@@ -8,7 +8,7 @@ screen_h = 768
 
 def main():
     pygame.mixer.init()
-    pygame.mixer.music.load("BGM_0007.mp3")
+    pygame.mixer.music.load("bgm/BGM_0007.mp3")
     pygame.mixer.music.play(-1)
 
     pygame.init()
@@ -24,40 +24,40 @@ def main():
     ID_pj2 = 3
     screen = pygame.display.set_mode((screen_w,screen_h),FULLSCREEN)
     pygame.display.set_caption("Course_Wars")
-    fondo=pygame.image.load("Fondo_MenuStart.jpg").convert()
+    fondo=pygame.image.load("Screens/Sel_pj/Fondo_MenuStart.jpg").convert()
     screen.blit((fondo),(0,0))
     pygame.display.flip()
 
-    Medic=pygame.image.load("Sel_Medic.png").convert_alpha()
-    Engineer=pygame.image.load("Sel_Engineer.png").convert_alpha()
-    Pysco=pygame.image.load("Sel_Psyco.png").convert_alpha()
-    Musician=pygame.image.load("Sel_Musician.png").convert_alpha()
-    IDK=pygame.image.load("Sel_IDK.png").convert_alpha()
+    Medic=pygame.image.load("Screens/Sel_pj/Sel_Medic.png").convert_alpha()
+    Engineer=pygame.image.load("Screens/Sel_pj/Sel_Engineer.png").convert_alpha()
+    Pysco=pygame.image.load("Screens/Sel_pj/Sel_Psyco.png").convert_alpha()
+    Musician=pygame.image.load("Screens/Sel_pj/Sel_Musician.png").convert_alpha()
+    IDK=pygame.image.load("Screens/Sel_pj/Sel_IDK.png").convert_alpha()
 
-    sel_pj1=pygame.image.load("Sel_pj1.png").convert_alpha()
-    sel_pj2=pygame.image.load("Sel_pj2.png").convert_alpha()
+    sel_pj1=pygame.image.load("Screens/Sel_pj/Sel_pj1.png").convert_alpha()
+    sel_pj2=pygame.image.load("Screens/Sel_pj/Sel_pj2.png").convert_alpha()
 
-    sel_name1=pygame.image.load("Sel_name1.png").convert_alpha()
-    sel_name2=pygame.image.load("Sel_name2.png").convert_alpha()
+    sel_name1=pygame.image.load("Screens/Sel_pj/Sel_name1.png").convert_alpha()
+    sel_name2=pygame.image.load("Screens/Sel_pj/Sel_name2.png").convert_alpha()
 
-    vs = pygame.image.load("VS.png").convert_alpha()
+    vs = pygame.image.load("Screens/Sel_pj/VS.png").convert_alpha()
     
     Cuadro={}
-    Cuadro[0]=("Psyco_Sel.png")
-    Cuadro[1]=("Engineer_Sel.png")
-    Cuadro[2]=("IDK_Sel.png")
-    Cuadro[3]=("Medic_Sel.png")
-    Cuadro[4]=("Musician_Sel.png")
+    Cuadro[0]=("Screens/Sel_pj/Psyco_Sel.png")
+    Cuadro[1]=("Screens/Sel_pj/Engineer_Sel.png")
+    Cuadro[2]=("Screens/Sel_pj/IDK_Sel.png")
+    Cuadro[3]=("Screens/Sel_pj/Medic_Sel.png")
+    Cuadro[4]=("Screens/Sel_pj/Musician_Sel.png")
 
-    pj1=pygame.image.load("1p.png").convert_alpha()
-    pj2=pygame.image.load("2p.png").convert_alpha()
+    pj1=pygame.image.load("Screens/Sel_pj/1p.png").convert_alpha()
+    pj2=pygame.image.load("Screens/Sel_pj/2p.png").convert_alpha()
     
     Nombre={}
-    Nombre[0]=(pygame.image.load("Psyco.png").convert_alpha())
-    Nombre[1]=(pygame.image.load("Engineer.png").convert_alpha())
-    Nombre[2]=(pygame.image.load("IDK.png").convert_alpha())
-    Nombre[3]=(pygame.image.load("Medic.png").convert_alpha())
-    Nombre[4]=(pygame.image.load("Musician.png").convert_alpha())
+    Nombre[0]=(pygame.image.load("Screens/Sel_pj/Psyco.png").convert_alpha())
+    Nombre[1]=(pygame.image.load("Screens/Sel_pj/Engineer.png").convert_alpha())
+    Nombre[2]=(pygame.image.load("Screens/Sel_pj/IDK.png").convert_alpha())
+    Nombre[3]=(pygame.image.load("Screens/Sel_pj/Medic.png").convert_alpha())
+    Nombre[4]=(pygame.image.load("Screens/Sel_pj/Musician.png").convert_alpha())
       
     while True:
         for event in pygame.event.get():

@@ -8,7 +8,7 @@ screen_h = 768
 
 def main():
     pygame.mixer.init(frequency= 22050, size=-16, channels=2, buffer=64)
-    pygame.mixer.music.load("bgm/Title Screen.mp3")
+    pygame.mixer.music.load("bgm/Title.mp3")
     pygame.mixer.music.play(-1)
     
     pygame.init()
@@ -24,7 +24,7 @@ def main():
     pygame.display.set_caption("Course_Wars")
     Fondo={}
     Fondo[0]=("screens/start_menu/Fondo_Start1.jpg")
-    Fondo[1]=("Fondo_Start2.jpg")     
+    Fondo[1]=("screens/start_menu/Fondo_Start2.jpg")     
         
     while True:
         for event in pygame.event.get():
