@@ -9,7 +9,7 @@ screen_h = 768
 def main():
     pygame.mixer.init(frequency= 22050, size=-16, channels=2, buffer=64)
     pygame.mixer.music.load("bgm/Title.mp3")
-    pygame.mixer.music.play(-1)
+    #pygame.mixer.music.play(-1)
     
     pygame.init()
     pygame.mouse.set_visible(False)
@@ -25,22 +25,24 @@ def main():
     Fondo={}
     Fondo[0]=("screens/start_menu/Fondo_Start1.jpg")
     Fondo[1]=("screens/start_menu/Fondo_Start2.jpg")     
-        
-    while True:
+    Salida = False 
+    while Salida==False:
         for event in pygame.event.get():
             if event.type == KEYDOWN:
-                if pygame.key.get_pressed()[K_RETURN]:
+                if event.key == K_RETURN:
                     estado_pj1 = 1
                     ID_pj1 = True
-                if pygame.key.get_pressed()[K_TAB]:
+                    print "precionado enter"
+                    Salida=True
+                if event.key == K_TAB:
                     estado_pj2 = 1
                     ID_pj2 = True
-                if pygame.key.get_pressed()[K_ESCAPE]:
+                    print "precionado tab"
+                    salida=True
+                if event.key == K_ESCAPE:
                     pygame.quit()
                     sys.exit()
                     
-        if estado_pj1 == 1 or estado_pj2 == 1:
-            return [ID_pj1,ID_pj2]
 
         contador +=1
         if contador == 10:
@@ -59,7 +61,15 @@ def main():
             
         if event.type == pygame.QUIT:
             pygame.quit()
-            sys.exit()            
+            sys.exit()           
+    if estado_pj1 == 1 or estado_pj2 == 1:
+        print "saliendo"
+
+        pygame.quit()
+        
+
+        return [ID_pj1,ID_pj2]
+
 if __name__== "__main__":
     main()
              

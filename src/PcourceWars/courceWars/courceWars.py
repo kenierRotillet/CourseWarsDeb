@@ -30,6 +30,8 @@ print("fin")
 
 Tools.FastMethods.loadKeys()
 
-Screens.Start_Menu.main()
+player = Screens.Start_Menu.main()
+pygame.init()
+
 seleccion = Screens.Sel_PJ.main()
 Screens.PlayWindow.main(seleccion)

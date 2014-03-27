@@ -21,7 +21,7 @@ def main(seleccion):
         personaje = Core.Engineer.Engineer(1,(0,100))
 
 
-        if seleccion[1] == 1:
+    if seleccion[1] == 1:
 
         p2 = Core.Medic.Medic(2,(500,100))
     elif seleccion[1] == 3:
