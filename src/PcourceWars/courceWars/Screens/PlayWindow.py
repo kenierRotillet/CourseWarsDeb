@@ -56,7 +56,7 @@ def main(seleccion):
         pantalla.blit(fondo,(0,0))
         teclas= []
         teclup = []
-        relojito.tick_busy_loop(40)
+        relojito.tick_busy_loop(80)
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
