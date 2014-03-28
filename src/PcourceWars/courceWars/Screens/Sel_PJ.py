@@ -3,6 +3,8 @@ from pygame.locals import *
 import sys
 from pygame import time
 import random
+import Sound
+
 screen_w = 1024
 screen_h = 768
 
@@ -64,20 +66,35 @@ def main():
             if event.type == KEYDOWN:
                 if event.key == K_RIGHT:
                     estado_pj1 = 1
+                    Sound.soundPlayer.simpleplay("sfx/Corredor.wav")
+
                 elif event.key == K_LEFT:
-                    estado_pj1 = 2           
+                    estado_pj1 = 2          
+                    Sound.soundPlayer.simpleplay("sfx/Corredor.wav")
+
                 if event.key == K_d:
                     estado_pj2 = 1
+                    Sound.soundPlayer.simpleplay("sfx/Corredor.wav")
+
                 elif event.key == K_a:
                     estado_pj2 = 2
+                    Sound.soundPlayer.simpleplay("sfx/Corredor.wav")
+
                 if event.key == K_RETURN:
                     final_pj1 = 1
+                    Sound.soundPlayer.simpleplay("sfx/select.wav")
+
                 if event.key == K_BACKSPACE:
                     final_pj1 = 0
+                    Sound.soundPlayer.simpleplay("sfx/backdash.wav")
                 if event.key == K_SPACE:
                     final_pj2 = 1
+                    Sound.soundPlayer.simpleplay("sfx/select.wav")
+
                 if event.key == K_TAB:
                     final_pj2 = 0
+                    Sound.soundPlayer.simpleplay("sfx/backdash.wav")
+
                 if event.key == K_ESCAPE:
                     pygame.quit()
                     sys.exit()
@@ -120,9 +137,9 @@ def main():
             if estado_pj2 == 1:
                 w += 1
                 ID_pj2 += 1
-                if w == 3:
+                if w == 4:
                     w = 1
-                if ID_pj2 == 3:
+                if ID_pj2 == 4:
                     ID_pj2 = 1
             #if estado_pj2 == 1:
              #   w += 1
@@ -153,6 +170,7 @@ def main():
         screen.blit((vs),(436,300))
         
         cuadro1 = pygame.image.load(Cuadro[v]).convert_alpha()
+        print (str(Cuadro[w]))
         cuadro2 = pygame.image.load(Cuadro[w]).convert_alpha()
         screen.blit(cuadro1,(142,100))
         screen.blit(sel_name1,(120,370))

@@ -3,6 +3,7 @@ from pygame.locals import *
 import sys
 import time
 import random
+import Sound
 screen_w = 1024
 screen_h = 768
 
@@ -34,13 +35,13 @@ def main():
                 if event.key == K_RETURN:
                     estado_pj1 = 1
                     ID_pj1 = True
-                    print "precionado enter"
+                    #print "precionado enter"
                     Salida=True
-                if event.key == K_TAB:
+                if event.key == K_SPACE:
                     estado_pj2 = 1
                     ID_pj2 = True
-                    print "precionado tab"
-                    salida=True
+                    #print "precionado tab"
+                    Salida=True
                 if event.key == K_ESCAPE:
                     pygame.quit()
                     sys.exit()
@@ -65,10 +66,10 @@ def main():
             pygame.quit()
             sys.exit()           
     if estado_pj1 == 1 or estado_pj2 == 1:
-        print "saliendo"
+        #print "saliendo"
 
         #pygame.quit()
-        
+        Sound.soundPlayer.simpleplay("sfx/explode2.wav")
 
         return [ID_pj1,ID_pj2]
 

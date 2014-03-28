@@ -22,3 +22,6 @@ def playSounds(personaje):
 
 
 
+def simpleplay(sfx):
+    sonido = pygame.mixer.Sound(sfx)
+    sonido.play()

@@ -14,31 +14,43 @@ def main(seleccion):
     
 
     pantalla = pygame.display.set_mode((screen_w,screen_h))
-    if seleccion[0] == 1:
+    if seleccion[0] == 3:
 
         personaje = Core.Medic.Medic(1,(0,100))
-    elif seleccion[0] == 3:
+    elif seleccion[0] == 1:
         personaje = Core.Engineer.Engineer(1,(0,100))
+    else:
+        print ("error en la selección de personajes. no existe el index "+str(seleccion[0]))
+        
+        Sound.soundPlayer.simpleplay("sfx/error.wav")
+        raw_input()
+        return
 
 
-    if seleccion[1] == 1:
+    if seleccion[1] == 3:
 
         p2 = Core.Medic.Medic(2,(500,100))
-    elif seleccion[1] == 3:
+    elif seleccion[1] == 1:
         p2 = Core.Engineer.Engineer(2,(500,100))
+    else:
+        print ("error en la selección de personajes. no existe el index "+str(seleccion[1]))
+        Sound.soundPlayer.simpleplay("sfx/error.wav")
+        raw_input()
+        return
 
     
 
     
     #Tools.Logger.escribir(str(personaje.sounds))
 
-    pygame.display.set_caption("lalalal test")
+    pygame.display.set_caption("CourseWars")
     relojito = pygame.time.Clock()
     tiempo = 0
     teclastotales = []
     teclastotalesp2=[]
     fondo,rect = Tools.FastMethods.load_image("Screens/imgs/Fondo.jpg")
-    while True:
+    Salida = False
+    while Salida==False:
         #print("posp1" + str(personaje.pos[0]) + ", " + str(personaje.pos[1]))
         #print("posp2" + str(p2.pos[0]) + ", " + str(p2.pos[1]))
         pantalla.blit(fondo,(0,0))
@@ -49,11 +61,12 @@ def main(seleccion):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                Salida=True
 
 
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
-                    pygame.display.quit()
+                    Salida=True
                 else:
                     teclas.append(event.key)
             if event.type == KEYUP:
