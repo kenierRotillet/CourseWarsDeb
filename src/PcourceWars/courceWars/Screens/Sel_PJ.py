@@ -203,11 +203,11 @@ def main():
             pygame.quit()
             sys.exit()            
     if ID_pj1 == 2:                                        
-        while not ID_pj1 == 2:                         
+        while  ID_pj1 == 2:                         
             #ID_pj1 = random.randint(0,4)
             ID_pj1 = random.randint(1,3)
     if ID_pj2 == 2:                           
-        while not ID_pj2 == 2:
+        while ID_pj2 == 2:
             #ID_pj2 = random.randint(0,4)
             ID_pj2 = random.randint(1,3)
 

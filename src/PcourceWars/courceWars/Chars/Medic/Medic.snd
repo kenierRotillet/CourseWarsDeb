@@ -18,3 +18,5 @@ Special:
 50,sfx/explode1.wav,;
 Block:
 0,,sfx/Block.wav;
+Taunt:
+5,sfx/laugh.wav,;
