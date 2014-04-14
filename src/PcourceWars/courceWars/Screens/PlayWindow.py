@@ -50,13 +50,14 @@ def main(seleccion):
     teclastotalesp2=[]
     fondo,rect = Tools.FastMethods.load_image("Screens/imgs/Fondo.jpg")
     Salida = False
+    fps = 40
     while Salida==False:
         #print("posp1" + str(personaje.pos[0]) + ", " + str(personaje.pos[1]))
         #print("posp2" + str(p2.pos[0]) + ", " + str(p2.pos[1]))
         pantalla.blit(fondo,(0,0))
         teclas= []
         teclup = []
-        relojito.tick_busy_loop(80)
+        relojito.tick_busy_loop(fps)
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -67,6 +68,13 @@ def main(seleccion):
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
                     Salida=True
+                elif event.key == K_F1:
+                    fps+=5
+                elif event.key == K_F2:
+                    fps-=5
+                    if fps <1:
+                        fps=5
+
                 else:
                     teclas.append(event.key)
             if event.type == KEYUP:
