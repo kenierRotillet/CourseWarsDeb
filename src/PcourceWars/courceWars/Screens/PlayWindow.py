@@ -43,7 +43,7 @@ def main(seleccion):
     
     #Tools.Logger.escribir(str(personaje.sounds))
 
-    pygame.display.set_caption("CourseWars")
+    pygame.display.set_caption("CourseWars: 40 fps")
     relojito = pygame.time.Clock()
     tiempo = 0
     teclastotales = []
@@ -58,7 +58,7 @@ def main(seleccion):
         teclas= []
         teclup = []
         relojito.tick_busy_loop(fps)
-        
+        pygame.display.set_caption("course wars: " + str(fps) +  " fps")
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
