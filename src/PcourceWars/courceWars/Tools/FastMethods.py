@@ -247,3 +247,59 @@ def LoadSounds(name):
     return sounds
 
 
+
+def LoadHitboxesData(name):
+    """Metodo que carga la información de las cajas de colicion y de daño para cada una de las diferentes animaciones. Son los archivos *.hbx"""
+    #anims, diccionario base a retornar con los hitboxes
+
+    anims = {}
+    #carga del archivo
+    arch = open(name,'r')
+    data = ""
+    for i in arch:
+        data+=i
+        #print i
+        
+    arch.close()
+    #Separación de cada movimiento en una entrada de animsdata
+    animsdata = data.split(';')
+    #raw_input()
+
+    for an in animsdata:
+        #en caso de ser línea bacía se salta
+        if (len(an.split(':')) < 2):
+            continue
+
+        #extración del nombre de la animación
+        animname = an.split(':')[0].replace('\n', "")
+        
+        #print animname
+        animdata = []
+        
+        #raw_input()
+        #print an.split(':')
+        #print " su tamaño es: " + str(len(an.split(':')))
+        for line in an.split(':')[1].split('}'):
+            #print line
+            datos = line.split('{\n')
+            #print "datos " + str(datos)
+            if len(datos) < 2:
+                continue
+
+            frame = int(datos[0].replace('\n',''))
+            #print "frame: " + str(frame)
+            boxes = []
+            for k in datos[1].split('\n'):
+                #print "el k " +str(k)
+                deita = k.split(',')
+                if len(deita) > 3:
+                    boxes.append((deita[0],deita[1],deita[2],deita[3],deita[4]))
+            animdata.append((frame,boxes))
+        #se añade la información optenida
+        anims[animname] = animdata
+        #print anims[animname]
+    
+    #print anims
+    return anims
+
+

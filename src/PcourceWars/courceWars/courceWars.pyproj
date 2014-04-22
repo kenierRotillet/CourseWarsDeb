@@ -72,6 +72,7 @@
     <Compile Include="Tools\FastMethods.py" />
     <Compile Include="Tools\KeyConfig.py" />
     <Compile Include="Tools\Logger.py" />
+    <Compile Include="testLoadHbx.py" />
     <Compile Include="Tools\__init__.py" />
     <Compile Include="Screens\Seleccion_Personaje.py" />
     <Compile Include="Screens\__init__.py" />

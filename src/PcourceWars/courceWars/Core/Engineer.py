@@ -15,6 +15,7 @@ class Engineer(Core.Personaje.Personaje):
         self.mask = pygame.mask.from_surface(self.image)
         self.commands=Tools.FastMethods.load_commands("Chars/Engineer/Engineer.cmd")
         self.sounds = Tools.FastMethods.LoadSounds("Chars/Engineer/Engineer.snd")
+        self.hitboxes=Tools.FastMethods.LoadHitboxesData("Chars/Engineer/Engineer.hbx")
         self.pos=initPos
         self.rect.center = (self.pos)
         self.maxSpeed=4

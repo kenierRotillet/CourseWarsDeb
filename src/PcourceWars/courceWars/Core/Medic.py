@@ -16,6 +16,7 @@ class Medic(Core.Personaje.Personaje):
         self.mask = pygame.mask.from_surface(self.image)
         self.commands=Tools.FastMethods.load_commands("Chars/Medic/Medic.cmd")
         self.sounds = Tools.FastMethods.LoadSounds("Chars/Medic/Medic.snd")
+        self.hitboxes=Tools.FastMethods.LoadHitboxesData("Chars/Medic/Medic.hbx")
 
         self.pos=initPos
         self.rect.center = (self.pos)
