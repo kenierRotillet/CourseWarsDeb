@@ -5,6 +5,7 @@ from pygame.locals import *
 import Tools
 import Core
 import Sound
+import random
 screen_w = 1024
 screen_h = 768
 
@@ -16,9 +17,9 @@ def main(seleccion):
     pantalla = pygame.display.set_mode((screen_w,screen_h))
     if seleccion[0] == 3:
 
-        personaje = Core.Medic.Medic(1,(0,100))
+        personaje = Core.Medic.Medic(1,(-50,200))
     elif seleccion[0] == 1:
-        personaje = Core.Engineer.Engineer(1,(0,100))
+        personaje = Core.Engineer.Engineer(1,(-50,200))
     else:
         print ("error en la selección de personajes. no existe el index "+str(seleccion[0]))
         
@@ -29,9 +30,9 @@ def main(seleccion):
 
     if seleccion[1] == 3:
 
-        p2 = Core.Medic.Medic(2,(500,100))
+        p2 = Core.Medic.Medic(2,(400,200))
     elif seleccion[1] == 1:
-        p2 = Core.Engineer.Engineer(2,(500,100))
+        p2 = Core.Engineer.Engineer(2,(400,200))
     else:
         print ("error en la selección de personajes. no existe el index "+str(seleccion[1]))
         Sound.soundPlayer.simpleplay("sfx/error.wav")
@@ -48,7 +49,9 @@ def main(seleccion):
     tiempo = 0
     teclastotales = []
     teclastotalesp2=[]
-    fondo,rect = Tools.FastMethods.load_image("Screens/imgs/Fondo.jpg")
+    mapa = random.randint(1,9)
+    fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_0"+str(mapa)+".jpg")
+    #fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_09.jpg")
     Salida = False
     fps = 40
     while Salida==False:
