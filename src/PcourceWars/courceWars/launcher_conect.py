@@ -3,7 +3,7 @@
 
 class launcher_conect(object):
     """Clase bulgar que permite al launcher inicializar el juego"""
-    def go(self, servicio):
+    def Go(self, servicio):
         import courceWars
 
 
