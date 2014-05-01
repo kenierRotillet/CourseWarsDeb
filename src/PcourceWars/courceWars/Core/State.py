@@ -13,7 +13,7 @@ class State(object):
         self.jump = jump #flag que indica si el personaje está en el aire o en tierra 
         self.crouch = crouch #flag que indica si el personaje está agachado  o no 
         self.block = Block #flag que indica si el personaje está defendiéndose
-
+        
 
 
 

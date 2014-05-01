@@ -36,7 +36,6 @@ pygame.mixer.music.load("bgm/Mighty Wind.mp3")
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(0.3)
 
-
 Screens.PlayWindow.main(seleccion)
 
 
