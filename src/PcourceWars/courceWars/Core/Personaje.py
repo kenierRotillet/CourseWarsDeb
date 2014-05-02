@@ -100,7 +100,7 @@ class Personaje(pygame.sprite.Sprite):
                         self.framecount=0
                         self.currentState.block=False
                 elif self.currentAnim=='Down':
-                    if k == 'D' or (k == 'D' and self.flip == True):
+                    if k == 'D':
                         self.currentAnim='Stand'
                         self.currentAnimFrame=0
                         self.framecount=0
@@ -109,10 +109,6 @@ class Personaje(pygame.sprite.Sprite):
             self.currentState.control=True
 
             return
-
-
-
-
 
         
         if (self.currentState.control == False):
@@ -169,9 +165,12 @@ class Personaje(pygame.sprite.Sprite):
 
         """mÃ©todo en el cual se programan cada uno de los movimientos de los ataques y acciones bÃ¡sicas de un personaje, movimiento, golpes bÃ¡sicos, y coliciones. El mÃ©todo recibe al oponente, siendo capaz de alterar su posiciÃ³n y estado, e incluso animaciÃ³n."""
 
-        #Tools.Logger.escribir("actual estado es " + self.currentAnim)
+        Tools.Logger.escribir("actual estado es " + self.currentAnim)
         
         if self.currentAnim == 'LightPunch':
+            if self.currentState.crouch==True:
+                self.currentAnim = 'Down_LightPunch'
+                return
             self.currentState.control = False
             Tools.Logger.escribir("comprovando golpes")
             if self.framecount==2:
@@ -179,12 +178,18 @@ class Personaje(pygame.sprite.Sprite):
                     
 
         if self.currentAnim == 'MediumPunch':
+            if self.currentState.crouch==True:
+                self.currentAnim = 'Down_LightPunch'
+                return
             self.currentState.control = False
             Tools.Logger.escribir("comprovando golpes")
             if self.framecount==2:
                 Collicion.ejecutarHit(self,oponent)
 
         if self.currentAnim == 'HighPunch':
+            if self.currentState.crouch==True:
+                self.currentAnim = 'Down_HighPunch'
+                return
             self.currentState.control = False
             Tools.Logger.escribir("comprovando golpes")
             if self.framecount==2:
@@ -195,21 +200,25 @@ class Personaje(pygame.sprite.Sprite):
             self.currentState.control = False
             if self.framecount==2:
                 Collicion.ejecutarDownHit(self,oponent)
+            if  self.currentAnimFrame==len(self.anims[self.currentAnim])-1 and (self.framecount == int(self.anims[self.currentAnim][self.currentAnimFrame][0])):
+                Tools.Logger.escribir("actual estado es golpe agachado debil" + self.currentAnim)
+                self.AnimFrame=2
+                self.framecount=0
+                self.currentAnim='Down'                
+                self.currentState.crouch=True
+                Tools.Logger.escribir("actual estado es abajo debil " + self.currentAnim)
 
-        if self.currentAnim== 'Down_HighPunch' and (self.currentState.crouch == True):
+        if self.currentAnim== 'Down_HighPunch' and (self.currentState.crouch==True):
             self.currentState.control = False
-            if Collicion.Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
-                self.currentState.flags['Hit']=True
-                Tools.Logger.escribir("hubo colición de golpe bloqueado")
-            elif Collicion.Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 1:
-                Tools.Logger.escribir("falló el golpe")
-            elif Collicion.Golpe_Inferior(pygame.sprite.collide_mask(self,oponent), self.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
-                self.currentState.flags['hit']=True
-                oponent.currentAnim='Hit'
-                oponent.currentAnimFrame=0
-                oponent.framecount=0
-                Tools.Logger.escribir("le achuntó")
-
+            if self.framecount==2:
+                Collicion.ejecutarDownHit(self,oponent)
+            if  self.currentAnimFrame==len(self.anims[self.currentAnim])-1 and (self.framecount == int(self.anims[self.currentAnim][self.currentAnimFrame][0])):
+                Tools.Logger.escribir("actual estado es golpe agachado " + self.currentAnim + " " +str(self.currentAnimFrame) + " "+ str(self.framecount))
+                self.AnimFrame=0
+                self.framecount=0
+                self.currentAnim='Down'
+                self.currentState.crouch=True
+                Tools.Logger.escribir("actual estado es debe quedarse abajo" + self.currentAnim + self.currentAnim + " " +str(self.currentAnimFrame) + " "+ str(self.framecount))
                 
 
         if self.currentAnim=='Walk':
@@ -400,12 +409,6 @@ class Personaje(pygame.sprite.Sprite):
                 self.currentAnimFrame= 2
                 self.framecount=2
 
-            if pygame.sprite.collide_mask(self,oponent) != None:
-                self.currentState.control=True
-                self.currentAnim=self.staticAnim
-                self.framecount=2
-                self.currentAnimFrame=2
-
     def setSounds(self):
         if self.sounds.has_key(self.currentAnim):
             for snditem in self.sounds[self.currentAnim]:
@@ -429,6 +432,7 @@ class Personaje(pygame.sprite.Sprite):
         if self.currentAnim=='Stand':
             self.currentState.control = True
             self.currentState.typenumber=0
+            self.currentState.crouch = False
 
         if self.currentAnim != 'Stand' and self.currentAnim != 'Block' and self.currentAnim != 'BackDash' and self.currentAnim != 'BWalk':
             self.currentState.block=False

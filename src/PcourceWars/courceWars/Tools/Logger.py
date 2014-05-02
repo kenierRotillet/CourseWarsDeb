@@ -4,7 +4,7 @@
 
 import time
 
-flag = False
+flag = True
 
 def escribir(texto):
     """método para escribir un mensaje en el log. Simple, y sensillo, recibe la cadena a escribir."""
