@@ -210,7 +210,7 @@ class Personaje(pygame.sprite.Sprite):
 
         if self.currentAnim== 'Down_HighPunch' and (self.currentState.crouch==True):
             self.currentState.control = False
-            if self.framecount==2:
+            if self.framecount==3:
                 Collicion.ejecutarDownHit(self,oponent)
             if  self.currentAnimFrame==len(self.anims[self.currentAnim])-1 and (self.framecount == int(self.anims[self.currentAnim][self.currentAnimFrame][0])):
                 Tools.Logger.escribir("actual estado es golpe agachado " + self.currentAnim + " " +str(self.currentAnimFrame) + " "+ str(self.framecount))
@@ -408,6 +408,13 @@ class Personaje(pygame.sprite.Sprite):
             if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
                 self.currentAnimFrame= 2
                 self.framecount=2
+
+        if self.currentAnim=='Jump':
+            self.currentState.jump=True            
+            if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
+                self.currentAnimFrame= 0
+                self.framecount=0
+
 
     def setSounds(self):
         if self.sounds.has_key(self.currentAnim):

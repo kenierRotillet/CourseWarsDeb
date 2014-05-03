@@ -47,8 +47,8 @@ Down:
 5,Chars/Medic/Sprites/Medic008_002.png
 7,Chars/Medic/Sprites/Medic008_003.png;
 Down_LightPunch:
-2,Chars/Medic/Sprites/Medic009_001.png
-4,Chars/Medic/Sprites//Medic009_002.png;
+3,Chars/Medic/Sprites/Medic009_001.png
+8,Chars/Medic/Sprites//Medic009_002.png;
 Down_HighPunch:
 2,Chars/Medic/Sprites/Medic010_001.png
 4,Chars/Medic/Sprites/Medic010_002.png
