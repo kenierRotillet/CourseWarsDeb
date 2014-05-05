@@ -40,7 +40,8 @@ class Personaje(pygame.sprite.Sprite):
         self.pos = (0,100) #posiciÃ³n por defecto de inicio
         self.flip = False #flag que indica si es necesario o no voltear la imagen
         self.hold = False #flag que se sabe si es un comando que requiere mantener tecla
-        self.hitboxes = "" #diccionario que almasena todos los hitboxes y damageboxes para cada frame de cada animacion
+        self.hitboxes = {} #diccionario que almasena todos los hitboxes y damageboxes para cada frame de cada animacion
+        self.currentHitboxes = [] #lista que almacena los hitboxes del frame actual 
 
         if self.player == 2:
             self.flip=True #si se es jugador dos, habilitar el flip 
@@ -445,3 +446,17 @@ class Personaje(pygame.sprite.Sprite):
             self.currentState.block=False
 
         
+
+    def setHitboxes(self):
+        """ m�todo que setea las hitboxes del frame actual"""
+        if self.hitboxes.has_key(self.currentAnim):
+            frames = self.hitboxes[self.currentAnim]
+            for f in frames:
+                if self.framecount==f[0]:
+                    self.currentHitboxes=f[1]
+                    Tools.Logger.escribir("se cambiaron los hitboxes. hitboxes actuales son: \n" + str(self.currentHitboxes))
+
+
+
+
+        )

@@ -103,6 +103,8 @@ def main(seleccion):
         p2.checkStatus(personaje)
         personaje.setSounds()
         p2.setSounds()
+        personaje.setHitboxes()
+        p2.setHitboxes()
 
 
         personaje.update()
