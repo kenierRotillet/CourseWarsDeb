@@ -455,8 +455,3 @@ class Personaje(pygame.sprite.Sprite):
                 if self.framecount==f[0]:
                     self.currentHitboxes=f[1]
                     Tools.Logger.escribir("se cambiaron los hitboxes. hitboxes actuales son: \n" + str(self.currentHitboxes))
-
-
-
-
-        )
