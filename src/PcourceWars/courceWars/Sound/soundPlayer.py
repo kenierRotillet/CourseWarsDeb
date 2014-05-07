@@ -5,6 +5,8 @@ import pygame
 import Tools.Logger as log
 pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=64)
 
+bgVolume = 0.1
+
 def playSounds(personaje):
     """método qque reproduce la cola de sonidos del personaje entregado, en el frame actual."""
     #log.escribir("en cola hay " + str(len(personaje.currentSounds)))
@@ -25,3 +27,12 @@ def playSounds(personaje):
 def simpleplay(sfx):
     sonido = pygame.mixer.Sound(sfx)
     sonido.play()
+
+def bgmPlay(bgm,vol=bgVolume):
+    pygame.mixer.music.load(bgm)
+    pygame.mixer.music.set_volume(vol)
+    pygame.mixer.music.play(-1)
+
+
+def stopbgm():
+    pygame.mixer.music.stop()

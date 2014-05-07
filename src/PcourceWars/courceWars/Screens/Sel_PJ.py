@@ -10,8 +10,8 @@ screen_h = 768
 
 def main():
     pygame.mixer.init()
-    pygame.mixer.music.load("bgm/BGM_0007.mp3")
-    pygame.mixer.music.play(-1)
+    Sound.soundPlayer.bgmPlay("bgm/BGM_0007.mp3")
+    
 
     pygame.init()
     pygame.mouse.set_visible(False)
@@ -170,7 +170,7 @@ def main():
         screen.blit((vs),(436,300))
         
         cuadro1 = pygame.image.load(Cuadro[v]).convert_alpha()
-        print (str(Cuadro[w]))
+        #print (str(Cuadro[w]))
         cuadro2 = pygame.image.load(Cuadro[w]).convert_alpha()
         screen.blit(cuadro1,(142,100))
         screen.blit(sel_name1,(120,370))

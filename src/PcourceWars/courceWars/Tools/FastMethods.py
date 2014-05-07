@@ -23,7 +23,7 @@ def loadKeys():
     players = data.split(';')
     for p in players:
         plist = []
-        Tools.Logger.escribir("línea dividida por ; " + p)
+        #Tools.Logger.escribir("línea dividida por ; " + p)
         
         if p.startswith('\n') == True:
             p = p[1:]
@@ -31,21 +31,21 @@ def loadKeys():
 
         if p.split(':')[0] == 'p1':
             plist = p1keys
-            Tools.Logger.escribir("analizando teclas del p1")
+            #Tools.Logger.escribir("analizando teclas del p1")
         elif p.split(':')[0] == 'p2':
             plist = p2keys
-            Tools.Logger.escribir("cargando teclas del p2")
+            #Tools.Logger.escribir("cargando teclas del p2")
         else:
-            Tools.Logger.escribir("no es jugador")
+            #Tools.Logger.escribir("no es jugador")
             continue
         for k in p.split(':')[1].split('\n'):
-            Tools.Logger.escribir("analizando la línea " + k)
+            #Tools.Logger.escribir("analizando la línea " + k)
             if len(k) < 2:
                 continue
             plist.append((k.split(',')[0],int(k.split(',')[1])))
 
-    Tools.Logger.escribir(str(p1keys))
-    Tools.Logger.escribir(str(p2keys))
+    #Tools.Logger.escribir(str(p1keys))
+    #Tools.Logger.escribir(str(p2keys))
 
 #Better image loading
 
@@ -131,8 +131,8 @@ def detectKeys(keys):
 
 def convertKeys(keys,p=1):
     """converción de teclas del formato pygame, al formato cws. Sirve para configurar cualquier tecla"""
-    Tools.Logger.escribir("llegaron las teclas")
-    Tools.Logger.escribir(str(keys))
+    #Tools.Logger.escribir("llegaron las teclas")
+    #Tools.Logger.escribir(str(keys))
     #El método se  ejecuta recursivamente en caso de recibir más de una tecla. es para poder escribirlas en el formato x+y en el caso de ser presionadas más de una tecla en el mismo frame, y conciderarse como presión simultánea.
 
     #if para tomar en cuenta las teclas que se presionan al mismo tiempo
@@ -165,11 +165,11 @@ def convertKeys(keys,p=1):
     selectP = p1keys
     if p == 2:
         selectP = p2keys
-        Tools.Logger.escribir("buscando comando de p2")
+        #Tools.Logger.escribir("buscando comando de p2")
 
 
     for k in selectP:
-        Tools.Logger.escribir("comparando tecla ingresada " + str(key) + " con la tecla actual " + str(k))
+        #Tools.Logger.escribir("comparando tecla ingresada " + str(key) + " con la tecla actual " + str(k))
 
         if k[1] == key:
             return k[0]
@@ -281,7 +281,7 @@ def LoadHitboxesData(name):
         #print " su tamaño es: " + str(len(an.split(':')))
         for line in an.split(':')[1].split('}'):
             #print line
-            datos = line.split('{\n')
+            datos = line.split('{')
             #print "datos " + str(datos)
             if len(datos) < 2:
                 continue
@@ -293,7 +293,7 @@ def LoadHitboxesData(name):
                 #print "el k " +str(k)
                 deita = k.split(',')
                 if len(deita) > 3:
-                    boxes.append((deita[0],deita[1],deita[2],deita[3],deita[4]))
+                    boxes.append((deita[0],int(deita[1]),int(deita[2]),int(deita[3]),int(deita[4])))
             animdata.append((frame,boxes))
         #se añade la información optenida
         anims[animname] = animdata

@@ -9,26 +9,29 @@ screen_h = 768
 
 def main():
     pygame.mixer.init(frequency= 22050, size=-16, channels=2, buffer=64)
-    pygame.mixer.music.load("bgm/Title.mp3")
-    pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(0.3)
 
+    
     
     pygame.init()
     pygame.mouse.set_visible(False)
+    print "crash"
     estado_pj1 = 0
     estado_pj2 = 0
     ID_pj1 = False
     ID_pj2 = False
     contador = 0
+    print "precrash?"
     screen = pygame.display.set_mode((screen_w,screen_h),FULLSCREEN)
     #screen = pygame.display.set_mode((screen_w,screen_h))
     v = 0
+    print "todabia no crash"
     pygame.display.set_caption("Course_Wars")
+    print "ya cago"
     Fondo={}
     Fondo[0]=("screens/start_menu/Fondo_Start1.jpg")
     Fondo[1]=("screens/start_menu/Fondo_Start2.jpg")     
-    Salida = False 
+    Salida = False
+    Sound.soundPlayer.bgmPlay("bgm/Title.mp3")
     while Salida==False:
         for event in pygame.event.get():
             if event.type == KEYDOWN:

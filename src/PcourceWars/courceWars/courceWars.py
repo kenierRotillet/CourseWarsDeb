@@ -18,7 +18,7 @@ pygame.display.init()
 
 print "start"
 
-print("fin")
+
 #raw_input()
 
 
@@ -30,13 +30,11 @@ player = Screens.Start_Menu.main()
 pygame.init()
 
 seleccion = Screens.Sel_PJ.main()
-print seleccion
+#print seleccion
 #raw_input()
-pygame.mixer.music.load("bgm/Mighty Wind.mp3")
-pygame.mixer.music.play(-1)
-pygame.mixer.music.set_volume(0.3)
 
 Screens.PlayWindow.main(seleccion)
 
 
 
+print("fin")

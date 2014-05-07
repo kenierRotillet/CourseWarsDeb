@@ -54,6 +54,7 @@ def main(seleccion):
     #fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_09.jpg")
     Salida = False
     fps = 40
+    Sound.soundPlayer.bgmPlay("bgm/battle"+str(mapa)+".mp3")
     while Salida==False:
         #print("posp1" + str(personaje.pos[0]) + ", " + str(personaje.pos[1]))
         #print("posp2" + str(p2.pos[0]) + ", " + str(p2.pos[1]))
