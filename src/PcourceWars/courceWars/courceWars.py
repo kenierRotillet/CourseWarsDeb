@@ -11,30 +11,38 @@ import Tools
 import Screens
 import Sound
 
-pygame.init()
+
+try:
+
+    pygame.init()
 
 
-pygame.display.init()
+    pygame.display.init()
 
-print "start"
-
-
-#raw_input()
+    print "start"
 
 
-
-
-Tools.FastMethods.loadKeys()
-
-player = Screens.Start_Menu.main()
-pygame.init()
-
-seleccion = Screens.Sel_PJ.main()
-#print seleccion
-#raw_input()
-
-Screens.PlayWindow.main(seleccion)
+    #raw_input()
 
 
 
-print("fin")
+
+    Tools.FastMethods.loadKeys()
+
+    player = Screens.Start_Menu.main()
+    pygame.init()
+
+    seleccion = Screens.Sel_PJ.main()
+    #print seleccion
+    #raw_input()
+
+    Screens.PlayWindow.main(seleccion)
+
+
+
+    print("fin")
+except Exception, mes:
+    print "error en la ejecución. Traceback en el log"
+    Sound.soundPlayer.simpleplay("sfx/error.wav")
+    Tools.Logger.escribir(str(mes))
+
