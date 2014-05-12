@@ -10,7 +10,7 @@ import Collicion
 
 class Personaje(pygame.sprite.Sprite):
     """ Clase de personaje. Recibe nÃºmero de jugador """
-    def __init__(self, player):
+    def __init__(self, player,initPos):
         pygame.sprite.Sprite.__init__(self)
         """constructor de la clase del personaje. maneja y tiene todas las funcionalidades en comÃºn para cada personaje, como reconocimiento de convinaciÃ³n de teclas, actualizaciÃ³n de frames, interpretaciÃ³n de sonidos y programaciÃ³n de movimientos comunes."""
 
@@ -41,8 +41,10 @@ class Personaje(pygame.sprite.Sprite):
         self.flip = False #flag que indica si es necesario o no voltear la imagen
         self.hold = False #flag que se sabe si es un comando que requiere mantener tecla
         self.hitboxes = {} #diccionario que almasena todos los hitboxes y damageboxes para cada frame de cada animacion
-        self.currentHitboxes = [] #lista que almacena los hitboxes del frame actual 
+        self.currentHitboxes = [] #lista que almacena los hitboxes del frame actual
+        self.pos=(0,0)
 
+        
         if self.player == 2:
             self.flip=True #si se es jugador dos, habilitar el flip 
 
@@ -449,9 +451,18 @@ class Personaje(pygame.sprite.Sprite):
 
     def setHitboxes(self):
         """ m�todo que setea las hitboxes del frame actual"""
+        self.currentHitboxes=[]
         if self.hitboxes.has_key(self.currentAnim):
             frames = self.hitboxes[self.currentAnim]
             for f in frames:
                 if self.framecount==f[0]:
                     self.currentHitboxes=f[1]
                     Tools.Logger.escribir("se cambiaron los hitboxes. hitboxes actuales son: \n" + str(self.currentHitboxes))
+
+        if self.flip==True:
+            for h in self.currentHitboxes:
+                h[1]=-1*h[1]
+                h[2]=-1*h[2]
+
+
+

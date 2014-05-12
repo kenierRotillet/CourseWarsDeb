@@ -293,7 +293,7 @@ def LoadHitboxesData(name):
                 #print "el k " +str(k)
                 deita = k.split(',')
                 if len(deita) > 3:
-                    boxes.append((deita[0],int(deita[1]),int(deita[2]),int(deita[3]),int(deita[4])))
+                    boxes.append([deita[0],int(deita[1]),int(deita[2]),int(deita[3]),int(deita[4])])
             animdata.append((frame,boxes))
         #se añade la información optenida
         anims[animname] = animdata

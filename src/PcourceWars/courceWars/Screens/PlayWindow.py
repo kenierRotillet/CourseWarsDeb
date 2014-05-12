@@ -16,12 +16,14 @@ def main(seleccion):
     pygame.init()
     
 
-    pantalla = pygame.display.set_mode((screen_w,screen_h))
+    pantalla = pygame.display.set_mode((screen_w,screen_h), FULLSCREEN)
+    posInicialP1= (100,420)
+    posInicialP2=(600,420)
     if seleccion[0] == 3:
 
-        personaje = Core.Medic.Medic(1,(-50,200))
+        personaje = Core.Medic.Medic(1,posInicialP1)
     elif seleccion[0] == 1:
-        personaje = Core.Engineer.Engineer(1,(-50,200))
+        personaje = Core.Engineer.Engineer(1,posInicialP1)
     else:
         print ("error en la selección de personajes. no existe el index "+str(seleccion[0]))
         
@@ -32,9 +34,9 @@ def main(seleccion):
 
     if seleccion[1] == 3:
 
-        p2 = Core.Medic.Medic(2,(400,200))
+        p2 = Core.Medic.Medic(2,posInicialP2)
     elif seleccion[1] == 1:
-        p2 = Core.Engineer.Engineer(2,(400,200))
+        p2 = Core.Engineer.Engineer(2,posInicialP2)
     else:
         print ("error en la selección de personajes. no existe el index "+str(seleccion[1]))
         Sound.soundPlayer.simpleplay("sfx/error.wav")
@@ -116,8 +118,8 @@ def main(seleccion):
 
         personaje.update()
         p2.update()
-        rc1 = pantalla.blit(personaje.image,personaje.rect.center)
-        rc2 = pantalla.blit(p2.image,p2.rect.center)
+        rc1 = pantalla.blit(personaje.image,personaje.rect)
+        rc2 = pantalla.blit(p2.image,p2.rect)
         personaje.DoAction(p2)
         p2.DoAction(personaje)
 
@@ -159,15 +161,16 @@ def main(seleccion):
 
 def putHitboxes(screen,cajas,rect):
     for h in cajas:
-        #hitbox = pygame.rect.Rect(0,0,h[3],h[4])
-        hitbox = pygame.rect.Rect(rect)
+        hitbox = pygame.rect.Rect(rect.left,rect.top,h[3],h[4])
         
         
+        hitbox.center = (h[1]+rect.centerx,h[2]+rect.centery)
         if h[0] == 'd':
             rgb = [255,0,0]
         else:
             rgb = [0,0,255]
-        print (str(rect)+" y original" + str(rect))
-        pygame.draw.rect(screen,rgb,hitbox)
+        print (str(hitbox)+", centro " + str(rect.center) + "  y original" + str(rect) + ", centro " + str(rect.center))
+        fin = pygame.draw.rect(screen,rgb,hitbox,2)
+        print("resultante " + str(fin) + ", centro " + str(fin.center))
         
 
