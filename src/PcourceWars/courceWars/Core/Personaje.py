@@ -451,7 +451,7 @@ class Personaje(pygame.sprite.Sprite):
 
     def setHitboxes(self):
         """ método que setea las hitboxes del frame actual"""
-        self.currentHitboxes=[]
+        
         if self.hitboxes.has_key(self.currentAnim):
             frames = self.hitboxes[self.currentAnim]
             for f in frames:
@@ -459,10 +459,13 @@ class Personaje(pygame.sprite.Sprite):
                     self.currentHitboxes=f[1]
                     Tools.Logger.escribir("se cambiaron los hitboxes. hitboxes actuales son: \n" + str(self.currentHitboxes))
 
-        if self.flip==True:
-            for h in self.currentHitboxes:
-                h[1]=-1*h[1]
-                h[2]=-1*h[2]
+            if self.flip==True:
+                for h in self.currentHitboxes:
+                    h[1]=-1*h[1]
+                
+
+        else:
+            self.currentHitboxes=[]
 
 
 
