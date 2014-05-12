@@ -116,8 +116,8 @@ def main(seleccion):
 
         personaje.update()
         p2.update()
-        pantalla.blit(personaje.image,personaje.rect.center)
-        pantalla.blit(p2.image,p2.rect.center)
+        rc1 = pantalla.blit(personaje.image,personaje.rect.center)
+        rc2 = pantalla.blit(p2.image,p2.rect.center)
         personaje.DoAction(p2)
         p2.DoAction(personaje)
 
@@ -130,8 +130,11 @@ def main(seleccion):
 
         
         if hitboxesDebug==True:
-            putHitboxes(pantalla, personaje.currentHitboxes,personaje.pos)
-            putHitboxes(pantalla,p2.currentHitboxes,p2.pos)
+            print("rect p1" + str(rc1) + " centro " + str(rc1.center))
+            print("rect p2 " + str(rc2) + " y el centro " + str(rc2.center))
+
+            putHitboxes(pantalla, personaje.currentHitboxes,personaje.rect)
+            putHitboxes(pantalla,p2.currentHitboxes,p2.rect)
 
         pygame.display.flip()
 
@@ -154,16 +157,17 @@ def main(seleccion):
 
 
 
-def putHitboxes(screen,cajas,pos):
+def putHitboxes(screen,cajas,rect):
     for h in cajas:
-        hitbox = pygame.rect.Rect(0,0,h[3],h[4])
-        hitbox.center = (pos[0],pos[1])
+        #hitbox = pygame.rect.Rect(0,0,h[3],h[4])
+        hitbox = pygame.rect.Rect(rect)
+        
         
         if h[0] == 'd':
             rgb = [255,0,0]
         else:
             rgb = [0,0,255]
-        print (str(hitbox.center)+" y original" + str(pos))
+        print (str(rect)+" y original" + str(rect))
         pygame.draw.rect(screen,rgb,hitbox)
         
 
