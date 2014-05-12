@@ -6,6 +6,8 @@ import Tools
 import Core
 import Sound
 import random
+import pygame.draw
+
 screen_w = 1024
 screen_h = 768
 
@@ -49,6 +51,7 @@ def main(seleccion):
     tiempo = 0
     teclastotales = []
     teclastotalesp2=[]
+    hitboxesDebug=False
     mapa = random.randint(1,9)
     fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_0"+str(mapa)+".jpg")
     #fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_09.jpg")
@@ -79,6 +82,9 @@ def main(seleccion):
                     if fps <1:
                         fps=5
 
+                elif event.key == K_F10:
+                    hitboxesDebug= not hitboxesDebug
+                    print("modo debug = " + str(hitboxesDebug))
                 else:
                     teclas.append(event.key)
             if event.type == KEYUP:
@@ -123,6 +129,9 @@ def main(seleccion):
 
 
         
+        if hitboxesDebug==True:
+            putHitboxes(pantalla, personaje.currentHitboxes,personaje.pos)
+            putHitboxes(pantalla,p2.currentHitboxes,p2.pos)
 
         pygame.display.flip()
 
@@ -143,4 +152,18 @@ def main(seleccion):
 
 
 
+
+
+def putHitboxes(screen,cajas,pos):
+    for h in cajas:
+        hitbox = pygame.rect.Rect(0,0,h[3],h[4])
+        hitbox.center = (pos[0],pos[1])
+        
+        if h[0] == 'd':
+            rgb = [255,0,0]
+        else:
+            rgb = [0,0,255]
+        print (str(hitbox.center)+" y original" + str(pos))
+        pygame.draw.rect(screen,rgb,hitbox)
+        
 
