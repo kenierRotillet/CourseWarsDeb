@@ -8,4 +8,3 @@ Taunt:1:s
 Walk:1:F
 BWalk:1:B
 Down:1:D
-Jump:1:U

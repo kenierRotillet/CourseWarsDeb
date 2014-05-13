@@ -16,7 +16,7 @@ def main(seleccion):
     pygame.init()
     
 
-    pantalla = pygame.display.set_mode((screen_w,screen_h), FULLSCREEN)
+    pantalla = pygame.display.set_mode((screen_w,screen_h))
     posInicialP1= (100,420)
     posInicialP2=(600,420)
     if seleccion[0] == 3:
