@@ -1,3 +1,10 @@
+#archivo de animaciones para el ingeniero
+#todas las líneas que empiezan con # son comentarios
+#cada animación se define de la siguiente manera
+#nombre de animación:
+#NúmeroDeFrameDesdeEl cual se carga la imagen, ruta completa de la imagen
+#siguiente entrada similar
+#frame,ruta;
 Stand:
 3,Chars/Engineer/Sprites/Enginer000_001.png
 7,Chars/Engineer/Sprites/Enginer000_002.png

@@ -462,7 +462,7 @@ class Personaje(pygame.sprite.Sprite):
             if self.flip==True:
                 for h in self.currentHitboxes:
                     h[1]=-1*h[1]
-                
+                    
 
         else:
             self.currentHitboxes=[]
