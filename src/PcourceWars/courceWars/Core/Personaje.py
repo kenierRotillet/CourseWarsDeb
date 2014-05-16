@@ -21,6 +21,8 @@ class Personaje(pygame.sprite.Sprite):
         self.deff= 100 #valor de defensa  para cÃ¡lculo de daÃ±o futuro
         self.power=0 #cantidad de carga inicial
         self.maxpower=100 #cantidad de poder mÃ¡ximo
+        self.topWidth = 1024
+        self.topHeight = 768
 
         self.anims = {} #diccionario de animaciones
         self.sounds = {} #diccionario de sonidos por animaciÃ³n 
@@ -52,9 +54,43 @@ class Personaje(pygame.sprite.Sprite):
 
 
 
-    def move(self, x,y):
-        """m�todo para mover la posici�n """
-        self.pos=(self.pos[0]+x,self.pos[1]+y)
+    def move(self, xmove,ymove, tope):
+        """m�todo para mover la posici�n del personaje. Retorna true si el movimiento fue completo, retorna False en el caso de que el movimiento se interrumpiese."""
+        exito=True
+        val = self.rect
+        xfactor = 1
+        yfactor = 1
+        if xmove < 0:
+            xfactor=-1
+        if ymove < 0:
+            yfactor=-1
+        for x in range(0,abs(xmove)):
+            val.centerx = val.centerx+xfactor
+            if val.left < 0 or val.right > self.topWidth or val.colliderect(tope) == True:
+                val.centerx = val.centerx - xfactor
+                exito=False
+                break
+        for y in range(0,abs(ymove)):
+            val.centery = val.centery+yfactor
+            if val.centery > self.topHeight or val.centery < 0 or val.colliderect(tope) == True:
+                val.centery = val.centery - yfactor
+                exito=False
+                break
+
+            
+        self.rect = val
+        self.pos = self.rect.center
+        return exito
+    
+
+
+
+
+
+            
+            
+
+        
         
         
         
@@ -168,7 +204,7 @@ class Personaje(pygame.sprite.Sprite):
 
         """mÃ©todo en el cual se programan cada uno de los movimientos de los ataques y acciones bÃ¡sicas de un personaje, movimiento, golpes bÃ¡sicos, y coliciones. El mÃ©todo recibe al oponente, siendo capaz de alterar su posiciÃ³n y estado, e incluso animaciÃ³n."""
 
-        Tools.Logger.escribir("actual estado es " + self.currentAnim)
+        Tools.Logger.escribir("ugador " + str(self.player) + ": actual estado es: " + self.currentAnim + " \n posicion: " + str(self.pos) + ", y rect: " + str(self.rect) + ", centro " + str(self.rect.center))
         
         if self.currentAnim == 'LightPunch':
             if self.currentState.crouch==True:
@@ -209,7 +245,7 @@ class Personaje(pygame.sprite.Sprite):
                 self.framecount=0
                 self.currentAnim='Down'                
                 self.currentState.crouch=True
-                Tools.Logger.escribir("actual estado es abajo debil " + self.currentAnim)
+                Tools.Logger.escribir(" estado abajo")
 
         if self.currentAnim== 'Down_HighPunch' and (self.currentState.crouch==True):
             self.currentState.control = False
@@ -225,187 +261,71 @@ class Personaje(pygame.sprite.Sprite):
                 
 
         if self.currentAnim=='Walk':
-            
+            fin =False
             if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
                 self.currentAnimFrame= 0
                 self.framecount=0
-
-
-
-            if pygame.sprite.collide_mask(self,oponent) != None:
-                #Tools.Logger.escribir("ubo coliciÃ³n! no se puede avanzar")
-                #Tools.Logger.escribir(str(pygame.sprite.collide_mask(self,oponent)))
-                #Tools.Logger.escribir("datos de los rectÃ¡ngulos: " + str(self.mask) + " y " + str(oponent.mask))
-                #Tools.Logger.escribir("sus posisiones son " + str(self.pos) + " y " + str(oponent.pos) + " y segÃºn rectÃ¡ngulos: " + str(self.rect.center) + " y " + str(oponent.rect.center))
-
-
-
-                self.currentState.control=True
-                self.currentAnim=self.staticAnim
-                self.framecount=0
-                self.currentAnimFrame=0
+            if self.flip==True:
+                fin = self.move(-1*self.maxSpeed,0,oponent.rect)
             else:
+                fin = self.move(self.maxSpeed,0,oponent.rect)
+            if fin == True:
+                self.currentAnim='Stand'
+                self.currentState.control=True
 
-                for i in range(0,self.maxSpeed):
-                    oldpos=self.pos
-                    oldrect=self.rect
-                    oldmask = self.mask
-                    if self.flip==True:
-                        self.pos=(self.pos[0]-1,self.pos[1])
-                    else:
 
-                        self.pos=(self.pos[0]+1,self.pos[1])
-                    self.rect.center=self.pos
-                    self.mask=pygame.mask.from_surface(self.image)
 
-                    if pygame.sprite.collide_mask(self,oponent) != None:
-                        self.pos=oldpos
-                        self.rect=oldrect
-                        self.mask=oldmask
-                        self.currentAnim=self.staticAnim
-                        self.framecount=0
-                        self.currentAnimFrame=0
-                        self.currentState.control=True
-                        self.framecount=0
-                        break
-
-                
 
 
         if self.currentAnim=="BWalk":
             
             self.currentState.block=True
+            fin = False
             if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
                 self.currentAnimFrame= 0
                 self.framecount=0
-            
-            if  self.flip:
-                for i in range(0,self.maxSpeed):
-                    oldpos=self.pos
-                    oldrect=self.rect
-                    oldmask = self.mask
-                    self.pos=(self.pos[0]+1,self.pos[1])
-                    self.rect.center=self.pos
-                    self.mask=pygame.mask.from_surface(self.image)
-
-                    if self.pos[0] >= 620:
-                        self.pos=oldpos
-                        self.rect=oldrect
-                        self.mask=oldmask
-                        self.currentAnim=self.staticAnim
-                        self.framecount=0
-                        self.currentAnimFrame=0
-                        break
-
+            if self.flip==True:
+                fin = self.move(self.maxSpeed,0,oponent.rect)
             else:
-                for i in range(0,self.maxSpeed):
-                    oldpos=self.pos
-                    oldrect=self.rect
-                    oldmask = self.mask
-                    self.pos=(self.pos[0]-1,self.pos[1])
-                    self.rect.center=self.pos
-                    self.mask=pygame.mask.from_surface(self.image)
+                fin = self.move(-1*self.maxSpeed,0,oponent.rect)
+            if fin == True:
+                self.currentState.control=True
+                self.currentAnim='Stand'
 
-                    if self.pos[0] <= -260:
-                        self.pos=oldpos
-                        self.rect=oldrect
-                        self.mask=oldmask
-                        self.currentAnim=self.staticAnim
-                        self.framecount=0
-                        self.currentAnimFrame=0
-                        break
+
 
 
 
         if self.currentAnim == 'FrontDash':
-            
+            fin = False
             if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
                 self.currentAnimFrame= 0
                 self.framecount=0
-
-            if pygame.sprite.collide_mask(self,oponent) != None:
-                self.currentState.control=True
-                self.currentAnim=self.staticAnim
-                self.framecount=0
-                self.currentAnimFrame=0
+            if self.flip==True:
+                fin = self.move(-1*self.dashspeed,0,oponent.rect)
             else:
+                fin = self.move(self.dashspeed,0,oponent.rect)
+            if fin == True:
+                self.currentAnim='Stand'
+                self.currentState.control=True
 
-                for i in range(0,self.dashspeed):
-                    oldpos=self.pos
-                    oldrect=self.rect
-                    oldmask = self.mask
-                    if self.flip==True:
-                        self.pos=(self.pos[0]-i,self.pos[1])
-                    else:
-
-                        self.pos=(self.pos[0]+i,self.pos[1])
-                    self.rect.center=self.pos
-                    self.mask=pygame.mask.from_surface(self.image)
-
-                    if pygame.sprite.collide_mask(self,oponent) != None:
-                        self.pos=(self.pos[0]+42,self.pos[1])
-                        self.rect.center=self.pos
-                        self.mask=pygame.mask.from_surface(self.image)
-                        #self.pos=oldpos
-                        #self.rect=oldrect
-                        #self.mask=oldmask
-                        self.currentAnim=self.staticAnim
-                        self.framecount=0
-                        self.currentAnimFrame=0
-                        self.currentState.control=True
-                        self.framecount=0
-                        break
 
         if self.currentAnim=="BackDash":           
             
 
             self.currentState.block=True
+            fin = False
             if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
                 self.currentAnimFrame= 0
                 self.framecount=0
-            
-            if  self.flip:
-                for i in range(0,self.dashspeed):
-                    oldpos=self.pos
-                    oldrect=self.rect
-                    oldmask = self.mask
-                    self.pos=(self.pos[0]+3,self.pos[1])
-                    self.rect.center=self.pos
-                    self.mask=pygame.mask.from_surface(self.image)
-
-                    if self.pos[0] >= 620:
-                        self.pos=oldpos
-                        self.rect=oldrect
-                        self.mask=oldmask
-                        self.currentAnim=self.staticAnim
-                        self.framecount=0
-                        self.currentAnimFrame=0
-                        self.currentState.control=True
-                        self.framecount=0
-                        self.currentState.block=False
-                        break
-
+            if self.flip==True:
+                fin = self.move(self.dashspeed,0,oponent.rect)
             else:
-                for i in range(0,self.dashspeed):
-                    oldpos=self.pos
-                    oldrect=self.rect
-                    oldmask = self.mask
-                    self.pos=(self.pos[0]-3,self.pos[1])
-                    self.rect.center=self.pos
-                    self.mask=pygame.mask.from_surface(self.image)
+                fin = self.move(-1*self.dashspeed,0,oponent.rect)
+            if fin == True:
+                self.currentAnim='Stand'
+                self.currentState.control=True 
 
-                    if self.pos[0] <= -260:
-                        self.pos=oldpos
-                        self.rect=oldrect
-                        self.mask=oldmask
-                        self.currentAnim=self.staticAnim
-                        self.framecount=0
-                        self.currentAnimFrame=0
-                        self.currentState.control=True
-                        self.framecount=0
-                        self.currentState.block=False
-                        break
-                    
         if self.currentAnim=="Down":
             self.currentState.crouch = True
             if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
@@ -457,15 +377,20 @@ class Personaje(pygame.sprite.Sprite):
             for f in frames:
                 if self.framecount==f[0]:
                     self.currentHitboxes=f[1]
-                    Tools.Logger.escribir("se cambiaron los hitboxes. hitboxes actuales son: \n" + str(self.currentHitboxes))
+                    break
 
             if self.flip==True:
                 for h in self.currentHitboxes:
                     h[1]=-1*h[1]
                     
+            Tools.Logger.escribir("se cambiaron los hitboxes. hitboxes actuales son: \n" + str(self.currentHitboxes))
 
         else:
             self.currentHitboxes=[]
 
 
 
+
+    def setTop(self,w,h):
+        self.topHeight=h
+        self.topWidth=w

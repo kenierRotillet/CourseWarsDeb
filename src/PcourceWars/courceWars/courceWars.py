@@ -4,12 +4,21 @@
 Módulo principal, se encarga de llevar el control y flujo del juego, además de conectar el núcleo con la visualización"""
 import pygame
 pygame.init()
-
+import logging
 import Core
 import Tools
 
 import Screens
 import Sound
+
+log = logging.getLogger("theLogger")
+log.setLevel(logging.DEBUG)
+h1 = logging.FileHandler("log.log")
+f = logging.Formatter("%(levelname)s %(asctime)s %(funcName)s %(lineno)d %(message)s")
+h1.setFormatter(f)
+h1.setLevel(logging.DEBUG)
+log.addHandler(h1)
+
 
 
 try:
@@ -44,5 +53,6 @@ try:
 except Exception, mes:
     print "error en la ejecución. Traceback en el log"
     Sound.soundPlayer.simpleplay("sfx/error.wav")
-    Tools.Logger.escribir(str(mes))
+    Tools.Logger.escribir("error: " + str(mes))
+    log.exception("datos del error")
 
