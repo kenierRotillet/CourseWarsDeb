@@ -15,11 +15,8 @@ p2keys = []
 
 #carga de teclas
 def loadKeys():
-    arch = open("cfg/keis.ini",'r')
-    data = ""
-    for i in arch:
-        data+=i
-    arch.close()
+    
+    data = loadFile("cfg/keis.ini")
     players = data.split(';')
     for p in players:
         plist = []
@@ -84,13 +81,8 @@ def LoadAnimData(name):
 
     anims = {}
     #carga del archivo
-    arch = open(name,'r')
-    data = ""
-    for i in arch:
-        data+=i
-        #print i
-        
-    arch.close()
+    
+    data = loadFile(name)
     #Separación de cada movimiento en una entrada de animsdata
     animsdata = data.split(';')
     #raw_input()
@@ -180,12 +172,8 @@ def convertKeys(keys,p=1):
 
 def load_commands(name):
     """método para la carga de comandos de los movimientos, a partir de los archivos *.cmd . Los nombres de movimientos deben de coincidir con los de las animaciones para funcionar todo bien. La secuencia de teclas se cargan utilizando los nombres empleados en convertKeys."""
-    all = ""
-    arch = open(name,'r')
-    for line in arch:
-        all+=line
-
-    arch.close()
+    all = loadFile(name)
+    
     cmds = all.split('\n')
     commands = {}
     for cmd in cmds:
@@ -199,24 +187,12 @@ def load_commands(name):
         commands[cmdname] = (cmdtime,cmdkeys)
     return commands
 
-def PlayAux(pl = 0):
-    """método para acciones auxiliares de debug"""
-
-    lala="lala"
-    
-
-
-
-
 def LoadSounds(name):
     """método de carga de sonidos, a través de los archivos *.snd. cada sonido se asocia con una animación a través de los nombres."""
     sounds = {}
-    arch = open(name,'r')
-    data = ""
-    for i in arch:
-        data+=i
-        #print i
-    arch.close()
+    
+    data = loadFile(name)
+
     soundsdata = data.split(';')
     #raw_input()
 
@@ -254,13 +230,8 @@ def LoadHitboxesData(name):
 
     anims = {}
     #carga del archivo
-    arch = open(name,'r')
-    data = ""
-    for i in arch:
-        data+=i
-        #print i
-        
-    arch.close()
+    
+    data = loadFile(name)
     #Separación de cada movimiento en una entrada de animsdata
     animsdata = data.split(';')
     #raw_input()
@@ -303,3 +274,16 @@ def LoadHitboxesData(name):
     return anims
 
 
+
+def loadFile(name):
+    """Méotodo generalizado para cargas de archivo. rechasa las líneas que inician con #"""
+    arch = open(name,'r')
+    data = ""
+    for i in arch:
+        if(i.startswith("#") == False and len(i) > 1):
+
+            data+=i
+        #print i
+        
+    arch.close()
+    return data
