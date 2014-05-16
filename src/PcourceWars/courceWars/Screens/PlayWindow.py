@@ -55,8 +55,8 @@ def main(seleccion):
     teclastotalesp2=[]
     hitboxesDebug=False
     mapa = random.randint(1,9)
-    fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_0"+str(mapa)+".jpg")
-    #fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_09.jpg")
+    fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_0"+str(mapa)+".png")
+    #fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_09.png")
     Salida = False
     fps = 40
     Sound.soundPlayer.bgmPlay("bgm/battle"+str(mapa)+".mp3")
