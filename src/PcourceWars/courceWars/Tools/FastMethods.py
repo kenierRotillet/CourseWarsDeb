@@ -62,7 +62,7 @@ def load_image(name, colorkey=None,resize=False,flip=False):
     image = image.convert_alpha()
     if resize == True:
         #Aumento de tamaño de la imagen
-        image = pygame.transform.scale(image,(700,700))
+        image = pygame.transform.scale(image,(500,500))
 
     if colorkey is not None:
         #Aplicación del colorkey

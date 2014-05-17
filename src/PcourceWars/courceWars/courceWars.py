@@ -2,6 +2,16 @@
 # -*        - coding: latin-1 -*-
 """ CourceWars: fighter en desarrollo para el proyecto recistencia arcade.
 Módulo principal, se encarga de llevar el control y flujo del juego, además de conectar el núcleo con la visualización"""
+import os
+
+recetLog=True
+if recetLog==True:
+    try:
+        os.remove("log.log")
+    except:
+        pass
+
+
 import pygame
 pygame.init()
 import logging
@@ -11,15 +21,8 @@ import Tools
 import Screens
 import Sound
 
+
 log = logging.getLogger("theLogger")
-log.setLevel(logging.DEBUG)
-h1 = logging.FileHandler("log.log")
-f = logging.Formatter("%(levelname)s %(asctime)s %(funcName)s %(lineno)d %(message)s")
-h1.setFormatter(f)
-h1.setLevel(logging.DEBUG)
-log.addHandler(h1)
-
-
 
 try:
 

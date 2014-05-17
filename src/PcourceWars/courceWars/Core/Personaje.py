@@ -39,24 +39,25 @@ class Personaje(pygame.sprite.Sprite):
         self.rect = "" #rect representante del sprite
         self.mask = "" #mÃƒÂ¡scara reprecentante de la imagen del sprite
         self.currentAnimFrame=0 #nÃƒÂºmero de imagen actual de la animaciÃƒÂ³n actual
-        self.pos = (0,100) #posiciÃƒÂ³n por defecto de inicio
+        self.pos = (0,0) #posiciÃƒÂ³n por defecto de inicio
         self.flip = False #flag que indica si es necesario o no voltear la imagen
         self.hold = False #flag que se sabe si es un comando que requiere mantener tecla
         self.hitboxes = {} #diccionario que almasena todos los hitboxes y damageboxes para cada frame de cada animacion
         self.currentHitboxes = [] #lista que almacena los hitboxes del frame actual
-        self.pos=(0,0)
+        
 
         
         if self.player == 2:
             self.flip=True #si se es jugador dos, habilitar el flip 
 
-        
+        Tools.Logger.escribir("inicializando jugador " + str(self.player) + " con datos por defecto " + str(self) + " con posición " + str(initPos))
 
 
 
     def move(self, xmove,ymove, tope):
         """método para mover la posición del personaje. Retorna true si el movimiento fue completo, retorna False en el caso de que el movimiento se interrumpiese."""
-        exito=True
+        Tools.Logger.escribir("moviendo en el vector: " + str(xmove) + ", " + str(ymove)) 
+        malo=False
         val = self.rect
         xfactor = 1
         yfactor = 1
@@ -67,20 +68,22 @@ class Personaje(pygame.sprite.Sprite):
         for x in range(0,abs(xmove)):
             val.centerx = val.centerx+xfactor
             if val.left < 0 or val.right > self.topWidth or val.colliderect(tope) == True:
+                Tools.Logger.escribir("Rechasado avance, valor actual" + str(val) + ", con valor de colición" + str(val.colliderect(tope)) + " y el tope: " + str(tope))
                 val.centerx = val.centerx - xfactor
-                exito=False
+                malo=True
                 break
         for y in range(0,abs(ymove)):
             val.centery = val.centery+yfactor
             if val.centery > self.topHeight or val.centery < 0 or val.colliderect(tope) == True:
+                Tools.Logger.escribir("Rechasado avance, valor actual" + str(val) + ", con valor de colición" + str(val.colliderect(tope)) + " y el tope: " + str(tope))
                 val.centery = val.centery - yfactor
-                exito=False
+                malo=True
                 break
 
             
         self.rect = val
         self.pos = self.rect.center
-        return exito
+        return malo
     
 
 
@@ -97,7 +100,7 @@ class Personaje(pygame.sprite.Sprite):
 
 
     def update(self):
-        
+        #Tools.Logger.escribir(self.statusText() + " actualizando imagen: \n animación: " + self.currentAnim + ", número de imagen: " + str(self.currentAnimFrame) + " y número de frame: " + str(self.framecount))
         if (self.currentAnimFrame > len(self.anims[self.currentAnim])-1):
             self.framecount=0
             self.currentAnim=self.staticAnim
@@ -115,10 +118,12 @@ class Personaje(pygame.sprite.Sprite):
 
             else:
                 self.framecount+=1
+        
         self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1],None,True, self.flip)
+        
         self.mask=pygame.mask.from_surface(self.image)
         self.rect.center=self.pos
-        #Tools.Logger.escribir("animacion " + self.currentAnim + ", en su imagen " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
+        #Tools.Logger.escribir(self.statusText() +  " imagen de animación: " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
 
 
 
@@ -204,14 +209,14 @@ class Personaje(pygame.sprite.Sprite):
 
         """mÃƒÂ©todo en el cual se programan cada uno de los movimientos de los ataques y acciones bÃƒÂ¡sicas de un personaje, movimiento, golpes bÃƒÂ¡sicos, y coliciones. El mÃƒÂ©todo recibe al oponente, siendo capaz de alterar su posiciÃƒÂ³n y estado, e incluso animaciÃƒÂ³n."""
 
-        Tools.Logger.escribir("ugador " + str(self.player) + ": actual estado es: " + self.currentAnim + " \n posicion: " + str(self.pos) + ", y rect: " + str(self.rect) + ", centro " + str(self.rect.center))
+        
         
         if self.currentAnim == 'LightPunch':
             if self.currentState.crouch==True:
                 self.currentAnim = 'Down_LightPunch'
                 return
             self.currentState.control = False
-            Tools.Logger.escribir("comprovando golpes")
+            #Tools.Logger.escribir("comprovando golpes")
             if self.framecount==2:
                 Collicion.ejecutarHit(self,oponent)
                     
@@ -221,7 +226,7 @@ class Personaje(pygame.sprite.Sprite):
                 self.currentAnim = 'Down_LightPunch'
                 return
             self.currentState.control = False
-            Tools.Logger.escribir("comprovando golpes")
+            #Tools.Logger.escribir("comprovando golpes")
             if self.framecount==2:
                 Collicion.ejecutarHit(self,oponent)
 
@@ -230,7 +235,7 @@ class Personaje(pygame.sprite.Sprite):
                 self.currentAnim = 'Down_HighPunch'
                 return
             self.currentState.control = False
-            Tools.Logger.escribir("comprovando golpes")
+            #Tools.Logger.escribir("comprovando golpes")
             if self.framecount==2:
                 Collicion.ejecutarHit(self,oponent)
 
@@ -261,7 +266,7 @@ class Personaje(pygame.sprite.Sprite):
                 
 
         if self.currentAnim=='Walk':
-            fin =False
+            fin = False
             if self.currentAnimFrame == len(self.anims[self.currentAnim])-1:
                 self.currentAnimFrame= 0
                 self.framecount=0
@@ -347,12 +352,15 @@ class Personaje(pygame.sprite.Sprite):
                     if self.currentState.flags.has_key('Hit'):
                         self.currentSounds.append(snditem[2])
                         del self.currentState.flags['Hit']
+        #Tools.Logger.escribir(self.statusText() + ", seteados los sonidos")
+
 
 
 
 
     def checkStatus(self, oponent):
         """Método que chequea el estado del personaje (observando al oponente) tanto en términos de flip, estados de parálisis, término de defensa, etc."""
+        Tools.Logger.escribir(self.statusText())
 
         if oponent.pos[0] < self.pos[0]:
             self.flip=True
@@ -383,7 +391,7 @@ class Personaje(pygame.sprite.Sprite):
                 for h in self.currentHitboxes:
                     h[1]=-1*h[1]
                     
-            Tools.Logger.escribir("se cambiaron los hitboxes. hitboxes actuales son: \n" + str(self.currentHitboxes))
+            #Tools.Logger.escribir(self.statusText() + "se cambiaron los hitboxes. hitboxes actuales son: \n" + str(self.currentHitboxes))
 
         else:
             self.currentHitboxes=[]
@@ -394,3 +402,7 @@ class Personaje(pygame.sprite.Sprite):
     def setTop(self,w,h):
         self.topHeight=h
         self.topWidth=w
+        Tools.Logger.escribir(self.statusText() +  "cambiados los bordes a: " + str(self.topWidth) + ", " + str(self.topHeight))
+
+    def statusText(self):
+        return("jugador: " + str(self.player) + ", en estado " + self.currentAnim + ", en posición " + str(self.pos) + " y rect: " + str(self.rect)+"\n")

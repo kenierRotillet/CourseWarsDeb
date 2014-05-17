@@ -55,8 +55,9 @@ def main(seleccion):
     p2.setTop(screen_w,screen_h)
     teclastotales = []
     teclastotalesp2=[]
-    hitboxesDebug=True
-    mapa = random.randint(1,9)
+    hitboxesDebug=False
+    #mapa = random.randint(1,9)
+    mapa=4
     fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_0"+str(mapa)+".jpg")
     #fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_09.jpg")
     Salida = False
@@ -81,10 +82,12 @@ def main(seleccion):
                     Salida=True
                 elif event.key == K_F1:
                     fps+=5
+                    if fps == 6:
+                        fps=5
                 elif event.key == K_F2:
                     fps-=5
                     if fps <1:
-                        fps=5
+                        fps=1
 
                 elif event.key == K_F10:
                     hitboxesDebug= not hitboxesDebug
