@@ -19,7 +19,7 @@ class Engineer(Core.Personaje.Personaje):
         
         
         self.maxSpeed=4
-        self.dashspeed=6
+        self.dashspeed=8
         self.rect.left=initPos[0]
         self.rect.top=initPos[1]
         

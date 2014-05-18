@@ -44,7 +44,7 @@ class Personaje(pygame.sprite.Sprite):
         self.hold = False #flag que se sabe si es un comando que requiere mantener tecla
         self.hitboxes = {} #diccionario que almasena todos los hitboxes y damageboxes para cada frame de cada animacion
         self.currentHitboxes = [] #lista que almacena los hitboxes del frame actual
-        self.bodyRect = pygame.rect.Rect(0,0,150,200) #rect que funciona como el cuerpo del personaje
+        self.bodyRect = pygame.rect.Rect(0,0,125,200) #rect que funciona como el cuerpo del personaje
 
         
         if self.player == 2:
@@ -111,15 +111,6 @@ class Personaje(pygame.sprite.Sprite):
         self.mask=pygame.mask.from_surface(self.image)
 
         self.rect.center=self.pos
-<<<<<<< HEAD
-        #Tools.Logger.escribir("animacion " + self.currentAnim + ", en su imagen " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
-        self.rect.w=100
-        self.rect.h=100
-=======
-        Tools.Logger.escribir(" imagen de animación: " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
-
->>>>>>> 462dba3aeb9bbb23ddd364967b369cb2eb527367
-
 
     def lookCommand(self, keys,currentTime,KeyUP = False):
         #Tools.Logger.escribir("teclas ingresadas en el tiempo: " + str(currentTime))

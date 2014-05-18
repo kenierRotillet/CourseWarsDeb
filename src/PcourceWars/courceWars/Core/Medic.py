@@ -20,7 +20,7 @@ class Medic(Core.Personaje.Personaje):
 
         
         self.maxSpeed = 5
-        self.dashspeed=7
+        self.dashspeed=9
         self.rect.left=initPos[0]
         self.rect.top=initPos[1]
         
