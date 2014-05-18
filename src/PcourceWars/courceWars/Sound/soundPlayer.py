@@ -5,7 +5,7 @@ import pygame
 import Tools.Logger as log
 pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=64)
 
-bgVolume = 0.1
+bgVolume =0.3
 
 def playSounds(personaje):
     """método qque reproduce la cola de sonidos del personaje entregado, en el frame actual."""

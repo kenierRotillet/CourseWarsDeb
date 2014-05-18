@@ -22,7 +22,10 @@ class Engineer(Core.Personaje.Personaje):
         self.dashspeed=6
         self.rect.left=initPos[0]
         self.rect.top=initPos[1]
+        
+        
         self.pos=(self.rect.centerx,self.rect.centery)
+        self.bodyRect.center = self.rect.center
 
 
         Tools.Logger.escribir("inicializando al jugador " + str(self.player) + " como ingeniero. Datos específicos " + str(self) + ", posición y rect " + str(self.pos) + ", " + str(self.rect))

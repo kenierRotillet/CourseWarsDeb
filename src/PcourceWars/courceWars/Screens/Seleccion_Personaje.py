@@ -18,7 +18,7 @@ def main():
     n = 35
     time = 75  #milisegundos (en estapa de prueba para decir el mejor tiempo de espera)
     ID_pj1 = 0 #ID pj va de 1-4, representa al personaje para despues cargarlo, esto cuenta el caso random
-    ID_pj2 = 4
+    ID_pj2 = 0
     screen = pygame.display.set_mode((screen_w,screen_h))
     pygame.display.set_caption("Seleccion de Personaje") #nombre de la ventana
     fondo = pygame.image.load("Screens/imgs/Fondo.jpg").convert()# permite cargar imagenes

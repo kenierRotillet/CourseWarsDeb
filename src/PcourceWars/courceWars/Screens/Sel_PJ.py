@@ -20,7 +20,7 @@ def main():
     final_pj1 = 0
     final_pj2 = 0
     v = 1
-    w = 3
+    w = 1
     n = 35
     ID_pj1 = 1 
     ID_pj2 = 3

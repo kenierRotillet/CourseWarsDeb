@@ -17,8 +17,8 @@ def main(seleccion):
     
 
     pantalla = pygame.display.set_mode((screen_w,screen_h), FULLSCREEN)
-    posInicialP1= (100,420)
-    posInicialP2=(600,420)
+    posInicialP1= (-100,220)
+    posInicialP2=(450,220)
     if seleccion[0] == 3:
 
         personaje = Core.Medic.Medic(1,posInicialP1)
@@ -56,8 +56,8 @@ def main(seleccion):
     teclastotales = []
     teclastotalesp2=[]
     hitboxesDebug=False
-    #mapa = random.randint(1,9)
-    mapa=4
+    mapa = random.randint(1,9)
+    
     fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_0"+str(mapa)+".jpg")
     #fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_09.jpg")
     Salida = False
@@ -124,7 +124,9 @@ def main(seleccion):
         personaje.update()
         p2.update()
         rc1 = pantalla.blit(personaje.image,personaje.rect)
+        
         rc2 = pantalla.blit(p2.image,p2.rect)
+        
         personaje.DoAction(p2)
         p2.DoAction(personaje)
 
@@ -137,12 +139,14 @@ def main(seleccion):
 
         
         if hitboxesDebug==True:
-            Tools.Logger.escribir("rect orijinal p1 " + str(personaje.rect) + " y el centro: " + str(personaje.rect.center) + "rect de imagen p1" + str(rc1) + " centro " + str(rc1.center))
-            Tools.Logger.escribir("rect original p2"+ str(p2.rect) + " y centro: " + str(p2.rect.center) + "rect p2 " + str(rc2) + " y el centro " + str(rc2.center))
-            Tools.Logger.escribir("posisiones p1: " + str(personaje.pos) + " posicion p2 " + str(p2.pos))
+            Tools.Logger.escribir("Debug zone \n rect orijinal p1 " + str(personaje.rect) + " y el centro: " + str(personaje.rect.center) + "\n rect de imagen p1" + str(rc1) + " centro " + str(rc1.center))
+            Tools.Logger.escribir("rect original p2"+ str(p2.rect) + " y centro: " + str(p2.rect.center) + "\n rect imagen p2 " + str(rc2) + " y el centro " + str(rc2.center))
+            pygame.draw.circle(pantalla, (0,255,255),personaje.pos,5,0)
+            pygame.draw.circle(pantalla, (255,255,0),p2.pos,5,0)
+             
 
-            putHitboxes(pantalla, personaje.currentHitboxes,personaje.rect)
-            putHitboxes(pantalla,p2.currentHitboxes,p2.rect)
+            putHitboxes(pantalla, personaje.currentHitboxes,personaje.bodyRect,True)
+            putHitboxes(pantalla,p2.currentHitboxes,p2.bodyRect,True)
 
         pygame.display.flip()
 
@@ -165,7 +169,13 @@ def main(seleccion):
 
 
 
-def putHitboxes(screen,cajas,rect):
+def putHitboxes(screen,cajas,rect,originalRect=False):
+    if originalRect == True:
+        rectcolor =(0,255,0)
+        centerRect = pygame.draw.rect(screen,rectcolor,rect,1)
+        Tools.Logger.escribir("Rect del cuerpo dibujado: " + str(rect) + "y su centro: " + str(rect.center) +  "\n  resultado del dibujo: " + str(centerRect) + ", centro: " + str(centerRect.center))
+
+
     for h in cajas:
         hitbox = pygame.rect.Rect(rect.left,rect.top,h[3],h[4])
         
@@ -175,8 +185,8 @@ def putHitboxes(screen,cajas,rect):
             rgb = [255,0,0]
         else:
             rgb = [0,0,255]
-        print (str(hitbox)+", centro " + str(rect.center) + "  y original" + str(rect) + ", centro " + str(rect.center))
+        Tools.Logger.escribir(str(hitbox)+", centro " + str(rect.center) + "  y original" + str(rect) + ", centro " + str(rect.center))
         fin = pygame.draw.rect(screen,rgb,hitbox,2)
-        print("resultante " + str(fin) + ", centro " + str(fin.center))
+        Tools.Logger.escribir("resultante " + str(fin) + ", centro " + str(fin.center))
         
 
