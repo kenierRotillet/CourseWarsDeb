@@ -83,7 +83,8 @@ class Personaje(pygame.sprite.Sprite):
         self.mask=pygame.mask.from_surface(self.image)
         self.rect.center=self.pos
         #Tools.Logger.escribir("animacion " + self.currentAnim + ", en su imagen " + str(self.currentAnimFrame) + ", y el frame de tiempo " + str(self.framecount))
-
+        self.rect.w=100
+        self.rect.h=100
 
 
     def lookCommand(self, keys,currentTime,KeyUP = False):
