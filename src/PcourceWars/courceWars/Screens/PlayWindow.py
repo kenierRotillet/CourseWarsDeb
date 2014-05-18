@@ -16,9 +16,9 @@ def main(seleccion):
     pygame.init()
     
 
-    pantalla = pygame.display.set_mode((screen_w,screen_h))
-    posInicialP1= (100,420)
-    posInicialP2=(600,420)
+    pantalla = pygame.display.set_mode((screen_w,screen_h), FULLSCREEN)
+    posInicialP1= (-100,220)
+    posInicialP2=(450,220)
     if seleccion[0] == 3:
 
         personaje = Core.Medic.Medic(1,posInicialP1)
@@ -51,12 +51,20 @@ def main(seleccion):
     pygame.display.set_caption("CourseWars: 40 fps")
     relojito = pygame.time.Clock()
     tiempo = 0
+    personaje.setTop(screen_w,screen_h)
+    p2.setTop(screen_w,screen_h)
     teclastotales = []
     teclastotalesp2=[]
     hitboxesDebug=False
     mapa = random.randint(1,9)
+<<<<<<< HEAD
     fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_0"+str(mapa)+".png")
     #fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_09.png")
+=======
+    
+    fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_0"+str(mapa)+".jpg")
+    #fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_09.jpg")
+>>>>>>> 462dba3aeb9bbb23ddd364967b369cb2eb527367
     Salida = False
     fps = 40
     Sound.soundPlayer.bgmPlay("bgm/battle"+str(mapa)+".mp3")
@@ -79,10 +87,12 @@ def main(seleccion):
                     Salida=True
                 elif event.key == K_F1:
                     fps+=5
+                    if fps == 6:
+                        fps=5
                 elif event.key == K_F2:
                     fps-=5
                     if fps <1:
-                        fps=5
+                        fps=1
 
                 elif event.key == K_F10:
                     hitboxesDebug= not hitboxesDebug
@@ -119,7 +129,9 @@ def main(seleccion):
         personaje.update()
         p2.update()
         rc1 = pantalla.blit(personaje.image,personaje.rect)
+        
         rc2 = pantalla.blit(p2.image,p2.rect)
+        
         personaje.DoAction(p2)
         p2.DoAction(personaje)
 
@@ -132,11 +144,14 @@ def main(seleccion):
 
         
         if hitboxesDebug==True:
-            print("rect p1" + str(rc1) + " centro " + str(rc1.center))
-            print("rect p2 " + str(rc2) + " y el centro " + str(rc2.center))
+            Tools.Logger.escribir("Debug zone \n rect orijinal p1 " + str(personaje.rect) + " y el centro: " + str(personaje.rect.center) + "\n rect de imagen p1" + str(rc1) + " centro " + str(rc1.center))
+            Tools.Logger.escribir("rect original p2"+ str(p2.rect) + " y centro: " + str(p2.rect.center) + "\n rect imagen p2 " + str(rc2) + " y el centro " + str(rc2.center))
+            pygame.draw.circle(pantalla, (0,255,255),personaje.pos,5,0)
+            pygame.draw.circle(pantalla, (255,255,0),p2.pos,5,0)
+             
 
-            putHitboxes(pantalla, personaje.currentHitboxes,personaje.rect)
-            putHitboxes(pantalla,p2.currentHitboxes,p2.rect)
+            putHitboxes(pantalla, personaje.currentHitboxes,personaje.bodyRect,True)
+            putHitboxes(pantalla,p2.currentHitboxes,p2.bodyRect,True)
 
         pygame.display.flip()
 
@@ -159,7 +174,13 @@ def main(seleccion):
 
 
 
-def putHitboxes(screen,cajas,rect):
+def putHitboxes(screen,cajas,rect,originalRect=False):
+    if originalRect == True:
+        rectcolor =(0,255,0)
+        centerRect = pygame.draw.rect(screen,rectcolor,rect,1)
+        Tools.Logger.escribir("Rect del cuerpo dibujado: " + str(rect) + "y su centro: " + str(rect.center) +  "\n  resultado del dibujo: " + str(centerRect) + ", centro: " + str(centerRect.center))
+
+
     for h in cajas:
         hitbox = pygame.rect.Rect(rect.left,rect.top,h[3],h[4])
         
@@ -169,8 +190,8 @@ def putHitboxes(screen,cajas,rect):
             rgb = [255,0,0]
         else:
             rgb = [0,0,255]
-        print (str(hitbox)+", centro " + str(rect.center) + "  y original" + str(rect) + ", centro " + str(rect.center))
+        Tools.Logger.escribir(str(hitbox)+", centro " + str(rect.center) + "  y original" + str(rect) + ", centro " + str(rect.center))
         fin = pygame.draw.rect(screen,rgb,hitbox,2)
-        print("resultante " + str(fin) + ", centro " + str(fin.center))
+        Tools.Logger.escribir("resultante " + str(fin) + ", centro " + str(fin.center))
         
 

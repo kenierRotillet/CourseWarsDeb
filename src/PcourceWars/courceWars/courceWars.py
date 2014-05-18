@@ -2,15 +2,27 @@
 # -*        - coding: latin-1 -*-
 """ CourceWars: fighter en desarrollo para el proyecto recistencia arcade.
 Módulo principal, se encarga de llevar el control y flujo del juego, además de conectar el núcleo con la visualización"""
+import os
+
+recetLog=True
+if recetLog==True:
+    try:
+        os.remove("log.log")
+    except:
+        pass
+
+
 import pygame
 pygame.init()
-
+import logging
 import Core
 import Tools
 
 import Screens
 import Sound
 
+
+log = logging.getLogger("theLogger")
 
 try:
 
@@ -44,5 +56,6 @@ try:
 except Exception, mes:
     print "error en la ejecución. Traceback en el log"
     Sound.soundPlayer.simpleplay("sfx/error.wav")
-    Tools.Logger.escribir(str(mes))
+    Tools.Logger.escribir("error: " + str(mes))
+    log.exception("datos del error")
 

@@ -280,7 +280,7 @@ def loadFile(name):
     arch = open(name,'r')
     data = ""
     for i in arch:
-        if(i.startswith("#") == False and len(i) > 1):
+        if(i.startswith("#") == False and len(i) > 0):
 
             data+=i
         #print i
