@@ -287,3 +287,7 @@ def loadFile(name):
         
     arch.close()
     return data
+
+def flipImage(img):
+    image = pygame.transform.flip(img,1,0)
+    return image

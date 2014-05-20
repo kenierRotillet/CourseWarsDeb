@@ -3,7 +3,9 @@
 """ CourceWars: fighter en desarrollo para el proyecto recistencia arcade.
 Módulo principal, se encarga de llevar el control y flujo del juego, además de conectar el núcleo con la visualización"""
 import os
-
+import pygame
+import Sound
+Sound.soundPlayer.simpleplay("sfx/start.wav")
 recetLog=True
 if recetLog==True:
     try:
@@ -12,7 +14,7 @@ if recetLog==True:
         pass
 
 
-import pygame
+
 pygame.init()
 import logging
 import Core
