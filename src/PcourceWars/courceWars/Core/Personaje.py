@@ -139,7 +139,10 @@ class Personaje(pygame.sprite.Sprite):
                         self.currentAnimImage=0
                         self.framecount=0
                         self.currentState.crouch = False
-                        
+                elif self.currentAnim=='Down_LightPunch' or self.currentAnim=='Down_HighPunch':
+                    if k == 'D':
+                        self.currentState.crouch=False
+
             self.currentState.control=True
 
             return
@@ -234,24 +237,29 @@ class Personaje(pygame.sprite.Sprite):
             self.currentState.control = False
             if self.framecount==2:
                 Collicion.ejecutarDownHit(self,oponent)
-            if  self.currentAnimImage==len(self.anims[self.currentAnim])-1 and (self.framecount == int(self.anims[self.currentAnim][self.currentAnimImage][0])):
+            if  self.currentAnimImage==len(self.anims[self.currentAnim])-2 and (self.framecount == int(self.anims[self.currentAnim][-1][0])):
                 Tools.Logger.escribir("actual estado es golpe agachado debil" + self.currentAnim)
-                self.AnimFrame=2
-                self.framecount=0
-                self.currentAnim='Down'                
-                self.currentState.crouch=True
+                if self.currentState.crouch==True:
+
+
+                    self.AnimFrame=1
+                    self.framecount=5
+                    self.currentAnim='Down'                
+                    self.currentState.crouch=True
                 Tools.Logger.escribir(" estado abajo")
 
         if self.currentAnim== 'Down_HighPunch' and (self.currentState.crouch==True):
             self.currentState.control = False
             if self.framecount==3:
                 Collicion.ejecutarDownHit(self,oponent)
-            if  self.currentAnimImage==len(self.anims[self.currentAnim])-1 and (self.framecount == int(self.anims[self.currentAnim][self.currentAnimImage][0])):
+            if  self.currentAnimImage==len(self.anims[self.currentAnim])-2 and (self.framecount == int(self.anims[self.currentAnim][-1][0])):
                 Tools.Logger.escribir("actual estado es golpe agachado " + self.currentAnim + " " +str(self.currentAnimImage) + " "+ str(self.framecount))
-                self.AnimFrame=0
-                self.framecount=0
-                self.currentAnim='Down'
-                self.currentState.crouch=True
+                if self.currentState.crouch==True:
+
+                    self.currentAnimImage=1
+                    self.framecount=5
+                    self.currentAnim='Down'
+                    self.currentState.crouch=True
                 Tools.Logger.escribir("actual estado es debe quedarse abajo" + self.currentAnim + self.currentAnim + " " +str(self.currentAnimImage) + " "+ str(self.framecount))
                 
 
@@ -323,9 +331,11 @@ class Personaje(pygame.sprite.Sprite):
 
         if self.currentAnim=="Down":
             self.currentState.crouch = True
+            self.currentState.control=True
+
             if self.currentAnimImage == len(self.anims[self.currentAnim])-2:
-                self.currentAnimImage= 2
-                self.framecount=2
+                self.currentAnimImage= 1
+                self.framecount=5
 
         if self.currentAnim=='Jump':
             self.currentState.jump=True            

@@ -1,5 +1,5 @@
 LightPunch:
-2,sfx/lpl.wav,sfx/lp.wav;
+1,sfx/lpl.wav,sfx/lp.wav;
 MediumPunch:
 1,sfx/mpl.wav,sfx/mp1.wav;
 HighPunch:
@@ -14,3 +14,7 @@ Special:
 50,sfx/explode1.wav,;
 Block:
 0,,sfx/Block.wav;
+Down_LightPunch:
+1,sfx/dlpl.wav,sfx/dlp.wav;
+Down_HighPunch:
+1,sfx/dhpl.wav,sfx/dhp.wav;
