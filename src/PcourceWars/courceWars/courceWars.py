@@ -11,7 +11,7 @@ if recetLog==True:
     try:
         os.remove("log.log")
     except:
-        pass
+        Sound.soundPlayer.simpleplay("sfx/error.wav")
 
 
 

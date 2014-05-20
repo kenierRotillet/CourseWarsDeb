@@ -53,7 +53,7 @@ def ejecutarHit(ataca,oponent):
         oponent.currentState.flags['Hit'] = True
         oponent.currentAnim = 'Block'
         oponent.framecount=0
-        oponent.currentAnimFrame=0
+        oponent.currentAnimImage=0
         oponent.currentState.control=False
 
         #Tools.Logger.escribir("hubo colición de golpe bloqueado")
@@ -62,7 +62,7 @@ def ejecutarHit(ataca,oponent):
     elif Golpe_Superior(pygame.sprite.collide_mask(ataca,oponent), ataca.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
         ataca.currentState.flags['Hit']=True
         oponent.currentAnim='Hit'
-        oponent.currentAnimFrame=0
+        oponent.currentAnimImage=0
         oponent.framecount=0
         #Tools.Logger.escribir("le achuntó")
 
@@ -72,7 +72,7 @@ def ejecutarDownHit(ataca,oponent):
         oponent.currentState.flags['Hit'] = True
         oponent.currentAnim = 'Block'
         oponent.framecount=0
-        oponent.currentAnimFrame=0
+        oponent.currentAnimImage=0
         oponent.currentState.control=False
 
         #Tools.Logger.escribir("hubo colición de golpe bloqueado")
@@ -81,7 +81,7 @@ def ejecutarDownHit(ataca,oponent):
     elif Golpe_Inferior(pygame.sprite.collide_mask(ataca,oponent), ataca.pos[1], oponent.pos[1], oponent.currentState.block) == 2:
         ataca.currentState.flags['Hit']=True
         oponent.currentAnim='Hit'
-        oponent.currentAnimFrame=0
+        oponent.currentAnimImage=0
         oponent.framecount=0
         #Tools.Logger.escribir("le achuntó")
 

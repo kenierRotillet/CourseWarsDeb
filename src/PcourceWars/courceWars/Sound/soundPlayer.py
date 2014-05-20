@@ -2,7 +2,7 @@
 # -*- coding: latin-1 -*-
 """módulo que se encarga de la reproducción de sonidos"""
 import pygame
-import Tools.Logger as log
+#import Tools.Logger as log
 pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=64)
 
 bgVolume =0.3
@@ -14,9 +14,11 @@ def playSounds(personaje):
     if len(personaje.currentSounds) >= 0:
         for snd in personaje.currentSounds:
             #log.escribir(str(snd))
+            if snd == "":
+                continue
 
-            sonido = pygame.mixer.Sound(snd)
-            sonido.play()
+            snd.play()
+            
 
 
     personaje.currentSounds = []

@@ -14,7 +14,7 @@ screen_h = 768
 
 def main(seleccion):
     pygame.init()
-    
+    Sound.soundPlayer.bgmPlay("bgm/battle8.mp3")
 
     pantalla = pygame.display.set_mode((screen_w,screen_h))
     posInicialP1= (-100,220)
@@ -57,8 +57,8 @@ def main(seleccion):
     teclastotalesp2=[]
     hitboxesDebug=False
     mapa = random.randint(1,9)
-    fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_0"+str(mapa)+".png")
-    #fondo,rect = Tools.FastMethods.load_image("Screens/imgs/BG_09.png")
+    fondo= Tools.FastMethods.load_image("Screens/imgs/BG_0"+str(mapa)+".png")
+    #fondo= Tools.FastMethods.load_image("Screens/imgs/BG_09.png")
 
     Salida = False
     fps = 40

@@ -11,7 +11,13 @@ class Engineer(Core.Personaje.Personaje):
         super(Engineer, self).__init__(player,initPos)
         """constructor del ingeniero, setea y carga sus archivos necesarios. Recibe el número de jugador que le corresponde, y su posición inicial."""
         self.anims = Core.Personaje.Tools.FastMethods.LoadAnimData("chars/Engineer/Engineer.anim")
-        self.image, self.rect=Tools.FastMethods.load_image(self.anims[self.currentAnim][self.currentAnimFrame][1],None,True,self.flip)
+        if self.flip==True:
+            self.image=Tools.FastMethods.flipImage(self.anims['Stand'][0][1])
+        else:
+            self.image=self.anims['Stand'][0][1]
+        Tools.Logger.escribir("imagen cargada: " + str(self.image))
+        self.rect=self.image.get_rect()
+
         self.mask = pygame.mask.from_surface(self.image)
         self.commands=Tools.FastMethods.load_commands("Chars/Engineer/Engineer.cmd")
         self.sounds = Tools.FastMethods.LoadSounds("Chars/Engineer/Engineer.snd")

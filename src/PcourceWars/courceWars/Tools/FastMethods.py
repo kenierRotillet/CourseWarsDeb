@@ -48,16 +48,20 @@ def loadKeys():
 
 def load_image(name, colorkey=None,resize=False,flip=False):
     """ método de carga de imágenes. Recibe los argumentos name, path de la imagen, colorkey de la imagen, recize si necesita ser aumentado su tamaño, y flip, si necesita ser volteada."""
+    if name == '-1':
+        return -1
+
 
     #intento de carga de la imagen
     try:
+        
         image = pygame.image.load(name)
     except pygame.error, message:
         Tools.Logger.escribir('Cannot load image:' +  str(name))
         Tools.Logger.escribir(str(message))
         #raw_input()
 
-        raise SystemExit, message
+        
     #converción de alphas de la imagen
     image = image.convert_alpha()
     if resize == True:
@@ -73,11 +77,24 @@ def load_image(name, colorkey=None,resize=False,flip=False):
         #En caso de ser indicado, la imagen se voltea
         image = pygame.transform.flip(image,1,0)
 
-    return image, image.get_rect()
+    return image
+
+def load_sound(name):
+    try:
+        if len(name) > 2:
+            sonido = pygame.mixer.Sound(name)
+            return sonido
+        else:
+            return ""
+    except Exception, mes:
+        Tools.Logger.escribir("Error en carga de sonido: " + str(mes))
+
+
 
 def LoadAnimData(name):
     """método para cargar el diccionario de imágenes a partir de un archivo *.anim"""
-    #anims, diccionario base a retornar con las imágenes 
+    #anims, diccionario base a retornar con las imágenes
+    Tools.Logger.escribir("cargando imágenes en memoria de " + name)
 
     anims = {}
     #carga del archivo
@@ -106,12 +123,12 @@ def LoadAnimData(name):
             lin = line.split(',')
             #print lin
             if(len(lin) >= 2):
-                animdata.append((lin[0],lin[1]))
+                animdata.append((int(lin[0]), load_image(lin[1],resize=True)))
                 #print animdata
 
         #se añade la información optenida
         anims[animname] = animdata
-        #print anims[animname]
+        Tools.Logger.escribir("cargada la animación " + str(animname) + ": \n " + str(anims[animname]))
     
     #print anims
     return anims
@@ -190,7 +207,7 @@ def load_commands(name):
 def LoadSounds(name):
     """método de carga de sonidos, a través de los archivos *.snd. cada sonido se asocia con una animación a través de los nombres."""
     sounds = {}
-    
+    Tools.Logger.escribir("cargando sonidos en memoria")
     data = loadFile(name)
 
     soundsdata = data.split(';')
@@ -213,10 +230,11 @@ def LoadSounds(name):
             lin = line.split(',')
             #print lin
             if(len(lin) >= 3):
-                animdata.append((lin[0],lin[1],lin[2]))
+                animdata.append((lin[0], load_sound(lin[1]), load_sound(lin[2])))
                 #print animdata
 
         sounds[animname] = animdata
+        Tools.Logger.escribir("cargados los sonidos de la animación: " + animname + ": \n " + str(sounds[animname]))
         #print anims[animname]
     
     #print anims
