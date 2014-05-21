@@ -17,8 +17,8 @@ class Personaje(pygame.sprite.Sprite):
         self.currentState = State.State(0,True) #estado en el que se encuentra el personaje actualmente #estado en el que se encuentra actualmente, se inicializa como estado 0 y con control.
         self.maxHP = 100
         self.currentHP = self.maxHP #cantidad mÃ¡xima de hp y cantidad actual de hp
-        self.atk = 100 #poder de ataque, para cÃ¡lculo de daÃ±o futuro
-        self.deff= 100 #valor de defensa  para cÃ¡lculo de daÃ±o futuro
+        self.atk = 10 #poder de ataque, para cÃ¡lculo de daÃ±o futuro
+        self.deff= 10 #valor de defensa  para cÃ¡lculo de daÃ±o futuro
         self.power=0 #cantidad de carga inicial
         self.maxpower=100 #cantidad de poder mÃ¡ximo
         self.topWidth = 1024
@@ -240,9 +240,7 @@ class Personaje(pygame.sprite.Sprite):
             if  self.currentAnimImage==len(self.anims[self.currentAnim])-2 and (self.framecount == int(self.anims[self.currentAnim][-1][0])):
                 Tools.Logger.escribir("actual estado es golpe agachado debil" + self.currentAnim)
                 if self.currentState.crouch==True:
-
-
-                    self.AnimFrame=1
+                    self.AnimFrame=2
                     self.framecount=5
                     self.currentAnim='Down'                
                     self.currentState.crouch=True
@@ -256,7 +254,7 @@ class Personaje(pygame.sprite.Sprite):
                 Tools.Logger.escribir("actual estado es golpe agachado " + self.currentAnim + " " +str(self.currentAnimImage) + " "+ str(self.framecount))
                 if self.currentState.crouch==True:
 
-                    self.currentAnimImage=1
+                    self.currentAnimImage=2
                     self.framecount=5
                     self.currentAnim='Down'
                     self.currentState.crouch=True
@@ -334,7 +332,7 @@ class Personaje(pygame.sprite.Sprite):
             self.currentState.control=True
 
             if self.currentAnimImage == len(self.anims[self.currentAnim])-2:
-                self.currentAnimImage= 1
+                self.currentAnimImage= 2
                 self.framecount=5
 
         if self.currentAnim=='Jump':

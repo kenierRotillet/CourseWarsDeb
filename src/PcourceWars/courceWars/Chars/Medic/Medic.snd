@@ -21,6 +21,6 @@ Block:
 Taunt:
 5,sfx/laugh.wav,;
 Down_LightPunch:
-0,sfx/dlpl.wav,sfx/dlp.wav;
+1,sfx/dlpl.wav,sfx/dlp.wav;
 Down_HighPunch:
-0,sfx/dhpl.wav,sfx/dhp.wav;
+1,sfx/dhpl.wav,sfx/dhp.wav;

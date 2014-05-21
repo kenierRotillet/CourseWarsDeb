@@ -44,6 +44,9 @@ class Medic(Core.Personaje.Personaje):
         
         if (self.currentAnim == 'MediumPunch'):
             self.currentState.control = False
+            if self.currentState.crouch == True:
+                super(Medic, self).DoAction(oponent)
+                
             Tools.Logger.escribir("comprovando golpes")
             if self.framecount==2 or self.framecount == 5:
                 Collicion.ejecutarHit(self,oponent)

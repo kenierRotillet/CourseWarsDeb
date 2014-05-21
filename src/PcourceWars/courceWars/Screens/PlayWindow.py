@@ -7,6 +7,7 @@ import Core
 import Sound
 import random
 import pygame.draw
+import HealthBars
 
 screen_w = 1024
 screen_h = 768
@@ -63,6 +64,8 @@ def main(seleccion):
     Salida = False
     fps = 40
     Sound.soundPlayer.bgmPlay("bgm/battle"+str(mapa)+".mp3")
+    Barra1=HealthBars.HP_Bar(pantalla,1)
+    Barra2=HealthBars.HP_Bar(pantalla,2)
     while Salida==False:
         #print("posp1" + str(personaje.pos[0]) + ", " + str(personaje.pos[1]))
         #print("posp2" + str(p2.pos[0]) + ", " + str(p2.pos[1]))
@@ -148,24 +151,12 @@ def main(seleccion):
             putHitboxes(pantalla, personaje.currentHitboxes,personaje.bodyRect,True)
             putHitboxes(pantalla,p2.currentHitboxes,p2.bodyRect,True)
 
+        Barra1.draw(personaje.currentHP)
+        Barra2.draw(p2.currentHP)
+        
         pygame.display.flip()
 
-        tiempo+=1
-
-                
-                
-                
-
-
-
-
-
-
-
-
-
-
-
+        tiempo+=1        
 
 
 
