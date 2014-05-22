@@ -70,6 +70,7 @@ def main(seleccion):
     Barra2=HealthBars.HP_Bar(pantalla,2)
     Power1=PowerBars.Power_Bar(pantalla,1)
     Power2=PowerBars.Power_Bar(pantalla,2)
+
     while Salida==False:
         #print("posp1" + str(personaje.pos[0]) + ", " + str(personaje.pos[1]))
         #print("posp2" + str(p2.pos[0]) + ", " + str(p2.pos[1]))
