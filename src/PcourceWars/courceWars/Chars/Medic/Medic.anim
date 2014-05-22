@@ -71,12 +71,12 @@ Down_HighPunch:
 18,-1;
 Charge:
 0,Chars/Medic/Sprites/Medic011_001.png
-2,Chars/Medic/Sprites/Medic011_002.png
-4,Chars/Medic/Sprites/Medic011_001.png
-6,Chars/Medic/Sprites/Medic011_002.png
+4,Chars/Medic/Sprites/Medic011_002.png
 8,Chars/Medic/Sprites/Medic011_001.png
-10,Chars/Medic/Sprites/Medic011_002.png
-12,-1;
+12,Chars/Medic/Sprites/Medic011_002.png
+16,Chars/Medic/Sprites/Medic011_001.png
+20,Chars/Medic/Sprites/Medic011_002.png
+25,-1;
 Guard_Down:
 1,Chars/Medic/Sprites/Medic012_001.png
 2,Chars/Medic/Sprites/Medic012_002.png
