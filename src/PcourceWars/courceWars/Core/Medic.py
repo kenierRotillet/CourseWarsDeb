@@ -25,8 +25,8 @@ class Medic(Core.Personaje.Personaje):
         self.hitboxes=Tools.FastMethods.LoadHitboxesData("Chars/Medic/Medic.hbx")
 
         
-        self.maxSpeed = 5
-        self.dashspeed=9
+        self.maxSpeed = 9
+        self.dashspeed=14
         self.rect.left=initPos[0]
         self.rect.top=initPos[1]
         

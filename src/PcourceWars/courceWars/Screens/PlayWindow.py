@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
+"""modulo que representa a la pantalla principal del juego"""
 import pygame
 from pygame.locals import *
 import Tools
@@ -101,6 +102,8 @@ def main(seleccion):
                 teclup.append(event.key)
 
 
+        personaje.checkStatus(p2)
+        p2.checkStatus(personaje)
         if len(teclas)>0:
 
             teclastotales.append((tiempo,Tools.FastMethods.convertKeys(teclas)))
@@ -113,16 +116,15 @@ def main(seleccion):
             personaje.lookCommand(keyup1,tiempo,True)
             p2.lookCommand(keyup2,tiempo,True)
 
-
-
-
-        personaje.checkStatus(p2)
-        p2.checkStatus(personaje)
-        personaje.setSounds()
-        p2.setSounds()
+        
+        personaje.DoAction(p2)
+        p2.DoAction(personaje)
         personaje.setHitboxes()
         p2.setHitboxes()
 
+        personaje.setSounds()
+        p2.setSounds()
+        
 
         personaje.update()
         p2.update()
@@ -130,9 +132,6 @@ def main(seleccion):
         
         rc2 = pantalla.blit(p2.image,p2.rect)
         
-        personaje.DoAction(p2)
-        p2.DoAction(personaje)
-
         Sound.soundPlayer.playSounds(personaje)
         Sound.soundPlayer.playSounds(p2)
 

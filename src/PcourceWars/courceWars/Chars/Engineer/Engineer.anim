@@ -77,10 +77,14 @@ Down_HighPunch:
 8,Chars/Engineer/Sprites/Enginer010_003.png
 12,Chars/Engineer/Sprites/Enginer010_004.png
 15,-1;
-Guard:
+Charge:
 0,Chars/Engineer/Sprites/Enginer011_001.png
 2,Chars/Engineer/Sprites/Enginer011_002.png
-5,-1;
+4,Chars/Engineer/Sprites/Enginer011_001.png
+6,Chars/Engineer/Sprites/Enginer011_002.png
+8,Chars/Engineer/Sprites/Enginer011_001.png
+10,Chars/Engineer/Sprites/Enginer011_002.png
+12,-1;
 Guard_Down:
 1,Chars/Engineer/Sprites/Enginer012_001.png
 3,-1;

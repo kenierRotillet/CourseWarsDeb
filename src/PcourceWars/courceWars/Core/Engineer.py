@@ -24,8 +24,8 @@ class Engineer(Core.Personaje.Personaje):
         self.hitboxes=Tools.FastMethods.LoadHitboxesData("Chars/Engineer/Engineer.hbx")
         
         
-        self.maxSpeed=4
-        self.dashspeed=8
+        self.maxSpeed=6
+        self.dashspeed=15
         self.rect.left=initPos[0]
         self.rect.top=initPos[1]
         
