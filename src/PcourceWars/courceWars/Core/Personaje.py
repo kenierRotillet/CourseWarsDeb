@@ -210,7 +210,8 @@ class Personaje(pygame.sprite.Sprite):
                 return
             self.currentState.control = False
             #Tools.Logger.escribir("comprovando golpes")
-            if self.framecount==2:
+            if self.framecount>=3:
+                print("ejecuntando colision")
                 Collicion.ejecutarHit(self,oponent)
                     
 
@@ -229,7 +230,7 @@ class Personaje(pygame.sprite.Sprite):
                 return
             self.currentState.control = False
             #Tools.Logger.escribir("comprovando golpes")
-            if self.framecount==2:
+            if self.framecount>=2:
                 Collicion.ejecutarHit(self,oponent)
 
 
