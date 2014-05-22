@@ -50,7 +50,7 @@ def main(seleccion):
     
     #Tools.Logger.escribir(str(personaje.sounds))
 
-    pygame.display.set_caption("CourseWars: 40 fps")
+    pygame.display.set_caption("CourseWars: 50 fps")
     relojito = pygame.time.Clock()
     tiempo = 0
     personaje.setTop(screen_w,screen_h)
@@ -63,7 +63,7 @@ def main(seleccion):
     #fondo= Tools.FastMethods.load_image("Screens/imgs/BG_09.png")
 
     Salida = False
-    fps = 40
+    fps = 50
     Sound.soundPlayer.bgmPlay("bgm/battle"+str(mapa)+".mp3")
     Barra1=HealthBars.HP_Bar(pantalla,1)
     Barra2=HealthBars.HP_Bar(pantalla,2)

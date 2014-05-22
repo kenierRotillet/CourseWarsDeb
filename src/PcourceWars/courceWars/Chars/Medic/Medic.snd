@@ -28,4 +28,4 @@ Down_HighPunch:
 1,sfx/dhpl.wav,sfx/dhp.wav;
 Charge:
 0,sfx/startcharge.wav,
-4,sfx/charge.wav,;
+10,sfx/charge.wav,;
