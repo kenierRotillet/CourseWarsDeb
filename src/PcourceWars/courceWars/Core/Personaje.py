@@ -366,10 +366,10 @@ class Personaje(pygame.sprite.Sprite):
             if self.power==self.maxpower:
                 self.currentAnim='Stand'
 
-            if self.framecount==10:
+            if self.framecount==24:
                 self.framecount=2
                 self.currentAnimImage=1
-                self.power+=3
+                self.power+=5
                 if self.power>=self.maxpower:
                     self.power=self.maxpower
 
