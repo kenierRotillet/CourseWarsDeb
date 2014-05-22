@@ -60,6 +60,9 @@
     <Compile Include="Core\__init__.py" />
     <Compile Include="courceWars.py" />
     <Compile Include="launcher_conect.py" />
+    <Compile Include="Screens\HealthBars.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Screens\PlayWindow.py" />
     <Compile Include="Screens\Sel_PJ.py">
       <SubType>Code</SubType>

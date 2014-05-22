@@ -90,7 +90,20 @@ class Personaje(pygame.sprite.Sprite):
         """método que actualiza frame a frame el sprite de la animación actual."""
         Tools.Logger.escribir(" actualizando imagen: \n animación: " + self.currentAnim + ", número de imagen: " + str(self.currentAnimImage) + " y número de frame: " + str(self.framecount))
         Tools.Logger.escribir(" datos actuales: " + str(self.anims[self.currentAnim][self.currentAnimImage])+ "\n los datos siguientes: " + str(self.anims[self.currentAnim][self.currentAnimImage+1]))
+        #se carga la imagen actual
 
+        if self.flip==False:
+            self.image=self.anims[self.currentAnim][self.currentAnimImage][1]
+        else:
+            self.image=Tools.FastMethods.flipImage(self.anims[self.currentAnim][self.currentAnimImage][1])
+
+        self.rect=self.image.get_rect()
+        self.rect.center=self.pos
+
+        
+        self.mask=pygame.mask.from_surface(self.image)
+
+        #se prepara la imagen para el loop siguiente
         #se asume que toda animación se inicia en el frame 0 por lo que nunca se verifica si framecount es igual al número de frame de inicio de la primera imagen. y cuando en vez de tener un objeto imagen contiene un -1 significa fin de la animación y retorno a stand
         if self.framecount==self.anims[self.currentAnim][self.currentAnimImage+1][0]:
             if self.anims[self.currentAnim][self.currentAnimImage+1][1] == -1:
@@ -104,16 +117,6 @@ class Personaje(pygame.sprite.Sprite):
         else:
             self.framecount+=1
 
-        if self.flip==False:
-            self.image=self.anims[self.currentAnim][self.currentAnimImage][1]
-        else:
-            self.image=Tools.FastMethods.flipImage(self.anims[self.currentAnim][self.currentAnimImage][1])
-
-        self.rect=self.image.get_rect()
-        self.rect.center=self.pos
-
-        
-        self.mask=pygame.mask.from_surface(self.image)
 
         
 
@@ -142,6 +145,13 @@ class Personaje(pygame.sprite.Sprite):
                 elif self.currentAnim=='Down_LightPunch' or self.currentAnim=='Down_HighPunch':
                     if k == 'D':
                         self.currentState.crouch=False
+                elif self.currentAnim=='Charge':
+                    if k =='x':
+                        self.currentAnim='Stand'
+                        self.framecount=0
+                        self.currentAnimImage=0
+
+
 
             self.currentState.control=True
 
@@ -210,8 +220,8 @@ class Personaje(pygame.sprite.Sprite):
                 return
             self.currentState.control = False
             #Tools.Logger.escribir("comprovando golpes")
-            if self.framecount>=3:
-                print("ejecuntando colision")
+            if self.framecount in range(3,5):
+                
                 Collicion.ejecutarHit(self,oponent)
                     
 
@@ -221,7 +231,7 @@ class Personaje(pygame.sprite.Sprite):
                 return
             self.currentState.control = False
             #Tools.Logger.escribir("comprovando golpes")
-            if self.framecount==2:
+            if self.framecount in range(2,4):
                 Collicion.ejecutarHit(self,oponent)
 
         if self.currentAnim == 'HighPunch':
@@ -230,39 +240,40 @@ class Personaje(pygame.sprite.Sprite):
                 return
             self.currentState.control = False
             #Tools.Logger.escribir("comprovando golpes")
-            if self.framecount>=2:
+            if self.framecount in range(3,14):
                 Collicion.ejecutarHit(self,oponent)
 
 
         if self.currentAnim== 'Down_LightPunch' and (self.currentState.crouch==True):
             self.currentState.control = False
-            if self.framecount==2:
-                Collicion.ejecutarDownHit(self,oponent)
+            if self.framecount in range(2,4):
+                Collicion.ejecutarHit(self,oponent)
             if  self.currentAnimImage==len(self.anims[self.currentAnim])-2 and (self.framecount == int(self.anims[self.currentAnim][-1][0])):
-                Tools.Logger.escribir("actual estado es golpe agachado debil" + self.currentAnim)
+                
                 if self.currentState.crouch==True:
                     self.AnimFrame=2
                     self.framecount=5
                     self.currentAnim='Down'                
                     self.currentState.crouch=True
-                Tools.Logger.escribir(" estado abajo")
+                
 
         if self.currentAnim== 'Down_HighPunch' and (self.currentState.crouch==True):
             self.currentState.control = False
-            if self.framecount==3:
-                Collicion.ejecutarDownHit(self,oponent)
+            if self.framecount in range(3,8):
+                Collicion.ejecutarHit(self,oponent)
             if  self.currentAnimImage==len(self.anims[self.currentAnim])-2 and (self.framecount == int(self.anims[self.currentAnim][-1][0])):
-                Tools.Logger.escribir("actual estado es golpe agachado " + self.currentAnim + " " +str(self.currentAnimImage) + " "+ str(self.framecount))
+                
                 if self.currentState.crouch==True:
 
                     self.currentAnimImage=2
                     self.framecount=5
                     self.currentAnim='Down'
                     self.currentState.crouch=True
-                Tools.Logger.escribir("actual estado es debe quedarse abajo" + self.currentAnim + self.currentAnim + " " +str(self.currentAnimImage) + " "+ str(self.framecount))
+                
                 
 
         if self.currentAnim=='Walk':
+            self.currentState.control=True
             fin = False
             if self.currentAnimImage == len(self.anims[self.currentAnim])-2:
                 self.currentAnimImage= 0
@@ -273,14 +284,17 @@ class Personaje(pygame.sprite.Sprite):
                 fin = self.move(self.maxSpeed,0,oponent.bodyRect)
             if fin == True:
                 self.currentAnim='Stand'
-                self.currentState.control=True
+                self.currentAnimImage=0
+                self.framecount=0
+                
 
 
 
 
 
         if self.currentAnim=="BWalk":
-            
+            self.currentState.control=True
+
             self.currentState.block=True
             fin = False
             if self.currentAnimImage == len(self.anims[self.currentAnim])-2:
@@ -291,42 +305,49 @@ class Personaje(pygame.sprite.Sprite):
             else:
                 fin = self.move(-1*self.maxSpeed,0,oponent.bodyRect)
             if fin == True:
-                self.currentState.control=True
+                
                 self.currentAnim='Stand'
+                self.currentAnimImage=0
+                self.framecount=0
 
 
 
 
 
         if self.currentAnim == 'FrontDash':
+            self.currentState.control=True
             fin = False
             if self.currentAnimImage == len(self.anims[self.currentAnim])-2:
-                self.currentAnimImage= 0
-                self.framecount=0
+                self.currentAnimImage= 1
+                self.framecount=5
             if self.flip==True:
                 fin = self.move(-1*self.dashspeed,0,oponent.bodyRect)
             else:
                 fin = self.move(self.dashspeed,0,oponent.bodyRect)
             if fin == True:
                 self.currentAnim='Stand'
-                self.currentState.control=True
+                self.currentAnimImage=0
+                self.framecount=0
 
 
-        if self.currentAnim=="BackDash":           
+        if self.currentAnim=="BackDash":
+            self.currentState.control=True
             
 
             self.currentState.block=True
             fin = False
             if self.currentAnimImage == len(self.anims[self.currentAnim])-2:
-                self.currentAnimImage= 0
-                self.framecount=0
+                self.currentAnimImage= 1
+                self.framecount=5
             if self.flip==True:
                 fin = self.move(self.dashspeed,0,oponent.bodyRect)
             else:
                 fin = self.move(-1*self.dashspeed,0,oponent.bodyRect)
             if fin == True:
                 self.currentAnim='Stand'
-                self.currentState.control=True 
+                self.currentAnimImage=0
+                self.framecount=0
+                
 
         if self.currentAnim=="Down":
             self.currentState.crouch = True
@@ -341,6 +362,20 @@ class Personaje(pygame.sprite.Sprite):
             if self.currentAnimImage == len(self.anims[self.currentAnim])-2:
                 self.currentAnimImage= 0
                 self.framecount=0
+
+        if self.currentAnim=='Charge':
+            if self.power==self.maxpower:
+                self.currentAnim='Stand'
+
+            if self.framecount==10:
+                self.framecount=2
+                self.currentAnimImage=1
+                self.power+=3
+                if self.power>=self.maxpower:
+                    self.power=self.maxpower
+
+
+
 
 
     def setSounds(self):

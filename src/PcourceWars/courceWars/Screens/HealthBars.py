@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: latin-1 -*-
+"""módulo que representa a las barras de vida de cada uno de los personajes"""
+
 import sys, pygame
 
 width, height = 1024, 768
