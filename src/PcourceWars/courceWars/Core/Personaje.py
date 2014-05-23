@@ -108,7 +108,7 @@ class Personaje(pygame.sprite.Sprite):
         if self.framecount==self.anims[self.currentAnim][self.currentAnimImage+1][0]:
             if self.anims[self.currentAnim][self.currentAnimImage+1][1] == -1:
                 Tools.Logger.escribir("retornando a Stand: \n" + str(self.anims[self.currentAnim][self.currentAnimImage+1]))
-                self.currentAnim='Stand'
+                self.currentAnim=self.staticAnim
                 self.currentAnimImage=0
                 self.framecount=0
             else:
@@ -406,6 +406,14 @@ class Personaje(pygame.sprite.Sprite):
     def checkStatus(self, oponent):
         """Método que chequea el estado del personaje (observando al oponente) tanto en términos de flip, estados de parálisis, término de defensa, etc."""
         Tools.Logger.escribir(self.statusText())
+
+        if self.currentHP<=0 and self.currentAnim!='Death':
+            self.currentAnim='Death'
+            self.staticAnim='Death'
+            self.framecount=0
+            self.currentAnimImage=0
+
+
 
         if oponent.pos[0] < self.pos[0]:
             self.flip=True
