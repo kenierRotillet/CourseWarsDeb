@@ -220,8 +220,10 @@ class Personaje(pygame.sprite.Sprite):
                 return
             self.currentState.control = False
             #Tools.Logger.escribir("comprovando golpes")
-            if self.framecount in range(3,5):                
-                Collicion.ejecutarHit(self,oponent)
+            dano = Collicion.ejecutarHit(self,oponent)
+            if self.framecount in range(3,6) and dano == True:
+                oponent.currentHP-=5                
+                
                     
 
         if self.currentAnim == 'MediumPunch':
@@ -230,8 +232,9 @@ class Personaje(pygame.sprite.Sprite):
                 return
             self.currentState.control = False
             #Tools.Logger.escribir("comprovando golpes")
-            if self.framecount in range(2,4):
-                Collicion.ejecutarHit(self,oponent)
+            dano = Collicion.ejecutarHit(self,oponent)
+            if self.framecount in range(10,16) and dano == True:
+                oponent.currentHP-=5
 
         if self.currentAnim == 'HighPunch':
             if self.currentState.crouch==True:
@@ -239,14 +242,17 @@ class Personaje(pygame.sprite.Sprite):
                 return
             self.currentState.control = False
             #Tools.Logger.escribir("comprovando golpes")
-            if self.framecount in range(3,14):
-                Collicion.ejecutarHit(self,oponent)
+            dano = Collicion.ejecutarHit(self,oponent)
+            if self.framecount in range(16,22) and dano == True:
+                oponent.currentHP-=5
 
 
         if self.currentAnim== 'Down_LightPunch' and (self.currentState.crouch==True):
             self.currentState.control = False
-            if self.framecount in range(2,4):
-                Collicion.ejecutarHit(self,oponent)
+            dano = Collicion.ejecutarHit(self,oponent)
+            if self.framecount in range(3,9) and dano ==True:
+                oponent.currentHP-=5
+                
             if  self.currentAnimImage==len(self.anims[self.currentAnim])-2 and (self.framecount == int(self.anims[self.currentAnim][-1][0])):
                 
                 if self.currentState.crouch==True:
@@ -258,8 +264,10 @@ class Personaje(pygame.sprite.Sprite):
 
         if self.currentAnim== 'Down_HighPunch' and (self.currentState.crouch==True):
             self.currentState.control = False
-            if self.framecount in range(3,8):
-                Collicion.ejecutarHit(self,oponent)
+            dano = Collicion.ejecutarHit(self,oponent)
+            if self.framecount in range(10,12) and dano==True:
+                oponent.currentHP-=5
+                
             if  self.currentAnimImage==len(self.anims[self.currentAnim])-2 and (self.framecount == int(self.anims[self.currentAnim][-1][0])):
                 
                 if self.currentState.crouch==True:
@@ -363,15 +371,19 @@ class Personaje(pygame.sprite.Sprite):
                 self.framecount=0
 
         if self.currentAnim=='Charge':
-            if self.power==self.maxpower:
+            if self.currentState.flags.has_key('MaxPower')== True:
                 self.currentAnim='Stand'
 
             if self.framecount==24:
-                self.framecount=2
-                self.currentAnimImage=1
                 self.power+=5
                 if self.power>=self.maxpower:
                     self.power=self.maxpower
+                else:
+                    self.framecount=2
+                    self.currentAnimImage=1
+            elif self.framecount==35:
+                self.currentState.flags['MaxPower']=True
+
 
 
 
