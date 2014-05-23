@@ -128,6 +128,10 @@ Hit_Down:
 Hit_Jump:
 0,Chars/Medic/Sprites/Medic022_001.png
 3,-1;
+Death:
+0,Chars/Medic/Sprites/Medic022_001.png
+3,Chars/Medic/Sprites/Medic023_001.png
+5,-1
 Recover:
 1,Chars/Medic/Sprites/Medic023_001.png
 2,Chars/Medic/Sprites/Medic023_002.png

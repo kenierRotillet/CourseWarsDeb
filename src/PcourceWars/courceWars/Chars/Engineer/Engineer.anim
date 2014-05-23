@@ -137,6 +137,10 @@ Hit_Down:
 Hit_Jump:
 0,Chars/Engineer/Sprites/Enginer022_001.png
 3,-1;
+Death:
+0,Chars/Engineer/Sprites/Enginer022_001.png
+3,Chars/Engineer/Sprites/Enginer023_001.png
+5,-1
 Recover:
 0,Chars/Engineer/Sprites/Enginer023_001.png
 2,Chars/Engineer/Sprites/Enginer023_002.png
