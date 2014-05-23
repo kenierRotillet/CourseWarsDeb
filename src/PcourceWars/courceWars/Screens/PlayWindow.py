@@ -17,7 +17,7 @@ screen_h = 768
 
 def main(seleccion):
     pygame.init()
-    Sound.soundPlayer.bgmPlay("bgm/battle8.mp3")
+    Sound.soundPlayer.bgmPlay("bgm/loading.mp3")
 
     pantalla = pygame.display.set_mode((screen_w,screen_h))
     posInicialP1= (-100,220)
