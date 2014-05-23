@@ -70,6 +70,9 @@ def main(seleccion):
     Barra2=HealthBars.HP_Bar(pantalla,2)
     Power1=PowerBars.Power_Bar(pantalla,1)
     Power2=PowerBars.Power_Bar(pantalla,2)
+    BarraVida1=Tools.FastMethods.load_image("Screens/imgs/MarcoVida1.png")
+    BarraVida2=Tools.FastMethods.load_image("Screens/imgs/MarcoVida2.png")
+      
 
     while Salida==False:
         #print("posp1" + str(personaje.pos[0]) + ", " + str(personaje.pos[1]))
@@ -158,6 +161,8 @@ def main(seleccion):
         Barra2.draw(p2.currentHP)
         Power1.draw(personaje.power)
         Power2.draw(p2.power)
+        pantalla.blit(BarraVida1,(27,30))
+        pantalla.blit(BarraVida2,(592,28))
         
         pygame.display.flip()
 
