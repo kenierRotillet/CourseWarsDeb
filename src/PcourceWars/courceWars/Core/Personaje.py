@@ -220,8 +220,7 @@ class Personaje(pygame.sprite.Sprite):
                 return
             self.currentState.control = False
             #Tools.Logger.escribir("comprovando golpes")
-            if self.framecount in range(3,5):
-                
+            if self.framecount in range(3,5):                
                 Collicion.ejecutarHit(self,oponent)
                     
 
