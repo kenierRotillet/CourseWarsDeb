@@ -31,4 +31,4 @@ Charge:
 8,sfx/charge.wav,
 25,sfx/spcharge.wav,;
 Death:
-0,Chars/Medic/Medic/Voice/death.wav,;
+0,Chars/Medic/Voice/death.wav,;
