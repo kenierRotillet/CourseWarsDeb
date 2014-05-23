@@ -43,6 +43,6 @@ class Power_Bar(object):
             pygame.draw.rect(self.screen,color,(430,60,-power*2,10),0)
         else:
             pygame.draw.rect(self.screen,grey,(width - 430,60,200,10),0)
-            pygame.draw.rect(self.screen,color,(width - 429,60,power*2,10),0)
+            pygame.draw.rect(self.screen,color,(width - 430,60,power*2,10),0)
             
 
