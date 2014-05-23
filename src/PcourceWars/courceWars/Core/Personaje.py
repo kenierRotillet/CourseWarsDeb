@@ -363,15 +363,19 @@ class Personaje(pygame.sprite.Sprite):
                 self.framecount=0
 
         if self.currentAnim=='Charge':
-            if self.power==self.maxpower:
+            if self.currentState.flags.has_key('MaxPower')== True:
                 self.currentAnim='Stand'
 
             if self.framecount==24:
-                self.framecount=2
-                self.currentAnimImage=1
                 self.power+=5
                 if self.power>=self.maxpower:
                     self.power=self.maxpower
+                else:
+                    self.framecount=2
+                    self.currentAnimImage=1
+            elif self.framecount==35:
+                self.currentState.flags['MaxPower']=True
+
 
 
 

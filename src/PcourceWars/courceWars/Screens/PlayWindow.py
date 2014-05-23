@@ -121,10 +121,11 @@ def main(seleccion):
             p2.lookCommand(keyup2,tiempo,True)
 
         
-        personaje.DoAction(p2)
-        p2.DoAction(personaje)
         personaje.setHitboxes()
         p2.setHitboxes()
+
+        personaje.DoAction(p2)
+        p2.DoAction(personaje)
 
         personaje.setSounds()
         p2.setSounds()
