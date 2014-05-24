@@ -126,27 +126,27 @@ class Personaje(pygame.sprite.Sprite):
         if KeyUP==True:
             for k in keys:
                 if self.currentAnim=='Walk' or self.currentAnim == 'FrontDash':
-                    if k == 'F' or (k == 'B' and self.flip == True):
+                    if k.__contains__('F') == True or (k.__contains__('B') == True and self.flip == True):
                         self.currentAnim='Stand'
                         self.currentAnimImage=0
                         self.framecount=0
                 elif self.currentAnim=='BWalk' or self.currentAnim=='BackDash' or self.currentAnim=='Block':
-                    if k == 'B' or (k == 'F' and self.flip == True):
+                    if k.__contains__('B') == True or (k.__contains__('F') == True and self.flip == True):
                         self.currentAnim='Stand'
                         self.currentAnimImage=0
                         self.framecount=0
                         self.currentState.block=False
                 elif self.currentAnim=='Down':
-                    if k == 'D':
+                    if k.__contains__('D') == True:
                         self.currentAnim='Stand'
                         self.currentAnimImage=0
                         self.framecount=0
                         self.currentState.crouch = False
                 elif self.currentAnim=='Down_LightPunch' or self.currentAnim=='Down_HighPunch':
-                    if k == 'D':
+                    if k.__contains__('D') == True:
                         self.currentState.crouch=False
                 elif self.currentAnim=='Charge':
-                    if k =='x':
+                    if k.__contains__('x') ==True:
                         self.currentAnim='Stand'
                         self.framecount=0
                         self.currentAnimImage=0
@@ -428,7 +428,10 @@ class Personaje(pygame.sprite.Sprite):
         if self.currentAnim != 'Stand' and self.currentAnim != 'Block' and self.currentAnim != 'BackDash' and self.currentAnim != 'BWalk':
             self.currentState.block=False
 
-        
+        if self.currentAnim.__contains__('Down') == False:
+            self.currentState.crouch=False
+
+
 
     def setHitboxes(self):
         """ método que setea las hitboxes del frame actual"""

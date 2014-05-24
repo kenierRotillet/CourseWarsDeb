@@ -3,6 +3,7 @@
 import Core.Personaje
 import Tools
 import pygame
+import Collicion
 
 class Engineer(Core.Personaje.Personaje):
     """ Clase que representa al personaje del ingeniero """
@@ -39,4 +40,20 @@ class Engineer(Core.Personaje.Personaje):
         
         
 
+
+    def DoAction(self, oponent):
+        if self.currentAnim=='Special':
+            if self.power<self.maxpower:
+                self.currentAnim=self.staticAnim
+                return
+            Collicion.ejecutarHit(self,oponent)
+            self.currentState.control=False
+
+            if self.framecount==self.anims[self.currentAnim][-1][0]:
+                self.power=0
+                del self.currentState.flags['MaxPower']
+                self.currentState.control=True
+        else:
+            super(Engineer, self).DoAction(oponent)
+    
 

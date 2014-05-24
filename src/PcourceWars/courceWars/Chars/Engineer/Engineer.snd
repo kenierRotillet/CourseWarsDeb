@@ -13,7 +13,16 @@ BackDash:
 Special:
 0,sfx/spcharge.wav,
 0,sfx/teleport.wav,
-50,sfx/explode1.wav,;
+49,,sfx/hp1.wav
+50,,sfx/hp1.wav
+51,,sfx/hp1.wav
+52,,sfx/hp1.wav
+53,,sfx/explode1.wav
+54,,sfx/hp1.wav
+55,,sfx/hp1.wav
+56,,sfx/hp1.wav
+57,,sfx/explode2.wav
+61,Chars/Engineer/Voice/taunt.wav,;
 Block:
 0,,sfx/Block.wav;
 Down_LightPunch:
