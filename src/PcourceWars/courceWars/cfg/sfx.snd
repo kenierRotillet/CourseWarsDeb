@@ -1,0 +1,16 @@
+R1:
+0,sfx/r1.wav,;
+R2:
+0,sfx/r2.wav,;
+R3:
+0,sfx/r3.wav,;
+Fight:
+0,sf/f.wav,;
+TimeUp:
+0,sfx/tu.wav,;
+End:
+0,sfx/end.wav,;
+SuperEnd:
+0,sfx/send.wav,;
+HiperEnd:
+0,sfx/mend.wav,;
