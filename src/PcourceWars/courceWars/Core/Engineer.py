@@ -33,6 +33,7 @@ class Engineer(Core.Personaje.Personaje):
         
         self.pos=(self.rect.centerx,self.rect.centery)
         self.bodyRect.center = self.rect.center
+        self.posinicial=self.rect.center
 
 
         Tools.Logger.escribir("inicializando al jugador " + str(self.player) + " como ingeniero. Datos específicos " + str(self) + ", posición y rect " + str(self.pos) + ", " + str(self.rect))
@@ -46,8 +47,12 @@ class Engineer(Core.Personaje.Personaje):
             if self.power<self.maxpower:
                 self.currentAnim=self.staticAnim
                 return
-            Collicion.ejecutarHit(self,oponent)
+            touch = Collicion.ejecutarHit(self,oponent)
             self.currentState.control=False
+            if touch==True:
+                oponent.currentState.control=False
+                oponent.currentHP-=10
+
 
             if self.framecount==self.anims[self.currentAnim][-1][0]:
                 self.power=0

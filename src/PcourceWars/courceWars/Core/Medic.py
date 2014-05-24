@@ -32,6 +32,7 @@ class Medic(Core.Personaje.Personaje):
         
         self.pos=(self.rect.centerx,self.rect.centery)
         self.bodyRect.center = self.rect.center
+        self.posinicial=self.rect.center
 
 
         Tools.Logger.escribir("inicializando al jugador " + str(self.player) + " como médico. Datos específicos " + str(self) + " posisión, y rect: " + str(self.pos) + ", " + str(self.rect))

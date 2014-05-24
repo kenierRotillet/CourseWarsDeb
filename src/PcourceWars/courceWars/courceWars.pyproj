@@ -64,6 +64,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Screens\PlayWindow.py" />
+    <Compile Include="Screens\PowerBars.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Screens\Sel_PJ.py">
       <SubType>Code</SubType>
     </Compile>

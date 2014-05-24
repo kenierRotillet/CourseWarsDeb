@@ -1,11 +1,11 @@
-R1:
+Round1:
 0,sfx/r1.wav,;
-R2:
+Round2:
 0,sfx/r2.wav,;
-R3:
+Round3:
 0,sfx/r3.wav,;
 Fight:
-0,sf/f.wav,;
+0,sfx/f.wav,;
 TimeUp:
 0,sfx/tu.wav,;
 End:
