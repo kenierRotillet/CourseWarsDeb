@@ -21,7 +21,7 @@ Special:
 Block:
 0,,sfx/Block.wav;
 Taunt:
-50,sfx/laugh.wav,;
+5,sfx/laugh.wav,;
 Down_LightPunch:
 1,sfx/dlpl.wav,sfx/dlp.wav;
 Down_HighPunch:

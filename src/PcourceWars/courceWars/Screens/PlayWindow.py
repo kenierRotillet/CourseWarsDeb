@@ -192,9 +192,9 @@ def main(seleccion):
             p2.totalControl=False
             fps=10
             
-            if p1liv==False and p2.currentAnim !='Stand':
+            if p1liv==False and p2.currentAnim !='Stand' and personaje.currentAnim!='Death':
                 personaje.setAnim('Death')
-            if p2liv==False and personaje.currentAnim!='Stand':
+            if p2liv==False and personaje.currentAnim!='Stand' and p2.currentAnim!='Death':
                 p2.setAnim('Death')
 
 

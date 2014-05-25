@@ -51,7 +51,7 @@ class Engineer(Core.Personaje.Personaje):
             self.currentState.control=False
             if touch==True:
                 oponent.currentState.control=False
-                oponent.currentHP-=10
+                oponent.setDamage(1)
 
 
             if self.framecount==self.anims[self.currentAnim][-1][0]:

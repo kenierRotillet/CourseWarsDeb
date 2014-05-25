@@ -231,7 +231,7 @@ class Personaje(pygame.sprite.Sprite):
             #Tools.Logger.escribir("comprovando golpes")
             dano = Collicion.ejecutarHit(self,oponent)
             if self.framecount in range(3,6) and dano == True:
-                oponent.currentHP-=5                
+                oponent.setDamage(5)                
                 
                     
 
@@ -243,7 +243,7 @@ class Personaje(pygame.sprite.Sprite):
             #Tools.Logger.escribir("comprovando golpes")
             dano = Collicion.ejecutarHit(self,oponent)
             if self.framecount in range(10,16) and dano == True:
-                oponent.currentHP-=5
+                oponent.setDamage(5)
 
         if self.currentAnim == 'HighPunch':
             if self.currentState.crouch==True:
@@ -253,14 +253,14 @@ class Personaje(pygame.sprite.Sprite):
             #Tools.Logger.escribir("comprovando golpes")
             dano = Collicion.ejecutarHit(self,oponent)
             if self.framecount in range(16,22) and dano == True:
-                oponent.currentHP-=5
+                oponent.setDamage(5)
 
 
         if self.currentAnim== 'Down_LightPunch' and (self.currentState.crouch==True):
             self.currentState.control = False
             dano = Collicion.ejecutarHit(self,oponent)
             if self.framecount in range(3,9) and dano ==True:
-                oponent.currentHP-=5
+                oponent.setDamage(5)
                 
             if  self.currentAnimImage==len(self.anims[self.currentAnim])-2 and (self.framecount == int(self.anims[self.currentAnim][-1][0])):
                 
@@ -275,7 +275,7 @@ class Personaje(pygame.sprite.Sprite):
             self.currentState.control = False
             dano = Collicion.ejecutarHit(self,oponent)
             if self.framecount in range(10,12) and dano==True:
-                oponent.currentHP-=5
+                oponent.setDamage(5)
                 
             if  self.currentAnimImage==len(self.anims[self.currentAnim])-2 and (self.framecount == int(self.anims[self.currentAnim][-1][0])):
                 
@@ -510,9 +510,13 @@ class Personaje(pygame.sprite.Sprite):
 
 
 
-    def setAnim(self,anim):
+    def setAnim(self,anim,frame=0,img=0):
         self.currentAnim= anim
-        self.framecount=0
-        self.currentAnimImage=0
+        self.framecount=frame
+        self.currentAnimImage=img
 
-        
+    def setDamage(self,damaje):
+        self.currentHP-=damaje
+        if self.currentHP<0:
+            self.currentHP=0
+
