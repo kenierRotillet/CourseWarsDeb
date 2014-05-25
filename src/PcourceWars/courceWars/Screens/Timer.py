@@ -58,6 +58,9 @@ class Time(object):
     def Tiempo(self):
         return self.time
 
+    def Reset(self):
+        self.time=90
+
         
 
     
