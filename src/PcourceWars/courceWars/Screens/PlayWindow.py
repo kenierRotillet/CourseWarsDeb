@@ -87,6 +87,7 @@ def main(seleccion):
     BarraVida1=Tools.FastMethods.load_image("Screens/imgs/MarcoVida1.png")
     BarraVida2=Tools.FastMethods.load_image("Screens/imgs/MarcoVida2.png")
     Contador=Timer.Time(90)
+    endType=0
 
     while Salida==False:
         #print("posp1" + str(personaje.pos[0]) + ", " + str(personaje.pos[1]))
@@ -191,6 +192,17 @@ def main(seleccion):
             personaje.totalControl=False
             p2.totalControl=False
             fps=10
+            if endType==0:
+                if round<3 and (personaje.currentAnim=='Special' or p2.currentAnim=='Special'):
+                    endType='SuperEnd'
+                elif round==3 and (personaje.currentAnim=='Special' or p2.currentAnim=='Special'):
+                    endType='HiperEnd'
+                else:
+                    endType='End'
+                comonSounds[endType][0][1].play()
+
+
+
             
             if p1liv==False and p2.currentAnim !='Stand' and personaje.currentAnim!='Death':
                 personaje.setAnim('Death',img=1)
@@ -203,6 +215,7 @@ def main(seleccion):
                 fighting=False
                 fps=50
                 round+=1
+                endType=0
                 if p2liv==False:
                     p1win+=1
                     personaje.setAnim('Taunt')
