@@ -193,9 +193,9 @@ def main(seleccion):
             fps=10
             
             if p1liv==False and p2.currentAnim !='Stand' and personaje.currentAnim!='Death':
-                personaje.setAnim('Death')
+                personaje.setAnim('Death',img=1)
             if p2liv==False and personaje.currentAnim!='Stand' and p2.currentAnim!='Death':
-                p2.setAnim('Death')
+                p2.setAnim('Death',img=1)
 
 
             if personaje.currentAnim=='Stand' and p2.currentAnim=='Stand':
