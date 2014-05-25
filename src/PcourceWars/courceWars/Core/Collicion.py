@@ -49,7 +49,7 @@ def Golpe_Inferior(colision, altura_1, altura_2, defensa):
             return 1
 
 def ejecutarHit(ataca,oponent):
-    print("Impacto")
+    #print("Impacto")
     if Golpe_Superior(pygame.sprite.collide_mask(ataca,oponent), ataca.pos[1], oponent.pos[1], oponent.currentState.block) == 0:
         oponent.currentState.flags['Hit'] = True
         oponent.currentAnim = 'Block'
@@ -81,9 +81,9 @@ def ejecutarHit(ataca,oponent):
             rect.centerx=oponent.rect.centerx + h[1]
             rect.centery=oponent.rect.centery + h[2]
             listaIMP.append(rect)
-    print(listaATK)
-    print(listaIMP)
-    print("listas")
+    #print(listaATK)
+    #print(listaIMP)
+    #print("listas")
 
     for d in listaATK:
         print("hubieron:"+str(d.collidelist(listaIMP)))
