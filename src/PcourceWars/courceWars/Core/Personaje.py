@@ -17,6 +17,7 @@ class Personaje(pygame.sprite.Sprite):
         self.currentState = State.State(0,True) #estado en el que se encuentra el personaje actualmente #estado en el que se encuentra actualmente, se inicializa como estado 0 y con control.
         self.maxHP = 100
         self.currentHP = self.maxHP #cantidad mÃ¡xima de hp y cantidad actual de hp
+        self.vivo=True
         self.atk = 10 #poder de ataque, para cÃ¡lculo de daÃ±o futuro
         self.deff= 10 #valor de defensa  para cÃ¡lculo de daÃ±o futuro
         self.power=0 #cantidad de carga inicial
@@ -45,6 +46,8 @@ class Personaje(pygame.sprite.Sprite):
         self.hitboxes = {} #diccionario que almasena todos los hitboxes y damageboxes para cada frame de cada animacion
         self.currentHitboxes = [] #lista que almacena los hitboxes del frame actual
         self.bodyRect = pygame.rect.Rect(0,0,125,200) #rect que funciona como el cuerpo del personaje
+        self.totalControl =False
+        self.posinicial = initPos
 
         
         if self.player == 2:
@@ -123,6 +126,10 @@ class Personaje(pygame.sprite.Sprite):
     def lookCommand(self, keys,currentTime,KeyUP = False):
         #Tools.Logger.escribir("teclas ingresadas en el tiempo: " + str(currentTime))
         #Tools.Logger.escribir(str(keys))
+        if self.totalControl==False:
+            return
+
+
         if KeyUP==True:
             for k in keys:
                 if self.currentAnim=='Walk' or self.currentAnim == 'FrontDash':
@@ -407,11 +414,17 @@ class Personaje(pygame.sprite.Sprite):
         """M�todo que chequea el estado del personaje (observando al oponente) tanto en t�rminos de flip, estados de par�lisis, t�rmino de defensa, etc."""
         Tools.Logger.escribir(self.statusText())
 
-        if self.currentHP<=0 and self.currentAnim!='Death':
+        if self.totalControl==False:
+            return self.vivo
+
+        if self.currentHP<=0 and self.vivo==True:
             self.currentAnim='Death'
-            self.staticAnim='Death'
+            self.vivo=False
+            self.totalControl=False
+            
             self.framecount=0
             self.currentAnimImage=0
+            self.currentState.control=False
 
 
 
@@ -420,7 +433,7 @@ class Personaje(pygame.sprite.Sprite):
         else:
             self.flip=False
         
-        if self.currentAnim=='Stand':
+        if self.currentAnim=='Stand' and self.vivo==True:
             self.currentState.control = True
             self.currentState.typenumber=0
             self.currentState.crouch = False
@@ -430,6 +443,8 @@ class Personaje(pygame.sprite.Sprite):
 
         if self.currentAnim.__contains__('Down') == False:
             self.currentState.crouch=False
+
+        return self.vivo
 
 
 
@@ -467,3 +482,35 @@ class Personaje(pygame.sprite.Sprite):
 
     def statusText(self):
         return("jugador: " + str(self.player) + ", en estado " + self.currentAnim + ", en posici�n " + str(self.pos) + " y rect: " + str(self.rect)+", rect del cuerpo: " + str(self.bodyRect) +"\n")
+
+    def recetPersonaje(self):
+        self.currentHP = self.maxHP
+        self.currentAnim='Stand'
+        self.staticAnim='Stand'
+        self.framecount=0
+        self.currentAnimImage=0
+        self.power=0
+        self.currentState.control=True
+        self.currentState.typenumber=0
+        self.currentState.crouch=False
+        self.currentState.block=False
+        self.currentState.flags={}
+        
+
+        self.totalControl=False
+        Tools.Logger.escribir("reiniciando las posiciones a: " + str(self.posinicial) + "\n rect original: "+ str(self.rect) + " y el rect central: " + str(self.bodyRect) + ", y el centro: " + str(self.pos))
+        self.rect.center=self.posinicial
+        self.pos= self.rect.center
+        self.bodyRect.center = self.rect.center
+        Tools.Logger.escribir("reiniciadas las posiciones: " + str(self.rect) + " y el rect central: " + str(self.bodyRect) + ", y el centro: " + str(self.pos))
+        self.vivo=True
+
+
+
+
+    def setAnim(self,anim):
+        self.currentAnim= anim
+        self.framecount=0
+        self.currentAnimImage=0
+
+        

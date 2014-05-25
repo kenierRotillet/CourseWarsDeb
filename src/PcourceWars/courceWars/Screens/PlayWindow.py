@@ -51,6 +51,19 @@ def main(seleccion):
 
     
     #Tools.Logger.escribir(str(personaje.sounds))
+    comonSounds = Tools.FastMethods.LoadSounds("cfg/sfx.snd")
+    
+    
+    fps=50 
+    round = 1
+    waitTime = fps*2
+    p1win =0
+    p2win=0
+    fighting = False
+
+
+
+
 
     pygame.display.set_caption("CourseWars: 50 fps")
     relojito = pygame.time.Clock()
@@ -65,7 +78,7 @@ def main(seleccion):
     #fondo= Tools.FastMethods.load_image("Screens/imgs/BG_09.png")
 
     Salida = False
-    fps = 50
+    
     Sound.soundPlayer.bgmPlay("bgm/battle"+str(mapa)+".mp3")
     Barra1=HealthBars.HP_Bar(pantalla,1)
     Barra2=HealthBars.HP_Bar(pantalla,2)
@@ -83,6 +96,26 @@ def main(seleccion):
         teclup = []
         relojito.tick_busy_loop(fps)
         pygame.display.set_caption("course wars: " + str(fps) +  " fps")
+        if fighting==False:
+            if p1win+p2win<3:
+                contador = 0
+                while contador < waitTime:
+                    relojito.tick_busy_loop(fps)
+                    if contador ==0:
+                        comonSounds['Round'+str(round)][0][1].play()
+                        
+                    if contador==waitTime-1:
+                        comonSounds['Fight'][0][1].play()
+                    contador+=1 
+                fighting=True
+                personaje.totalControl=True
+                p2.totalControl=True
+
+
+
+
+
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -110,8 +143,46 @@ def main(seleccion):
                 teclup.append(event.key)
 
 
-        personaje.checkStatus(p2)
-        p2.checkStatus(personaje)
+        p1liv = personaje.checkStatus(p2)
+        p2liv = p2.checkStatus(personaje)
+        if p1liv == False or p2liv == False:
+            personaje.totalControl=False
+            p2.totalControl=False
+            fighting=False
+            round+=1
+            if p2liv==False:
+                p1win+=1
+                personaje.setAnim('Taunt')
+
+
+            elif p1liv==False:
+                p2win+=1
+                p2.setAnim('Taunt')
+            contador=0
+            while contador <= waitTime:
+                relojito.tick_busy_loop(fps)
+                personaje.setSounds()
+                p2.setSounds()
+                personaje.update()
+                p2.update()
+                Sound.soundPlayer.playSounds(personaje)
+                Sound.soundPlayer.playSounds(p2)
+                contador+=1
+                pantalla.blit(personaje.image,personaje.rect)
+        
+                pantalla.blit(p2.image,p2.rect)
+        
+
+
+
+            personaje.recetPersonaje()
+            p2.recetPersonaje()
+
+
+
+
+
+
         if len(teclas)>0:
 
             teclastotales.append((tiempo,Tools.FastMethods.convertKeys(teclas)))
@@ -137,12 +208,13 @@ def main(seleccion):
 
         personaje.update()
         p2.update()
+        Sound.soundPlayer.playSounds(personaje)
+        Sound.soundPlayer.playSounds(p2)
         rc1 = pantalla.blit(personaje.image,personaje.rect)
         
         rc2 = pantalla.blit(p2.image,p2.rect)
         
-        Sound.soundPlayer.playSounds(personaje)
-        Sound.soundPlayer.playSounds(p2)
+        
 
 
 
