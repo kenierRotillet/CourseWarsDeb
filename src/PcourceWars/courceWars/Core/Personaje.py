@@ -91,6 +91,8 @@ class Personaje(pygame.sprite.Sprite):
 
     def update(self):
         """método que actualiza frame a frame el sprite de la animación actual."""
+        self.setSounds()
+
         Tools.Logger.escribir(" actualizando imagen: \n animación: " + self.currentAnim + ", número de imagen: " + str(self.currentAnimImage) + " y número de frame: " + str(self.framecount))
         Tools.Logger.escribir(" datos actuales: " + str(self.anims[self.currentAnim][self.currentAnimImage])+ "\n los datos siguientes: " + str(self.anims[self.currentAnim][self.currentAnimImage+1]))
         #se carga la imagen actual

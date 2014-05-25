@@ -101,6 +101,18 @@ def main(seleccion):
                 contador = 0
                 while contador < waitTime:
                     relojito.tick_busy_loop(fps)
+                    pantalla.blit(fondo,(0,0))
+                    personaje.update()
+                    p2.update()
+                    Sound.soundPlayer.playSounds(personaje)
+                    Sound.soundPlayer.playSounds(p2)
+                    
+                    pantalla.blit(personaje.image,personaje.rect)
+                    pantalla.blit(p2.image,p2.rect)
+                    pygame.display.flip()
+
+
+
                     if contador ==0:
                         comonSounds['Round'+str(round)][0][1].play()
                         
@@ -110,6 +122,7 @@ def main(seleccion):
                 fighting=True
                 personaje.totalControl=True
                 p2.totalControl=True
+                pygame.event.clear()
 
 
 
@@ -148,35 +161,51 @@ def main(seleccion):
         if p1liv == False or p2liv == False:
             personaje.totalControl=False
             p2.totalControl=False
-            fighting=False
-            round+=1
-            if p2liv==False:
-                p1win+=1
-                personaje.setAnim('Taunt')
+            fps=10
+            
+            if p1liv==False and p2.currentAnim !='Stand':
+                personaje.setAnim('Death')
+            if p2liv==False and personaje.currentAnim!='Stand':
+                p2.setAnim('Death')
 
 
-            elif p1liv==False:
-                p2win+=1
-                p2.setAnim('Taunt')
-            contador=0
-            while contador <= waitTime:
-                relojito.tick_busy_loop(fps)
-                personaje.setSounds()
-                p2.setSounds()
-                personaje.update()
-                p2.update()
-                Sound.soundPlayer.playSounds(personaje)
-                Sound.soundPlayer.playSounds(p2)
-                contador+=1
-                pantalla.blit(personaje.image,personaje.rect)
+            if personaje.currentAnim=='Stand' and p2.currentAnim=='Stand':
+
+                fighting=False
+                fps=50
+                round+=1
+                if p2liv==False:
+                    p1win+=1
+                    personaje.setAnim('Taunt')
+
+
+                elif p1liv==False:
+                    p2win+=1
+                    p2.setAnim('Taunt')
+                contador=-25
+                while contador <= waitTime:
+                    relojito.tick_busy_loop(fps)
+                
+                    pantalla.blit(fondo,(0,0))    
+                    personaje.update()
+                    p2.update()
+                    Sound.soundPlayer.playSounds(personaje)
+                    Sound.soundPlayer.playSounds(p2)
+                    contador+=1
+                    pantalla.blit(personaje.image,personaje.rect)
         
-                pantalla.blit(p2.image,p2.rect)
+                    pantalla.blit(p2.image,p2.rect)
+                    pygame.display.flip()
+
         
 
 
 
-            personaje.recetPersonaje()
-            p2.recetPersonaje()
+                personaje.recetPersonaje()
+                p2.recetPersonaje()
+                Contador.Reset()
+
+
 
 
 
@@ -202,8 +231,6 @@ def main(seleccion):
         personaje.DoAction(p2)
         p2.DoAction(personaje)
 
-        personaje.setSounds()
-        p2.setSounds()
         
 
         personaje.update()

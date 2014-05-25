@@ -73,6 +73,9 @@
     <Compile Include="Screens\Start_Menu.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Screens\Timer.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Sound\soundPlayer.py" />
     <Compile Include="Tools\eventos.py" />
     <Compile Include="Tools\FastMethods.py" />
