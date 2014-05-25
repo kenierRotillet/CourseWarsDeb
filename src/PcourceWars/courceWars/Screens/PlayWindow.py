@@ -97,7 +97,7 @@ def main(seleccion):
         relojito.tick_busy_loop(fps)
         pygame.display.set_caption("course wars: " + str(fps) +  " fps")
         if fighting==False:
-            if p1win+p2win<3:
+            if p1win<2 and p2win<2:
                 contador = 0
                 while contador < waitTime:
                     relojito.tick_busy_loop(fps)
@@ -123,6 +123,35 @@ def main(seleccion):
                 personaje.totalControl=True
                 p2.totalControl=True
                 pygame.event.clear()
+            else:
+                if p1win==2:
+                    personaje.setAnim('Taunt')
+                else:
+                    p2.setAnim('Taunt')
+                contador = 0
+                while contador < waitTime:
+                    relojito.tick_busy_loop(fps)
+                    pantalla.blit(fondo,(0,0))
+                    personaje.update()
+                    p2.update()
+                    Sound.soundPlayer.playSounds(personaje)
+                    Sound.soundPlayer.playSounds(p2)
+                    
+                    pantalla.blit(personaje.image,personaje.rect)
+                    pantalla.blit(p2.image,p2.rect)
+                    pygame.display.flip()
+                    contador+=1
+                pygame.event.clear()
+                return
+
+
+
+                    
+
+
+
+
+
 
 
 

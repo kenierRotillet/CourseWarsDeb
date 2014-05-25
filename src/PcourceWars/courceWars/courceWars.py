@@ -42,15 +42,16 @@ try:
 
 
     Tools.FastMethods.loadKeys()
+    while True:
 
-    player = Screens.Start_Menu.main()
-    pygame.init()
+        player = Screens.Start_Menu.main()
+        pygame.init()
 
-    seleccion = Screens.Sel_PJ.main()
-    #print seleccion
-    #raw_input()
+        seleccion = Screens.Sel_PJ.main()
+        #print seleccion
+        #raw_input()
 
-    Screens.PlayWindow.main(seleccion)
+        Screens.PlayWindow.main(seleccion)
 
 
 
