@@ -4,21 +4,15 @@
 Módulo principal, se encarga de llevar el control y flujo del juego, además de conectar el núcleo con la visualización"""
 import os
 import pygame
+import Tools
 import Sound
 Sound.soundPlayer.simpleplay("sfx/start.wav")
-recetLog=True
-if recetLog==True:
-    try:
-        os.remove("log.log")
-    except:
-        Sound.soundPlayer.simpleplay("sfx/error.wav")
-
-
+    
 
 pygame.init()
 import logging
 import Core
-import Tools
+
 
 import Screens
 import Sound
@@ -33,19 +27,22 @@ try:
 
     pygame.display.init()
 
-    print "start"
-
-
-    #raw_input()
-
-
-
-
+    print "start"   
+    Tools.FastMethods.initJoysticks()
     Tools.FastMethods.loadKeys()
     while True:
 
         player = Screens.Start_Menu.main()
         pygame.init()
+        if player =='KeyConfig':
+            conf = Screens.keyConfigScreen.keyConfigScreen()
+            conf.mainLoop()
+            Tools.FastMethods.loadKeys()
+            continue
+
+
+
+
 
         seleccion = Screens.Sel_PJ.main()
         #print seleccion

@@ -5,9 +5,19 @@
 import time
 import logging
 import os
-
+import pygame
 flag = True
 recet = True
+if recet==True:
+    try:
+        os.remove("log.log")
+        Recet=False
+    except:
+        s= pygame.mixer.Sound("sfx/error.wav")
+        s.play()
+        #recet=False
+
+
 
 log = logging.getLogger("theLogger")
 log.setLevel(logging.DEBUG)

@@ -5,3 +5,4 @@
 import eventos
 import FastMethods
 import Logger
+import KeyConfig

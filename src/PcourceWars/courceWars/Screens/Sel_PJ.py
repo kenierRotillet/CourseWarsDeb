@@ -4,6 +4,8 @@ import sys
 from pygame import time
 import random
 import Sound
+import Tools
+
 
 screen_w = 1024
 screen_h = 768
@@ -62,52 +64,44 @@ def main():
     Nombre[4]=(pygame.image.load("Screens/Sel_pj/Musician.png").convert_alpha())
     Salida=False
     while Salida==False:
+        teclas = []
         for event in pygame.event.get():
             if event.type == KEYDOWN:
-                if event.key == K_RIGHT:
-                    estado_pj1 = 1
-                    Sound.soundPlayer.simpleplay("sfx/Corredor.wav")
-
-                elif event.key == K_LEFT:
-                    estado_pj1 = 2          
-                    Sound.soundPlayer.simpleplay("sfx/Corredor.wav")
-
-                if event.key == K_d:
-                    estado_pj2 = 1
-                    Sound.soundPlayer.simpleplay("sfx/Corredor.wav")
-
-                elif event.key == K_a:
-                    estado_pj2 = 2
-                    Sound.soundPlayer.simpleplay("sfx/Corredor.wav")
-
-                if event.key == K_RETURN:
-                    final_pj1 = 1
-                    Sound.soundPlayer.simpleplay("sfx/select.wav")
-
-                if event.key == K_BACKSPACE:
-                    final_pj1 = 0
-                    Sound.soundPlayer.simpleplay("sfx/backdash.wav")
-                if event.key == K_SPACE:
-                    final_pj2 = 1
-                    Sound.soundPlayer.simpleplay("sfx/select.wav")
-
-                if event.key == K_TAB:
-                    final_pj2 = 0
-                    Sound.soundPlayer.simpleplay("sfx/backdash.wav")
-
                 if event.key == K_ESCAPE:
                     pygame.quit()
                     sys.exit()
+                else:
+                    teclas.append(event)
 
-            elif event.type == KEYUP:
-                if estado_pj1 == 1 or 2:
-                    estado_pj1 = 0
-                    
-                if estado_pj2 == 1 or 2:
-                    estado_pj2 = 0
-                
+
+        k1 = Tools.FastMethods.detectKeys(teclas)
+        k2 = Tools.FastMethods.detectKeys(teclas,player=2)
+        if k1 == 'F':
+            estado_pj1=1
+        elif k1=='B':
+            estado_pj1=2
+        elif (k1=='a' or k1=='s') and estado_pj1==0 and final_pj1==0:
+            final_pj1=1
+            Sound.soundPlayer.playSysSound('Select')
+        elif k1 =='x' and final_pj1==1:
+            final_pj1=0
+            Sound.soundPlayer.playSysSound('Unable')
+
+        if k2 == 'F':
+            estado_pj2=1
+        elif k2=='B':
+            estado_pj2=2
+        elif (k2=='a' or k2 =='s') and estado_pj2==0 and final_pj2==0:
+            final_pj2=1
+            Sound.soundPlayer.playSysSound('Select')
+        elif k2 =='x' and final_pj2==1:
+            final_pj2=0
+            Sound.soundPlayer.playSysSound('Unable')
+
+
         if not final_pj1 == 1: 
             if estado_pj1 == 1:
+                Sound.soundPlayer.playSysSound('MovePj')
                 v += 1
                 ID_pj1 += 1
                 if v == 4:
@@ -119,6 +113,7 @@ def main():
                 #if ID_pj1 == 5:
                  #   ID_pj1 = 0
             if estado_pj1 == 2:
+                Sound.soundPlayer.playSysSound('MovePj')
                 v -= 1
                 ID_pj1 -= 1
                 if v == 0:
@@ -132,9 +127,11 @@ def main():
                 #    v = 4
                 #if ID_pj1 == -1:
                  #   ID_pj1 = 4
-                    
+            estado_pj1=0
+
         if not final_pj2 == 1:
             if estado_pj2 == 1:
+                Sound.soundPlayer.playSysSound('MovePj')
                 w += 1
                 ID_pj2 += 1
                 if w == 4:
@@ -149,6 +146,7 @@ def main():
                 #if ID_pj2 == 5:
                  #   ID_pj2 = 0
             if estado_pj2 == 2:
+                Sound.soundPlayer.playSysSound('MovePj')
                 w -= 1
                 ID_pj2 -= 1
                 if w == 0:
@@ -162,6 +160,7 @@ def main():
                 #    w = 4
                 #if ID_pj2 == -1:
                  #   ID_pj2 = 4       
+            estado_pj2=0
 
         if final_pj1 == 1  and final_pj2 == 1:
             Salida=True                

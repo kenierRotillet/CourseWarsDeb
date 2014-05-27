@@ -56,7 +56,9 @@ class Engineer(Core.Personaje.Personaje):
 
             if self.framecount==self.anims[self.currentAnim][-1][0]:
                 self.power=0
-                del self.currentState.flags['MaxPower']
+                if self.currentState.flags.has_key('MaxPower'):
+
+                    del self.currentState.flags['MaxPower']
                 self.currentState.control=True
         else:
             super(Engineer, self).DoAction(oponent)

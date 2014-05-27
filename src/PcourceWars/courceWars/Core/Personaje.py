@@ -369,7 +369,7 @@ class Personaje(pygame.sprite.Sprite):
             self.currentState.crouch = True
             self.currentState.control=True
 
-            if self.currentAnimImage == len(self.anims[self.currentAnim])-2:
+            if self.currentAnimImage == len(self.anims[self.currentAnim])-2 and self.totalControl==True:
                 self.currentAnimImage= 2
                 self.framecount=5
 
@@ -383,13 +383,16 @@ class Personaje(pygame.sprite.Sprite):
             if self.currentState.flags.has_key('MaxPower')== True:
                 self.currentAnim='Stand'
 
-            if self.framecount==24:
-                self.power+=5
+            if self.framecount==24 or self.framecount==12:
+                self.power+=10
                 if self.power>=self.maxpower:
                     self.power=self.maxpower
+                    self.framecount=24
                 else:
-                    self.framecount=2
-                    self.currentAnimImage=1
+                    if self.framecount==24:
+
+                        self.framecount=2
+                        self.currentAnimImage=1
             elif self.framecount==35:
                 self.currentState.flags['MaxPower']=True
 
@@ -514,6 +517,7 @@ class Personaje(pygame.sprite.Sprite):
         self.currentAnim= anim
         self.framecount=frame
         self.currentAnimImage=img
+        self.currentState=State.State(0,True)
 
     def setDamage(self,damaje):
         self.currentHP-=damaje

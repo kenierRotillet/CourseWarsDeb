@@ -11,6 +11,7 @@ class Time(object):
         self.reloj=pygame.time.Clock()
         self.t= self.reloj.tick(50)
         self.counter = 0
+        self.counting=True
         self.listaImg=[]#lista que contiene a las imagenes cargadas
         self.listaNum=[]#lista que contiene a los numeros señalar con imagenes
         self.Clock=Tools.FastMethods.load_image("Screens/imgs/Reloj.png")
@@ -38,7 +39,9 @@ class Time(object):
                 a=self.listaNum[self.time]
                 pantalla.blit(self.listaImg[0],(x,y))
                 pantalla.blit(self.listaImg[int(a)],(z,y))
-            self.time-=1
+            if self.counting==True:
+
+                self.time-=1
             self.counter=0
         else:
             if self.time >= 10:
@@ -58,9 +61,13 @@ class Time(object):
     def Tiempo(self):
         return self.time
 
-    def Reset(self):
-        self.time=90
+    def Reset(self,temp=90):
+        self.time=temp
+        self.counting=True
+        self.counter=0
 
         
 
-    
+    def detener(self):
+        self.counting=False
+

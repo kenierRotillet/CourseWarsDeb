@@ -2,10 +2,12 @@
 # -*- coding: latin-1 -*-
 """módulo que se encarga de la reproducción de sonidos"""
 import pygame
-#import Tools.Logger as log
+import Tools
 pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=64)
+pygame.mixer.set_num_channels(64)
 
 bgVolume =0.3
+comonSounds = Tools.FastMethods.LoadSounds("cfg/sfx.snd")
 
 def playSounds(personaje):
     """método qque reproduce la cola de sonidos del personaje entregado, en el frame actual."""
@@ -38,3 +40,8 @@ def bgmPlay(bgm,vol=bgVolume):
 
 def stopbgm():
     pygame.mixer.music.stop()
+
+def playSysSound(sound):
+    if comonSounds.has_key(sound):
+        comonSounds[sound][0][1].play()
+

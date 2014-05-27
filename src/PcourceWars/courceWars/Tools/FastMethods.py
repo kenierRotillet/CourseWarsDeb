@@ -12,37 +12,58 @@ import Tools.Logger
 #teclas para cada jugador:
 p1keys = []
 p2keys = []
+deadZone=0.3
+joysticks =[]
+activeJoysticksActions=[]
+
+#método de inicialización de controles:
+def initJoysticks():
+    global joysticks
+    joysticks=[]
+    for j in range(0,pygame.joystick.get_count()):
+        J = pygame.joystick.Joystick(j)
+        J.init()
+        joysticks.append(J)
+        Tools.Logger.escribir("inicializado " + J.get_name())
+
+
+
 
 #carga de teclas
 def loadKeys():
     
-    data = loadFile("cfg/keis.ini")
-    players = data.split(';')
-    for p in players:
-        plist = []
-        #Tools.Logger.escribir("línea dividida por ; " + p)
+    try:
+
+        data = loadFile("cfg/keis.ini")
+        players = data.split(';')
+        for p in players:
+            plist = []
+            #Tools.Logger.escribir("línea dividida por ; " + p)
         
-        if p.startswith('\n') == True:
-            p = p[1:]
+            if p.startswith('\n') == True:
+                p = p[1:]
 
 
-        if p.split(':')[0] == 'p1':
-            plist = p1keys
-            #Tools.Logger.escribir("analizando teclas del p1")
-        elif p.split(':')[0] == 'p2':
-            plist = p2keys
-            #Tools.Logger.escribir("cargando teclas del p2")
-        else:
-            #Tools.Logger.escribir("no es jugador")
-            continue
-        for k in p.split(':')[1].split('\n'):
-            #Tools.Logger.escribir("analizando la línea " + k)
-            if len(k) < 2:
+            if p.split(':')[0] == 'p1':
+                plist = p1keys
+                #Tools.Logger.escribir("analizando teclas del p1")
+            elif p.split(':')[0] == 'p2':
+                plist = p2keys
+                #Tools.Logger.escribir("cargando teclas del p2")
+            else:
+                #Tools.Logger.escribir("no es jugador")
                 continue
-            plist.append((k.split(',')[0],int(k.split(',')[1])))
+            for k in p.split(':')[1].split('\n'):
+                #Tools.Logger.escribir("analizando la línea " + k)
+                if len(k) < 2:
+                    continue
+                plist.append((k.split(',')[0],int(k.split(',')[1])))
 
-    #Tools.Logger.escribir(str(p1keys))
-    #Tools.Logger.escribir(str(p2keys))
+        #Tools.Logger.escribir(str(p1keys))
+        #Tools.Logger.escribir(str(p2keys))
+    except Exception:
+        Tools.Logger.escribir("No está el archivo de teclas, por favor iniciar KeyConfig.py en la carpeta Tools")
+        
 
 #Better image loading
 
@@ -134,9 +155,14 @@ def LoadAnimData(name):
     return anims
 
 
-def detectKeys(keys):
-    """método de detección y separación de teclas de jugador 1, y de jugador dos. no implementado aún """
-    return
+def detectKeys(keys,joys=[],player=1,releaseJoy=False):
+    """método de detección y separación de teclas de jugador 1, y de jugador dos. no implementado aún"""
+    teclas=[]
+    for k in keys:
+        teclas.append(k.key)
+
+    return(convertKeys(teclas,player))
+
 
 def convertKeys(keys,p=1):
     """converción de teclas del formato pygame, al formato cws. Sirve para configurar cualquier tecla"""

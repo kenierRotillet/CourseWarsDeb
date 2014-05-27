@@ -63,6 +63,7 @@
     <Compile Include="Screens\HealthBars.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Screens\keyConfigScreen.py" />
     <Compile Include="Screens\PlayWindow.py" />
     <Compile Include="Screens\PowerBars.py">
       <SubType>Code</SubType>

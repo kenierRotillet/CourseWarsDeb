@@ -6,3 +6,5 @@ import PlayWindow
 import Start_Menu
 import Sel_PJ
 import HealthBars
+import PowerBars
+import keyConfigScreen

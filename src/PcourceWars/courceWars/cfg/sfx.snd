@@ -1,3 +1,21 @@
+MovePj:
+0,sfx/corredor.wav,;
+Select:
+0,sfx/select.wav,;
+Error:
+0,sfx/error.wav,;
+Accept:
+0,sfx/accept.wav,;
+Unable:
+0,sfx/unable.wav,;
+Warn:
+0,sfx/warn.wav,;
+Confirm:
+0,sfx/confirm.wav,;
+Move:
+0,sfx/move.wav,;
+Change:
+0,sfx/accept2.wav,;
 Round1:
 0,sfx/r1.wav,;
 Round2:
@@ -14,3 +32,5 @@ SuperEnd:
 0,sfx/send.wav,;
 HiperEnd:
 0,sfx/mend.wav,;
+Enter:
+0,sfx/teleport.wav,;

@@ -4,6 +4,7 @@ import sys
 import time
 import random
 import Sound
+import Tools
 screen_w = 1024
 screen_h = 768
 
@@ -35,20 +36,36 @@ def main():
     while Salida==False:
         for event in pygame.event.get():
             if event.type == KEYDOWN:
-                if event.key == K_RETURN:
-                    estado_pj1 = 1
-                    ID_pj1 = True
-                    #print "precionado enter"
-                    Salida=True
-                if event.key == K_SPACE:
-                    estado_pj2 = 1
-                    ID_pj2 = True
-                    #print "precionado tab"
-                    Salida=True
+                if event.key == K_F5:
+                    Sound.soundPlayer.playSysSound("Enter")
+                    return "KeyConfig"
+
+
+                    
                 if event.key == K_ESCAPE:
                     pygame.quit()
                     sys.exit()
+                else:
+                    t1 = Tools.FastMethods.detectKeys([event])
+                    t2 = Tools.FastMethods.detectKeys([event],player=2)
+                    if t1=='s':
+                        estado_pj1 = 1
+                        ID_pj1 = True
                     
+                        Salida=True
+                
+
+                    if t2 == 's':
+                        estado_pj2 = 1
+                        ID_pj2 = True
+                        
+                        Salida=True
+
+
+
+
+
+
 
         contador +=1
         if contador == 10:

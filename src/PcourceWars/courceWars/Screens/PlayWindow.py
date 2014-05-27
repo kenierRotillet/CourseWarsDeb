@@ -51,7 +51,7 @@ def main(seleccion):
 
     
     #Tools.Logger.escribir(str(personaje.sounds))
-    comonSounds = Tools.FastMethods.LoadSounds("cfg/sfx.snd")
+    
     
     
     fps=50 
@@ -86,7 +86,8 @@ def main(seleccion):
     Power2=PowerBars.Power_Bar(pantalla,2)
     BarraVida1=Tools.FastMethods.load_image("Screens/imgs/MarcoVida1.png")
     BarraVida2=Tools.FastMethods.load_image("Screens/imgs/MarcoVida2.png")
-    Contador=Timer.Time(90)
+    tempo = 50
+    Contador=Timer.Time(tempo)
     endType=0
 
     while Salida==False:
@@ -95,6 +96,8 @@ def main(seleccion):
         pantalla.blit(fondo,(0,0))
         teclas= []
         teclup = []
+        joys=[]
+
         relojito.tick_busy_loop(fps)
         pygame.display.set_caption("course wars: " + str(fps) +  " fps")
         if fighting==False:
@@ -115,10 +118,10 @@ def main(seleccion):
 
 
                     if contador ==0:
-                        comonSounds['Round'+str(round)][0][1].play()
+                        Sound.soundPlayer.playSysSound('Round'+str(round))
                         
                     if contador==waitTime-1:
-                        comonSounds['Fight'][0][1].play()
+                        Sound.soundPlayer.playSysSound('Fight')
                     contador+=1 
                 fighting=True
                 personaje.totalControl=True
@@ -181,25 +184,29 @@ def main(seleccion):
                     hitboxesDebug= not hitboxesDebug
                     print("modo debug = " + str(hitboxesDebug))
                 else:
-                    teclas.append(event.key)
+                    teclas.append(event)
             if event.type == KEYUP:
-                teclup.append(event.key)
+                teclup.append(event)
 
 
         p1liv = personaje.checkStatus(p2)
         p2liv = p2.checkStatus(personaje)
-        if p1liv == False or p2liv == False:
+        if p1liv == False or p2liv == False or Contador.Tiempo()==0:
+            Contador.detener()
             personaje.totalControl=False
             p2.totalControl=False
             fps=10
             if endType==0:
-                if round<3 and (personaje.currentAnim=='Special' or p2.currentAnim=='Special'):
+                if Contador.Tiempo()==0:
+                    endType='TimeUp'
+                
+                elif round<3 and (personaje.currentAnim=='Special' or p2.currentAnim=='Special'):
                     endType='SuperEnd'
                 elif round==3 and (personaje.currentAnim=='Special' or p2.currentAnim=='Special'):
                     endType='HiperEnd'
                 else:
                     endType='End'
-                comonSounds[endType][0][1].play()
+                Sound.soundPlayer.playSysSound(endType)
 
 
 
@@ -216,14 +223,17 @@ def main(seleccion):
                 fps=50
                 round+=1
                 endType=0
-                if p2liv==False:
+                if p2liv==False or (personaje.currentHP>p2.currentHP):
                     p1win+=1
                     personaje.setAnim('Taunt')
 
 
-                elif p1liv==False:
+                elif p1liv==False or p2.currentHP > personaje.currentHP:
                     p2win+=1
                     p2.setAnim('Taunt')
+                else:
+                    round-=1
+
                 contador=-25
                 while contador <= waitTime:
                     relojito.tick_busy_loop(fps)
@@ -245,7 +255,7 @@ def main(seleccion):
 
                 personaje.recetPersonaje()
                 p2.recetPersonaje()
-                Contador.Reset()
+                Contador.Reset(tempo)
 
 
 
@@ -256,13 +266,13 @@ def main(seleccion):
 
         if len(teclas)>0:
 
-            teclastotales.append((tiempo,Tools.FastMethods.convertKeys(teclas)))
-            teclastotalesp2.append((tiempo, Tools.FastMethods.convertKeys(teclas,2)))
+            teclastotales.append((tiempo,Tools.FastMethods.detectKeys(teclas)))
+            teclastotalesp2.append((tiempo, Tools.FastMethods.detectKeys(teclas,player=2)))
             personaje.lookCommand(teclastotales,tiempo)
             p2.lookCommand(teclastotalesp2,tiempo)
         elif len(teclup) > 0:
-            keyup1 = Tools.FastMethods.convertKeys(teclup)
-            keyup2 = Tools.FastMethods.convertKeys(teclup,2)
+            keyup1 = Tools.FastMethods.detectKeys(teclup)
+            keyup2 = Tools.FastMethods.detectKeys(teclup,player=2)
             personaje.lookCommand(keyup1,tiempo,True)
             p2.lookCommand(keyup2,tiempo,True)
 
