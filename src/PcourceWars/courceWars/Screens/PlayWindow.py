@@ -284,7 +284,7 @@ def main(seleccion):
             teclastotalesp2.append((tiempo, Tools.FastMethods.detectKeys(teclas,player=2,buttons=joybtdown,hats=joyhats,axis=joyax)))
             personaje.lookCommand(teclastotales,tiempo)
             p2.lookCommand(teclastotalesp2,tiempo)
-        elif len(teclup) > 0 or len(joybtup)>0 or len(joyax)>0 or len(joyhats)>0:
+        if len(teclup) > 0 or len(joybtup)>0 or len(joyax)>0 or len(joyhats)>0:
             keyup1 = Tools.FastMethods.detectKeys(teclup,release=True,buttons=joybtup,hats=joyhats,axis=joyax)
             keyup2 = Tools.FastMethods.detectKeys(teclup,player=2,release=True,buttons=joybtup,hats=joyhats,axis=joyax)
             personaje.lookCommand(keyup1,tiempo,True)
