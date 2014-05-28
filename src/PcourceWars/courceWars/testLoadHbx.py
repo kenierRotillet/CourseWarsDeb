@@ -20,5 +20,12 @@ while True:
         if e.type == JOYBUTTONDOWN:
             Sound.soundPlayer.simpleplay("sfx/f.wav")
             print "boton"
+        if e.type == JOYAXISMOTION:
+            Sound.soundPlayer.simpleplay("sfx/accept.wav")
+            print("movimiento de eje: " + str(e.joy) + ", " + str(e.axis) + ", " + str(e.value))
+        if e.type == JOYHATMOTION:
+            Sound.soundPlayer.simpleplay("sfx/unable.wav")
+            print("presionado un hat: " + str(e.joy) + ", " + str(e.hat) + ", " + str(e.value))
+
 
 
