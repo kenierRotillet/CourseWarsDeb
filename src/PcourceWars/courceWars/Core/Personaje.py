@@ -335,7 +335,7 @@ class Personaje(pygame.sprite.Sprite):
             fin = False
             if self.currentAnimImage == len(self.anims[self.currentAnim])-2:
                 self.currentAnimImage= 1
-                self.framecount=5
+                self.framecount=3
             if self.flip==True:
                 fin = self.move(-1*self.dashspeed,0,oponent.bodyRect)
             else:

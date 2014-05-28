@@ -89,11 +89,13 @@ Guard_Jump:
 FrontDash:
 0,Chars/Medic/Sprites/Medic014_001.png
 5,Chars/Medic/Sprites/Medic014_002.png
-7,-1;
+8,Chars/Medic/Sprites/Medic014_001.png
+10,-1;
 BackDash:
 0,Chars/Medic/Sprites/Medic015_001.png
 5,Chars/Medic/Sprites/Medic015_002.png
-8,-1;
+8,Chars/Medic/Sprites/Medic015_001.png
+10,-1;
 Block:
 0,Chars/Medic/Sprites/Medic016_001.png
 10,-1;

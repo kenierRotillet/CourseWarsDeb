@@ -96,7 +96,10 @@ def main(seleccion):
         pantalla.blit(fondo,(0,0))
         teclas= []
         teclup = []
-        joys=[]
+        joyax=[]
+        joyhats=[]
+        joybtdown=[]
+        joybtup=[]
 
         relojito.tick_busy_loop(fps)
         pygame.display.set_caption("course wars: " + str(fps) +  " fps")
@@ -187,6 +190,17 @@ def main(seleccion):
                     teclas.append(event)
             if event.type == KEYUP:
                 teclup.append(event)
+            if event.type == JOYBUTTONDOWN:
+                joybtdown.append(event)
+            if event.type == JOYBUTTONUP:
+                joybtup.append(event)
+            if event.type == JOYAXISMOTION:
+                joyax.append(event)
+            if event.type == JOYHATMOTION:
+                joyhats.append(event)
+
+
+
 
 
         p1liv = personaje.checkStatus(p2)
@@ -264,15 +278,15 @@ def main(seleccion):
 
 
 
-        if len(teclas)>0:
+        if len(teclas)>0 or len(joybtdown)>0 or len(joyax)>0 or len(joyhats)>0:
 
-            teclastotales.append((tiempo,Tools.FastMethods.detectKeys(teclas)))
-            teclastotalesp2.append((tiempo, Tools.FastMethods.detectKeys(teclas,player=2)))
+            teclastotales.append((tiempo,Tools.FastMethods.detectKeys(teclas,buttons=joybtdown,hats=joyhats,axis=joyax)))
+            teclastotalesp2.append((tiempo, Tools.FastMethods.detectKeys(teclas,player=2,buttons=joybtdown,hats=joyhats,axis=joyax)))
             personaje.lookCommand(teclastotales,tiempo)
             p2.lookCommand(teclastotalesp2,tiempo)
-        elif len(teclup) > 0:
-            keyup1 = Tools.FastMethods.detectKeys(teclup)
-            keyup2 = Tools.FastMethods.detectKeys(teclup,player=2)
+        elif len(teclup) > 0 or len(joybtup)>0 or len(joyax)>0 or len(joyhats)>0:
+            keyup1 = Tools.FastMethods.detectKeys(teclup,release=True,buttons=joybtup,hats=joyhats,axis=joyax)
+            keyup2 = Tools.FastMethods.detectKeys(teclup,player=2,release=True,buttons=joybtup,hats=joyhats,axis=joyax)
             personaje.lookCommand(keyup1,tiempo,True)
             p2.lookCommand(keyup2,tiempo,True)
 

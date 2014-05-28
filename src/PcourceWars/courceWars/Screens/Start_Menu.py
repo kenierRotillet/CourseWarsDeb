@@ -34,6 +34,8 @@ def main():
     Salida = False
     Sound.soundPlayer.bgmPlay("bgm/Title.mp3")
     while Salida==False:
+        t1=""
+        t2=""
         for event in pygame.event.get():
             if event.type == KEYDOWN:
                 if event.key == K_F5:
@@ -48,18 +50,31 @@ def main():
                 else:
                     t1 = Tools.FastMethods.detectKeys([event])
                     t2 = Tools.FastMethods.detectKeys([event],player=2)
-                    if t1=='s':
-                        estado_pj1 = 1
-                        ID_pj1 = True
+            elif event.type == JOYBUTTONDOWN:
+                t1 = Tools.FastMethods.detectKeys(buttons=[event])
+                t2 = Tools.FastMethods.detectKeys(buttons=[event],player=2)
+            elif event.type == JOYAXISMOTION:
+                t1 = Tools.FastMethods.detectKeys(axis=[event])
+                t2 = Tools.FastMethods.detectKeys(axis=[event],player=2)
+            elif event.type == JOYHATMOTION:
+                t1 = Tools.FastMethods.detectKeys(hats=[event])
+                t2 = Tools.FastMethods.detectKeys(hats=[event],player=2)
+            
+
+
+
+        if t1=='s':
+            estado_pj1 = 1
+            ID_pj1 = True
                     
-                        Salida=True
+            Salida=True
                 
 
-                    if t2 == 's':
-                        estado_pj2 = 1
-                        ID_pj2 = True
+        if t2 == 's':
+            estado_pj2 = 1
+            ID_pj2 = True
                         
-                        Salida=True
+            Salida=True
 
 
 

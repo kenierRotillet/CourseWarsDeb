@@ -65,6 +65,9 @@ def main():
     Salida=False
     while Salida==False:
         teclas = []
+        k1 = ""
+        k2 = ""
+
         for event in pygame.event.get():
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
@@ -72,10 +75,23 @@ def main():
                     sys.exit()
                 else:
                     teclas.append(event)
+                    k1 = Tools.FastMethods.detectKeys(teclas)
+                    k2 = Tools.FastMethods.detectKeys(teclas,player=2)
+        
+            elif event.type == JOYBUTTONDOWN:
+                k1 = Tools.FastMethods.detectKeys(buttons=[event])
+                k2 = Tools.FastMethods.detectKeys(buttons=[event],player=2)
+            elif event.type == JOYAXISMOTION:
+                k1 = Tools.FastMethods.detectKeys(axis=[event])
+                k2 = Tools.FastMethods.detectKeys(axis=[event],player=2)
+            elif event.type == JOYHATMOTION:
+                k1 = Tools.FastMethods.detectKeys(hats=[event])
+                k2 = Tools.FastMethods.detectKeys(hats=[event],player=2)
+            
 
 
-        k1 = Tools.FastMethods.detectKeys(teclas)
-        k2 = Tools.FastMethods.detectKeys(teclas,player=2)
+
+
         if k1 == 'F':
             estado_pj1=1
         elif k1=='B':

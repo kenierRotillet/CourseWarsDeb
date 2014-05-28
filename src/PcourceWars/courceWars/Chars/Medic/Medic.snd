@@ -7,10 +7,10 @@ HighPunch:
 8,sfx/hpl.wav,sfx/hp1.wav;
 FrontDash:
 0,sfx/frontdash.wav,
-6,sfx/frontdash.wav,;
+5,sfx/frontdash.wav,;
 BackDash:
 0,sfx/backdash.wav,
-6,sfx/backdash.wav,;
+5,sfx/backdash.wav,;
 Special:
 0,sfx/spcharge.wav,
 4,sfx/teleport.wav,

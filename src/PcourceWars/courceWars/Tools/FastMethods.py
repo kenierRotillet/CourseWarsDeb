@@ -14,16 +14,29 @@ p1keys = []
 p2keys = []
 deadZone=0.3
 joysticks =[]
-activeJoysticksActions=[]
+activeJoysticksAxis=[]
+activeJoysticksHats=[]
 
 #método de inicialización de controles:
 def initJoysticks():
     global joysticks
+    global activeJoysticksAxis
+    global activeJoysticksHats
+    activeJoysticksAxis=[]
+    activeJoysticksHats=[]
     joysticks=[]
     for j in range(0,pygame.joystick.get_count()):
         J = pygame.joystick.Joystick(j)
         J.init()
         joysticks.append(J)
+        activeJoysticksAxis.append([])
+        activeJoysticksHats.append([])
+        for a in range(0,J.get_numaxes()):
+            activeJoysticksAxis[j].append(0)
+        for h in range(0,J.get_numhats()):
+            activeJoysticksHats.append([0,0])
+
+
         Tools.Logger.escribir("inicializado " + J.get_name())
 
 
@@ -155,11 +168,58 @@ def LoadAnimData(name):
     return anims
 
 
-def detectKeys(keys,joys=[],player=1,releaseJoy=False):
+def detectKeys(keys=[],player=1,release=False,buttons=[],axis=[],hats=[]):
     """método de detección y separación de teclas de jugador 1, y de jugador dos. no implementado aún"""
     teclas=[]
     for k in keys:
         teclas.append(k.key)
+
+    for b in buttons:
+        t=str(b.joy)+"/b"+str(b.button)
+        teclas.append(t)
+
+    for a in axis:
+        if release==False:
+
+            if a.value >= deadZone:
+                t=str(a.joy)+"/a"+str(a.axis)+"/+"
+                teclas.append(t)
+
+            elif a.value <= -1*deadZone:
+                t=str(a.joy)+"/a"+str(a.axis)+"/-"
+                teclas.append(t)
+        else:
+            t=activeJoysticksAxis[a.joy][a.axis]
+            
+            activeJoysticksAxis[a.joy][a.axis]=a.value
+            if t >= deadZone:
+                tep = str(a.joy)+"/a"+str(a.axis)+"/+"
+                teclas.append(tep)
+            elif t <= -1*deadZone:
+                tep = str(a.joy)+"/a"+str(a.axis)+"/-"
+                teclas.append(tep)
+            
+
+
+
+
+
+
+
+
+    for h in hats:
+        if release==False:
+
+            t=str(h.joy)+"/h"+str(h.hat)+"/"+str(h.value)
+            teclas.append(t)
+        else:
+            t = activeJoysticksHats[h.joy][h.hat]
+            activeJoysticksHats[h.joy][h.hat]=h.value
+            tep = str(h.joy)+"/h"+str(h.hat)+"/"+str(h.value)
+            teclas.append(tep)
+
+
+
 
     return(convertKeys(teclas,player))
 
