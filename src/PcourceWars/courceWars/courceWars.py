@@ -4,6 +4,8 @@
 Módulo principal, se encarga de llevar el control y flujo del juego, además de conectar el núcleo con la visualización"""
 import os
 import pygame
+#pygame.init()
+
 import Tools
 import Sound
 Sound.soundPlayer.simpleplay("sfx/start.wav")
