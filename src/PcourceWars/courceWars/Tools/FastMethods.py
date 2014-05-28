@@ -229,7 +229,7 @@ def detectKeys(keys=[],player=1,release=False,buttons=[],axis=[],hats=[]):
             activeJoysticksHats[h.joy][h.hat]=h.value
             Tools.Logger.escribir("Nuevo movimiento escrito: "+str(activeJoysticksHats[h.joy][h.hat]))
 
-            tep = str(h.joy)+"/h"+str(h.hat)+"/"+t
+            tep = str(h.joy)+"/h"+str(h.hat)+"/"+str(t)
             Tools.Logger.escribir("Comprovando "+tep)
 
             teclas.append(tep)
