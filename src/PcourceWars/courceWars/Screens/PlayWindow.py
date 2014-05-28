@@ -11,7 +11,7 @@ import pygame.draw
 import HealthBars
 import PowerBars
 import Timer
-
+import RoundBars
 screen_w = 1024
 screen_h = 768
 
@@ -86,6 +86,8 @@ def main(seleccion):
     Power2=PowerBars.Power_Bar(pantalla,2)
     BarraVida1=Tools.FastMethods.load_image("Screens/imgs/MarcoVida1.png")
     BarraVida2=Tools.FastMethods.load_image("Screens/imgs/MarcoVida2.png")
+    BarraRound1=RoundBars.Round_Bar(pantalla,1)
+    BarraRound2=RoundBars.Round_Bar(pantalla,2)
     tempo = 50
     Contador=Timer.Time(tempo)
     endType=0
@@ -119,7 +121,6 @@ def main(seleccion):
                     pygame.display.flip()
 
 
-
                     if contador ==0:
                         Sound.soundPlayer.playSysSound('Round'+str(round))
                         
@@ -146,6 +147,16 @@ def main(seleccion):
                     
                     pantalla.blit(personaje.image,personaje.rect)
                     pantalla.blit(p2.image,p2.rect)
+                    #Barra1.draw(personaje.currentHP)
+                    #Barra2.draw(p2.currentHP)
+                    #Power1.draw(personaje.power)
+                    #Power2.draw(p2.power)
+                    #BarraRound1.draw(p1win)
+                    #BarraRound2.draw(p2win)
+                    #pantalla.blit(BarraVida1,(27,30))
+                    #pantalla.blit(BarraVida2,(592,28))
+        
+                    #Contador.update(pantalla)
                     pygame.display.flip()
                     contador+=1
                 pygame.event.clear()
@@ -258,9 +269,18 @@ def main(seleccion):
                     Sound.soundPlayer.playSounds(personaje)
                     Sound.soundPlayer.playSounds(p2)
                     contador+=1
-                    pantalla.blit(personaje.image,personaje.rect)
-        
+                    pantalla.blit(personaje.image,personaje.rect)        
                     pantalla.blit(p2.image,p2.rect)
+                    Barra1.draw(personaje.currentHP)
+                    Barra2.draw(p2.currentHP)
+                    Power1.draw(personaje.power)
+                    Power2.draw(p2.power)
+                    BarraRound1.draw(p1win)
+                    BarraRound2.draw(p2win)
+                    pantalla.blit(BarraVida1,(27,30))
+                    pantalla.blit(BarraVida2,(592,28))
+        
+                    Contador.update(pantalla)
                     pygame.display.flip()
 
         
@@ -328,8 +348,11 @@ def main(seleccion):
         Barra2.draw(p2.currentHP)
         Power1.draw(personaje.power)
         Power2.draw(p2.power)
+        BarraRound1.draw(p1win)
+        BarraRound2.draw(p2win)
         pantalla.blit(BarraVida1,(27,30))
         pantalla.blit(BarraVida2,(592,28))
+        
         Contador.update(pantalla)
 
         #print(Contador.Tiempo())
