@@ -34,7 +34,7 @@ def initJoysticks():
         for a in range(0,J.get_numaxes()):
             activeJoysticksAxis[j].append(0)
         for h in range(0,J.get_numhats()):
-            activeJoysticksHats.append([0,0])
+            activeJoysticksHats[j].append((0,0))
 
 
         Tools.Logger.escribir("inicializado " + J.get_name())
