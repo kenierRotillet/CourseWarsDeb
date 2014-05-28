@@ -5,6 +5,7 @@ from pygame import time
 import random
 import Sound
 import Tools
+import Timer
 
 
 screen_w = 1024
@@ -62,7 +63,10 @@ def main():
     Nombre[2]=(pygame.image.load("Screens/Sel_pj/IDK.png").convert_alpha())
     Nombre[3]=(pygame.image.load("Screens/Sel_pj/Medic.png").convert_alpha())
     Nombre[4]=(pygame.image.load("Screens/Sel_pj/Musician.png").convert_alpha())
+    #tempo = 50
+    #Contador=Timer.Time(tempo,439,200,481,253,512)
     Salida=False
+    
     while Salida==False:
         teclas = []
         k1 = ""
@@ -208,7 +212,8 @@ def main():
         screen.blit(sel_pj1,(x,550))
         y = y + w*160
         screen.blit(sel_pj2,(y,550))
-      
+
+        #Contador.update(screen)
         
         pygame.display.flip()
         pygame.time.wait(50)

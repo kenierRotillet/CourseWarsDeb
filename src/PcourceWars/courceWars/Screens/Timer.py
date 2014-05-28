@@ -6,12 +6,17 @@ import Tools
 #pygame.time.Clock
 class Time(object):
 
-    def __init__ (self,time):
+    def __init__ (self,time,xr,yr,x,y,z):
         self.time=time
         self.reloj=pygame.time.Clock()
         self.t= self.reloj.tick(50)
         self.counter = 0
         self.counting=True
+        self.xr=xr
+        self.yr=yr
+        self.x=x
+        self.y=y
+        self.z=z
         self.listaImg=[]#lista que contiene a las imagenes cargadas
         self.listaNum=[]#lista que contiene a los numeros señalar con imagenes
         self.Clock=Tools.FastMethods.load_image("Screens/imgs/Reloj.png")
@@ -24,21 +29,18 @@ class Time(object):
     def update(self,pantalla):
         time=self.reloj.get_time()
         self.counter= self.counter+time
-        pantalla.blit(self.Clock,(439,2))
-        x=481
-        y=55
-        z=512
+        pantalla.blit(self.Clock,(self.xr,self.yr))
         
         if self.counter >= 1000 and not self.time == 0:
             if self.time>=10:
                 a=self.listaNum[self.time][0]
                 b=self.listaNum[self.time][1]
-                pantalla.blit(self.listaImg[int(a)],(x,y))
-                pantalla.blit(self.listaImg[int(b)],(z,y))
+                pantalla.blit(self.listaImg[int(a)],(self.x,self.y))
+                pantalla.blit(self.listaImg[int(b)],(self.z,self.y))
             else:
                 a=self.listaNum[self.time]
-                pantalla.blit(self.listaImg[0],(x,y))
-                pantalla.blit(self.listaImg[int(a)],(z,y))
+                pantalla.blit(self.listaImg[0],(self.x,self.y))
+                pantalla.blit(self.listaImg[int(a)],(self.z,self.y))
             if self.counting==True:
 
                 self.time-=1
@@ -47,16 +49,16 @@ class Time(object):
             if self.time >= 10:
                 a=self.listaNum[self.time][0]
                 b=self.listaNum[self.time][1]
-                pantalla.blit(self.listaImg[int(a)],(x,y))
-                pantalla.blit(self.listaImg[int(b)],(z,y))
+                pantalla.blit(self.listaImg[int(a)],(self.x,self.y))
+                pantalla.blit(self.listaImg[int(b)],(self.z,self.y))
             else:
                 a=self.listaNum[self.time]
-                pantalla.blit(self.listaImg[0],(x,y))
-                pantalla.blit(self.listaImg[int(a)],(z,y))
+                pantalla.blit(self.listaImg[0],(self.x,self.y))
+                pantalla.blit(self.listaImg[int(a)],(self.z,self.y))
                 
             if self.time==0:
-                pantalla.blit(self.listaImg[0],(x,y))
-                pantalla.blit(self.listaImg[0],(z,y))
+                pantalla.blit(self.listaImg[0],(self.x,self.y))
+                pantalla.blit(self.listaImg[0],(self.z,self.y))
 
     def Tiempo(self):
         return self.time

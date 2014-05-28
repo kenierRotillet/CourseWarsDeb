@@ -92,7 +92,7 @@ def main(seleccion):
     P1WIN=Tools.FastMethods.load_image("Screens/imgs/P1win.png")
     P2WIN=Tools.FastMethods.load_image("Screens/imgs/P2win.png")
     tempo = 50
-    Contador=Timer.Time(tempo)
+    Contador=Timer.Time(tempo,439,2,481,55,512)#(tiempo,x.reloj,y.reloj,x.num1,y.num,z.num2)
     endType=0
 
     while Salida==False:
