@@ -39,7 +39,7 @@ class keyConfigScreen(object):
         self.salida=False
         while self.salida == False:
             self.setFondo()
-            letra = self.font.render("Bienbenido a la pantalla de configuración de teclas. ¿Desea configurar las teclas del jugador 1?",True,(0,0,255))
+            letra = self.font.render("Bienvenido a la pantalla de configuración de teclas. ¿Desea configurar las teclas del jugador 1?",True,(0,0,255))
             self.pantalla.blit(letra,self.textPos)
             pygame.display.flip()
             iniciar = self.confirmLoop()
@@ -110,7 +110,7 @@ class keyConfigScreen(object):
         else:
             currentKey = self.p2[keyNum][1]
 
-        letras = self.font.render("¿Desea cambiar la tecla " + self.textKeys[keyNum] + " que actualmente es " + str(currentKey) +"?",True,(0,0,255))
+        letras = self.font.render("¿Desea cambiar la tecla \"" + self.textKeys[keyNum] + "\" que actualmente es " + str(currentKey) +"?",True,(0,0,255))
         self.setFondo()
         self.pantalla.blit(letras,self.textPos)
         pygame.display.flip()
@@ -120,7 +120,7 @@ class keyConfigScreen(object):
         pygame.event.clear()
 
         while True:
-            letras = self.font.render("Presione el botón que desea para "+self.textKeys[keyNum],True,(0,0,255))
+            letras = self.font.render("Presione el botón que desea para la tecla \""+self.textKeys[keyNum]+"\"",True,(0,0,255))
             self.setFondo()
             self.pantalla.blit(letras,self.textPos)
             pygame.display.flip()
@@ -148,7 +148,7 @@ class keyConfigScreen(object):
             if tkey!="":
                 Sound.soundPlayer.playSysSound('Move')
 
-                ok = self.confirmLoop("¿Confirma a " + str(tkey) + " para " + self.textKeys[keyNum] + "? ")
+                ok = self.confirmLoop("¿Confirma a " + str(tkey) + " para \"" + self.textKeys[keyNum] + "\"? ")
             if ok == True:
                 if player==1:
                     for t in range(0,len(self.p1)):

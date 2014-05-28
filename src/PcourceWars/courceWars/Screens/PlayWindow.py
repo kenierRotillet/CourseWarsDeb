@@ -299,11 +299,16 @@ def main(seleccion):
 
 
         if len(teclas)>0 or len(joybtdown)>0 or len(joyax)>0 or len(joyhats)>0:
+            k1 = Tools.FastMethods.detectKeys(teclas,buttons=joybtdown,hats=joyhats,axis=joyax)
+            k2 =Tools.FastMethods.detectKeys(teclas,player=2,buttons=joybtdown,hats=joyhats,axis=joyax)
+            if k1 != "":
 
-            teclastotales.append((tiempo,Tools.FastMethods.detectKeys(teclas,buttons=joybtdown,hats=joyhats,axis=joyax)))
-            teclastotalesp2.append((tiempo, Tools.FastMethods.detectKeys(teclas,player=2,buttons=joybtdown,hats=joyhats,axis=joyax)))
-            personaje.lookCommand(teclastotales,tiempo)
-            p2.lookCommand(teclastotalesp2,tiempo)
+                teclastotales.append((tiempo,k1))
+                personaje.lookCommand(teclastotales,tiempo)
+            if k2 != "":
+                teclastotalesp2.append((tiempo, k2))
+                
+                p2.lookCommand(teclastotalesp2,tiempo)
         if len(teclup) > 0 or len(joybtup)>0 or len(joyax)>0 or len(joyhats)>0:
             keyup1 = Tools.FastMethods.detectKeys(teclup,release=True,buttons=joybtup,hats=joyhats,axis=joyax)
             keyup2 = Tools.FastMethods.detectKeys(teclup,player=2,release=True,buttons=joybtup,hats=joyhats,axis=joyax)

@@ -46,9 +46,13 @@ def initJoysticks():
 def loadKeys():
     
     try:
+        global p1keys
+        global p2keys
 
         data = loadFile("cfg/keis.ini")
         players = data.split(';')
+        p1keys=[]
+        p2keys=[]
         for p in players:
             plist = []
             #Tools.Logger.escribir("línea dividida por ; " + p)
