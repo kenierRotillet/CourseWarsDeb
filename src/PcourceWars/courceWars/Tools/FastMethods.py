@@ -12,7 +12,7 @@ import Tools.Logger
 #teclas para cada jugador:
 p1keys = []
 p2keys = []
-deadZone=0.3
+deadZone=0.7
 joysticks =[]
 activeJoysticksAxis=[]
 activeJoysticksHats=[]
