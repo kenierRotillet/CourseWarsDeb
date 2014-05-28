@@ -15,7 +15,7 @@ if recet==True:
     except:
         s= pygame.mixer.Sound("sfx/error.wav")
         s.play()
-        #recet=False
+        recet=False
 
 
 
@@ -40,3 +40,8 @@ def escribir(texto):
         
 
 
+def excepcion():
+    log.exception("rerror crítico: ")
+    s= pygame.mixer.Sound("sfx/error.wav")
+    s.play()
+        
