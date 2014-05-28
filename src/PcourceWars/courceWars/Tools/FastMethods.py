@@ -72,8 +72,8 @@ def loadKeys():
                     continue
                 plist.append((k.split(',')[0],int(k.split(',')[1])))
 
-        #Tools.Logger.escribir(str(p1keys))
-        #Tools.Logger.escribir(str(p2keys))
+        Tools.Logger.escribir(str(p1keys))
+        Tools.Logger.escribir(str(p2keys))
     except Exception:
         Tools.Logger.escribir("No está el archivo de teclas, por favor iniciar KeyConfig.py en la carpeta Tools")
         
