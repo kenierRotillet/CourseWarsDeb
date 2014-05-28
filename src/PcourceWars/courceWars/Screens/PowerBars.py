@@ -39,10 +39,10 @@ class Power_Bar(object):
             self.counter2=0
                 
         if(self.numJug == 1):
-            pygame.draw.rect(self.screen,grey,(230,60,200,10),0)
-            pygame.draw.rect(self.screen,color,(430,60,-power*2,10),0)
+            pygame.draw.rect(self.screen,grey,(230,62,200,10),0)
+            pygame.draw.rect(self.screen,color,(430,62,-power*2,10),0)
         else:
-            pygame.draw.rect(self.screen,grey,(width - 430,60,200,10),0)
-            pygame.draw.rect(self.screen,color,(width - 430,60,power*2,10),0)
+            pygame.draw.rect(self.screen,grey,(width - 429,62,200,10),0)
+            pygame.draw.rect(self.screen,color,(width - 429,62,power*2,10),0)
             
 

@@ -25,12 +25,12 @@ class Round_Bar(object):
             color2=red
 
         if(self.numJug == 1):
-            pygame.draw.rect(self.screen,black,(30,61,19,14),0)
-            pygame.draw.rect(self.screen,black,(55,61,19,14),0)
-            pygame.draw.rect(self.screen,color1,(32,63,15,10),0)
-            pygame.draw.rect(self.screen,color2,(57,63,15,10),0)
+            pygame.draw.rect(self.screen,black,(27,61,19,14),0)
+            pygame.draw.rect(self.screen,black,(52,61,19,14),0)
+            pygame.draw.rect(self.screen,color1,(29,63,15,10),0)
+            pygame.draw.rect(self.screen,color2,(54,63,15,10),0)
         else:
-            pygame.draw.rect(self.screen,black,(width - 49,61,19,14),0)
-            pygame.draw.rect(self.screen,black,(width - 74,61,19,14),0)
-            pygame.draw.rect(self.screen,color2,(width - 47,63,15,10),0)
-            pygame.draw.rect(self.screen,color2,(width - 72,63,15,10),0)
+            pygame.draw.rect(self.screen,black,(width - 46,61,19,14),0)
+            pygame.draw.rect(self.screen,black,(width - 71,61,19,14),0)
+            pygame.draw.rect(self.screen,color1,(width - 44,63,15,10),0)
+            pygame.draw.rect(self.screen,color2,(width - 69,63,15,10),0)

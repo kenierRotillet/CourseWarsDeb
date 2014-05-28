@@ -27,8 +27,12 @@ class HP_Bar(object):
                 color=blue
             
         if(self.numJug == 1):
+            pygame.draw.rect(self.screen,black,(27,28,407,34),0)
+            pygame.draw.rect(self.screen,black,(227,58,207,16),0)
             pygame.draw.rect(self.screen,grey,(30,30,400,30),0)
             pygame.draw.rect(self.screen,color,(430,30,-vida*4,30),0)
         else:
+            pygame.draw.rect(self.screen,black,(width - 432,28,405,34),0)
+            pygame.draw.rect(self.screen,black,(width - 432,58,205,16),0)
             pygame.draw.rect(self.screen,grey,(width - 430,30,400,30),0)
             pygame.draw.rect(self.screen,color,(width - 430,30,vida*4,30),0)

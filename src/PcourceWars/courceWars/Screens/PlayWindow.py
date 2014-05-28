@@ -88,6 +88,9 @@ def main(seleccion):
     BarraVida2=Tools.FastMethods.load_image("Screens/imgs/MarcoVida2.png")
     BarraRound1=RoundBars.Round_Bar(pantalla,1)
     BarraRound2=RoundBars.Round_Bar(pantalla,2)
+    Fight=Tools.FastMethods.load_image("Screens/imgs/Fight.png")
+    P1WIN=Tools.FastMethods.load_image("Screens/imgs/P1win.png")
+    P2WIN=Tools.FastMethods.load_image("Screens/imgs/P2win.png")
     tempo = 50
     Contador=Timer.Time(tempo)
     endType=0
@@ -126,6 +129,8 @@ def main(seleccion):
                         
                     if contador==waitTime-1:
                         Sound.soundPlayer.playSysSound('Fight')
+    
+                        
                     contador+=1 
                 fighting=True
                 personaje.totalControl=True
@@ -147,16 +152,7 @@ def main(seleccion):
                     
                     pantalla.blit(personaje.image,personaje.rect)
                     pantalla.blit(p2.image,p2.rect)
-                    #Barra1.draw(personaje.currentHP)
-                    #Barra2.draw(p2.currentHP)
-                    #Power1.draw(personaje.power)
-                    #Power2.draw(p2.power)
-                    #BarraRound1.draw(p1win)
-                    #BarraRound2.draw(p2win)
-                    #pantalla.blit(BarraVida1,(27,30))
-                    #pantalla.blit(BarraVida2,(592,28))
-        
-                    #Contador.update(pantalla)
+
                     pygame.display.flip()
                     contador+=1
                 pygame.event.clear()
@@ -253,7 +249,7 @@ def main(seleccion):
                     personaje.setAnim('Taunt')
 
 
-                elif p1liv==False or p2.currentHP > personaje.currentHP:
+                elif p1liv==False or (p2.currentHP > personaje.currentHP):
                     p2win+=1
                     p2.setAnim('Taunt')
                 else:
@@ -277,8 +273,8 @@ def main(seleccion):
                     Power2.draw(p2.power)
                     BarraRound1.draw(p1win)
                     BarraRound2.draw(p2win)
-                    pantalla.blit(BarraVida1,(27,30))
-                    pantalla.blit(BarraVida2,(592,28))
+                    #pantalla.blit(BarraVida1,(27,30))
+                    #pantalla.blit(BarraVida2,(592,28))
         
                     Contador.update(pantalla)
                     pygame.display.flip()
@@ -355,8 +351,8 @@ def main(seleccion):
         Power2.draw(p2.power)
         BarraRound1.draw(p1win)
         BarraRound2.draw(p2win)
-        pantalla.blit(BarraVida1,(27,30))
-        pantalla.blit(BarraVida2,(592,28))
+        #pantalla.blit(BarraVida1,(27,30))
+        #pantalla.blit(BarraVida2,(592,28))
         
         Contador.update(pantalla)
 

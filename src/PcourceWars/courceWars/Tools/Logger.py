@@ -13,8 +13,8 @@ if recet==True:
         os.remove("log.log")
         Recet=False
     except:
-        s= pygame.mixer.Sound("sfx/error.wav")
-        s.play()
+        #s= pygame.mixer.Sound("sfx/error.wav")
+        #s.play()
         recet=False
 
 
