@@ -70,12 +70,13 @@ def loadKeys():
                 #Tools.Logger.escribir("analizando la línea " + k)
                 if len(k) < 2:
                     continue
-                plist.append((k.split(',')[0],int(k.split(',')[1])))
+                plist.append((k.split('=')[0],k.split('=')[1]))
 
         Tools.Logger.escribir("teclas p1: " + str(p1keys))
         Tools.Logger.escribir("teclas p2: " + str(p2keys))
     except Exception:
         Tools.Logger.escribir("No está el archivo de teclas, por favor iniciar KeyConfig.py en la carpeta Tools")
+        Tools.Logger.excepcion()
         
 
 #Better image loading
@@ -172,7 +173,7 @@ def detectKeys(keys=[],player=1,release=False,buttons=[],axis=[],hats=[]):
     """método de detección y separación de teclas de jugador 1, y de jugador dos. no implementado aún"""
     teclas=[]
     for k in keys:
-        teclas.append(k.key)
+        teclas.append(str(k.key))
 
     for b in buttons:
         t=str(b.joy)+"/b"+str(b.button)
@@ -183,20 +184,27 @@ def detectKeys(keys=[],player=1,release=False,buttons=[],axis=[],hats=[]):
 
             if a.value >= deadZone:
                 t=str(a.joy)+"/a"+str(a.axis)+"/+"
+                Tools.Logger.escribir("movimiento entrante de eje: "+t)
                 teclas.append(t)
 
             elif a.value <= -1*deadZone:
                 t=str(a.joy)+"/a"+str(a.axis)+"/-"
+                Tools.Logger.escribir("movimiento entrante de eje: "+t)
                 teclas.append(t)
         else:
             t=activeJoysticksAxis[a.joy][a.axis]
+            Tools.Logger.escribir("movimiento saliente de eje. Se soltó "+str(t))
             
             activeJoysticksAxis[a.joy][a.axis]=a.value
+            Tools.Logger.escribir("Nuevo movimiento escrito: "+str(activeJoysticksAxis[a.joy][a.axis]))
+
             if t >= deadZone:
                 tep = str(a.joy)+"/a"+str(a.axis)+"/+"
+                Tools.Logger.escribir("Comprovando "+tep)
                 teclas.append(tep)
             elif t <= -1*deadZone:
                 tep = str(a.joy)+"/a"+str(a.axis)+"/-"
+                Tools.Logger.escribir("Comprovando "+tep)
                 teclas.append(tep)
             
 
@@ -211,11 +219,19 @@ def detectKeys(keys=[],player=1,release=False,buttons=[],axis=[],hats=[]):
         if release==False:
 
             t=str(h.joy)+"/h"+str(h.hat)+"/"+str(h.value)
+            Tools.Logger.escribir("movimiento entrante de hats: "+t)
             teclas.append(t)
         else:
             t = activeJoysticksHats[h.joy][h.hat]
+            Tools.Logger.escribir("movimiento saliente de hats. Se soltó "+str(t))
+
+
             activeJoysticksHats[h.joy][h.hat]=h.value
+            Tools.Logger.escribir("Nuevo movimiento escrito: "+str(activeJoysticksHats[h.joy][h.hat]))
+
             tep = str(h.joy)+"/h"+str(h.hat)+"/"+str(h.value)
+            Tools.Logger.escribir("Comprovando "+tep)
+
             teclas.append(tep)
 
 

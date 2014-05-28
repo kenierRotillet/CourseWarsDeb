@@ -49,10 +49,10 @@ def main():
     arch = open("../cfg/keis.ini",'a')
     arch.write("p1:")
     for gak in p1:
-        arch.write("\n" + gak[0] + "," + str(gak[1]))
+        arch.write("\n" + gak[0] + "=" + str(gak[1]))
     arch.write(";\np2:")
     for gak in p2:
-        arch.write("\n"+gak[0] + "," + str(gak[1]))
+        arch.write("\n"+gak[0] + "=" + str(gak[1]))
     arch.write(";")
 
     arch.close()
@@ -73,10 +73,10 @@ def setManual(ip1,ip2):
     arch = open("cfg/keis.ini",'a')
     arch.write("p1:")
     for gak in ip1:
-        arch.write("\n" + gak[0] + "," + str(gak[1]))
+        arch.write("\n" + gak[0] + "=" + str(gak[1]))
     arch.write(";\np2:")
     for gak in ip2:
-        arch.write("\n"+gak[0] + "," + str(gak[1]))
+        arch.write("\n"+gak[0] + "=" + str(gak[1]))
     arch.write(";")
 
     arch.close()
