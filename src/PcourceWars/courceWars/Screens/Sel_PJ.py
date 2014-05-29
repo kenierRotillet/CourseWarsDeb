@@ -64,7 +64,9 @@ def main():
     Nombre[3]=(pygame.image.load("Screens/Sel_pj/Medic.png").convert_alpha())
     Nombre[4]=(pygame.image.load("Screens/Sel_pj/Musician.png").convert_alpha())
     tempo = 15
+
     Contador=Timer.Time(tempo,439,150,481,203,512)
+
     Salida=False
     relojito = pygame.time.Clock()
     
