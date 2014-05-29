@@ -111,7 +111,9 @@ def main(seleccion):
         if fighting==False:
             if p1win<2 and p2win<2:
                 contador = 0
+                pantalla.blit(Fight,(100,100))
                 while contador < waitTime:
+                    
                     relojito.tick_busy_loop(fps)
                     pantalla.blit(fondo,(0,0))
                     personaje.update()
@@ -122,13 +124,16 @@ def main(seleccion):
                     pantalla.blit(personaje.image,personaje.rect)
                     pantalla.blit(p2.image,p2.rect)
                     pygame.display.flip()
+                    
 
-
+                    
                     if contador ==0:
                         Sound.soundPlayer.playSysSound('Round'+str(round))
-                        
+
+                       
                     if contador==waitTime-1:
                         Sound.soundPlayer.playSysSound('Fight')
+
     
                         
                     contador+=1 

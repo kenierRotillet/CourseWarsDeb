@@ -63,14 +63,16 @@ def main():
     Nombre[2]=(pygame.image.load("Screens/Sel_pj/IDK.png").convert_alpha())
     Nombre[3]=(pygame.image.load("Screens/Sel_pj/Medic.png").convert_alpha())
     Nombre[4]=(pygame.image.load("Screens/Sel_pj/Musician.png").convert_alpha())
-    #tempo = 50
-    #Contador=Timer.Time(tempo,439,200,481,253,512)
+    tempo = 15
+    Contador=Timer.Time(tempo,439,150,481,203,512)
     Salida=False
+    relojito = pygame.time.Clock()
     
     while Salida==False:
         teclas = []
         k1 = ""
         k2 = ""
+        relojito.tick_busy_loop(50)
 
         for event in pygame.event.get():
             if event.type == KEYDOWN:
@@ -93,6 +95,18 @@ def main():
                 k2 = Tools.FastMethods.detectKeys(hats=[event],player=2)
             
 
+
+
+        if Contador.Tiempo() == 0:
+            final_pj1=1
+            final_pj2=1
+            estado_pj1=0
+            estado_pj2=0
+            v=2
+            w=2
+            ID_pj1=2
+            ID_pj2=2
+            Sound.soundPlayer.playSysSound("TimeUp")
 
 
 
@@ -213,10 +227,10 @@ def main():
         y = y + w*160
         screen.blit(sel_pj2,(y,550))
 
-        #Contador.update(screen)
+        Contador.update(screen)
         
         pygame.display.flip()
-        pygame.time.wait(50)
+        #pygame.time.wait(50)
         
         
         if event.type == pygame.QUIT:

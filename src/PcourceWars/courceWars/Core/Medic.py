@@ -61,3 +61,6 @@ class Medic(Core.Personaje.Personaje):
 
 
 
+
+
+

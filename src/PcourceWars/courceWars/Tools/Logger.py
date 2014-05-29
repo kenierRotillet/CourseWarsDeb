@@ -13,11 +13,12 @@ if recet==True:
     try:
         os.remove("log.log")
         Recet=False
+    except Exception,mes:
+        pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=64)
+        soc= pygame.mixer.Sound("sfx/error.wav")
+        soc.play()
 
-    except:
-        #s= pygame.mixer.Sound("sfx/error.wav")
-        #s.play()
-        recet=False
+
         recet=False
         
 
