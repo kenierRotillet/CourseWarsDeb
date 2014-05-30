@@ -6,3 +6,5 @@
 *.exe
 #archivos de log
 *.log
+#Archivos de configuración temporales
+*.ini
