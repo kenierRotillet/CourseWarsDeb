@@ -118,10 +118,10 @@ def main():
             estado_pj1=2
         elif (k1=='a' or k1=='s') and estado_pj1==0 and final_pj1==0:
             final_pj1=1
-            Sound.soundPlayer.playSysSound('Select')
+            Sound.soundPlayer.playSysSound('Select',1)
         elif k1 =='x' and final_pj1==1:
             final_pj1=0
-            Sound.soundPlayer.playSysSound('Unable')
+            Sound.soundPlayer.playSysSound('Unable',1)
 
         if k2 == 'F':
             estado_pj2=1
@@ -129,15 +129,15 @@ def main():
             estado_pj2=2
         elif (k2=='a' or k2 =='s') and estado_pj2==0 and final_pj2==0:
             final_pj2=1
-            Sound.soundPlayer.playSysSound('Select')
+            Sound.soundPlayer.playSysSound('Select',2)
         elif k2 =='x' and final_pj2==1:
             final_pj2=0
-            Sound.soundPlayer.playSysSound('Unable')
+            Sound.soundPlayer.playSysSound('Unable',2)
 
 
         if not final_pj1 == 1: 
             if estado_pj1 == 1:
-                Sound.soundPlayer.playSysSound('MovePj')
+                Sound.soundPlayer.playSysSound('MovePj',1)
                 v += 1
                 ID_pj1 += 1
                 if v == 4:
@@ -149,7 +149,7 @@ def main():
                 #if ID_pj1 == 5:
                  #   ID_pj1 = 0
             if estado_pj1 == 2:
-                Sound.soundPlayer.playSysSound('MovePj')
+                Sound.soundPlayer.playSysSound('MovePj',1)
                 v -= 1
                 ID_pj1 -= 1
                 if v == 0:
@@ -167,7 +167,7 @@ def main():
 
         if not final_pj2 == 1:
             if estado_pj2 == 1:
-                Sound.soundPlayer.playSysSound('MovePj')
+                Sound.soundPlayer.playSysSound('MovePj',2)
                 w += 1
                 ID_pj2 += 1
                 if w == 4:
@@ -182,7 +182,7 @@ def main():
                 #if ID_pj2 == 5:
                  #   ID_pj2 = 0
             if estado_pj2 == 2:
-                Sound.soundPlayer.playSysSound('MovePj')
+                Sound.soundPlayer.playSysSound('MovePj',2)
                 w -= 1
                 ID_pj2 -= 1
                 if w == 0:

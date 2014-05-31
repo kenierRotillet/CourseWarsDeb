@@ -80,6 +80,51 @@
     <Compile Include="Screens\Timer.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Sound\openal\al.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\alc.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\audio.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\efx.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\ext.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\loaders\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\test\audio_test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\test\loaders_test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\test\util\runtests.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\test\util\support.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\test\util\testrunner.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\test\util\testutils.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\test\util\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\test\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Sound\openal\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Sound\soundPlayer.py" />
     <Compile Include="Tools\eventos.py" />
     <Compile Include="Tools\FastMethods.py" />
@@ -101,6 +146,11 @@
     <Folder Include="Chars\Testeo%28Temporal%29\" />
     <Folder Include="Chars\Testeo%28Temporal%29\Sprites\" />
     <Folder Include="Core\" />
+    <Folder Include="Sound\openal\" />
+    <Folder Include="Sound\openal\loaders\" />
+    <Folder Include="Sound\openal\test\" />
+    <Folder Include="Sound\openal\test\resources\" />
+    <Folder Include="Sound\openal\test\util\" />
     <Folder Include="Tools\" />
     <Folder Include="Screens\" />
     <Folder Include="Sound\" />
@@ -1241,6 +1291,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Chars\Testeo%28Temporal%29\Sprites\Medic026_004.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Sound\openal\test\resources\hey.wav">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>

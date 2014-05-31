@@ -8,7 +8,7 @@ import os
 from pygame.locals import *
 import Tools.Logger
 
-
+usingPyAl=False
 #teclas para cada jugador:
 p1keys = []
 p2keys = []
@@ -121,7 +121,16 @@ def load_image(name, colorkey=None,resize=False,flip=False):
 def load_sound(name):
     try:
         if len(name) > 2:
-            sonido = pygame.mixer.Sound(name)
+            sonido=""
+            if usingPyAl==False:
+
+                sonido = pygame.mixer.Sound(name)
+            else:
+                import Sound.openal.audio
+                import Sound.openal.loaders
+                sonido = Sound.openal.loaders.load_wav_file(name)
+
+
             return sonido
         else:
             return ""
