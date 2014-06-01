@@ -49,28 +49,17 @@ def playSounds(personaje):
 
                 snd.play()
             else:
-                global sourcep1
-                global sourcep2
                 wic = personaje.topWidth/2
                 pos = (personaje.rect.centerx-wic)
 
                 if personaje.player==1:
-                    sourcep1.position=[pos,sourcep1.position[1],0]
-                    sourcep1.gain=120
-                    sourcep1.queue(snd)
-                    soundSinkEngine.play(sourcep1)
-                    soundSinkEngine.update()
-                    sourcep1=Sound.openal.audio.SoundSource()
-
-
+                    reproducir(sourcep1,snd,[pos,0,0],120)
                 else:
-                    sourcep2.position=[pos,sourcep2.position[1],0]
-                    sourcep2.gain=120
-                    sourcep2.queue(snd)
-                    soundSinkEngine.play(sourcep2)
-                    soundSinkEngine.update()
-                    sourcep2=Sound.openal.audio.SoundSource()
-
+                    reproducir(sourcep2,snd,[pos,0,0],120)
+                    
+                    
+                    
+                    
 
 
 
@@ -90,10 +79,8 @@ def simpleplay(sfx):
     else:
         source = Sound.openal.audio.SoundSource(position=[0, 0, 0])
         data = Sound.openal.loaders.load_wav_file(sfx)
-        source.queue(data)
-        soundSinkEngine.play(source)
-        soundSinkEngine.update()
-
+        reproducir(source,data,source.position)
+        
 
 
 
@@ -114,36 +101,47 @@ def playSysSound(sound,player=0):
         if Tools.FastMethods.usingPyAl==False:
             comonSounds[sound][0][1].play()
         else:
-            global sourcep1
-            global sourcep2
             if player==1:
                 data=comonSounds[sound][0][1]
-                sourcep1.queue(data)
-                sourcep1.position=[-1,sourcep1.position[1],0]
-                soundSinkEngine.play(sourcep1)
-                soundSinkEngine.update()
-                sourcep1=Sound.openal.audio.SoundSource()
-
+                reproducir(sourcep1,data,[-1,0,0])
+                
 
             elif player==2:
                 data=comonSounds[sound][0][1]
-                sourcep2.queue(data)
-                sourcep2.position=[1,sourcep2.position[1],0]
-                soundSinkEngine.play(sourcep2)
-                soundSinkEngine.update()
-                sourcep2=Sound.openal.audio.SoundSource()
+                reproducir(sourcep2,data,[1,0,0])
             else:
                 data=comonSounds[sound][0][1]
-                sourcep1.queue(data)
-                sourcep1.position=[0,sourcep1.position[1],sourcep1.position[2]]
-                soundSinkEngine.play(sourcep1)
-                soundSinkEngine.update()
-                sourcep1=Sound.openal.audio.SoundSource()
+                reproducir(sourcep1,data,[0,0,0])
+                
                 
 
 
 
 
 
+
+
+
+def reproducir(source,data,pos,gain=1):
+    global soundSinkEngine
+    global sourcep1
+    global sourcep2
+        
+    try:
+        source.position = pos
+        source.gain=gain
+        source.queue(data)
+        
+        soundSinkEngine.play(source)
+        soundSinkEngine.update()
+        sourcep1=Sound.openal.audio.SoundSource(position=pos)
+        sourcep2=Sound.openal.audio.SoundSource(position=pos)
+    except Exception:
+        Tools.Logger.escribir("error en openal, reiniciando sistema")
+        Tools.Logger.excepcion("error con openal, reiniciando")
+        soundSinkEngine=Sound.openal.audio.SoundSink()
+        soundSinkEngine.activate()
+        sourcep1=Sound.openal.audio.SoundSource()
+        sourcep2=Sound.openal.audio.SoundSource()
 
 

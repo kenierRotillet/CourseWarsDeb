@@ -7,7 +7,7 @@ import logging
 import os
 import pygame
 import sys
-flag = True
+flag = False
 recet = True
 if recet==True:
     try:
@@ -60,8 +60,8 @@ def escribir(texto):
         
 
 
-def excepcion():
-    log.exception("rerror crítico: ")
+def excepcion(mes=""):
+    log.exception("rerror crítico: " + mes)
     s= pygame.mixer.Sound("sfx/error.wav")
     s.play()
         

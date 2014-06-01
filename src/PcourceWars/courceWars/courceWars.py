@@ -17,7 +17,7 @@ import Core
 
 
 import Screens
-import Sound
+
 
 
 log = logging.getLogger("theLogger")
@@ -59,5 +59,6 @@ except Exception, mes:
     print "error en la ejecución. Traceback en el log"
     Sound.soundPlayer.simpleplay("sfx/error.wav")
     Tools.Logger.escribir("error: " + str(mes))
+    Tools.Logger.excepcion("Error crítico de la aplicación: ")
     log.exception("datos del error")
 
