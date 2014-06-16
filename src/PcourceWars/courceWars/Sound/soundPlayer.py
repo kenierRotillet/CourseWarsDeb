@@ -8,32 +8,6 @@ pygame.mixer.set_num_channels(64)
 
 bgVolume =0.3
 
-try:
-    import Sound.openal
-    import Sound.openal.audio as opaudio
-    import Sound.openal.loaders
-    Tools.FastMethods.usingPyAl=True
-    soundSinkEngine = opaudio.SoundSink()
-    listener = opaudio.SoundListener()
-    listener.position=[0,0,0]
-    listener.velocity=[0,0,0]
-    listener.orientation=[0,0,-1,0,1,0]
-    soundSinkEngine.listener=listener
-    sourcep1=opaudio.SoundSource(position=[0,0,0])
-    sourcep2=opaudio.SoundSource(position=[0,0,0])
-    soundSinkEngine.activate()
-except Exception, mes:
-    Tools.Logger.escribir("No se pudo cargar pyAl")
-    Tools.Logger.excepcion("detalles del error")
-    Tools.FastMethods.usingPyAl=False
-    simpleplay("sfx/error.wav")
-
-
-
-
-    
-comonSounds = Tools.FastMethods.LoadSounds("cfg/sfx.snd")
-
 
 
 def playSounds(personaje):
@@ -145,3 +119,32 @@ def reproducir(source,data,pos,gain=1):
         sourcep2=Sound.openal.audio.SoundSource()
 
 
+
+
+
+
+try:
+    import Sound.openal
+    import Sound.openal.audio as opaudio
+    import Sound.openal.loaders
+    Tools.FastMethods.usingPyAl=True
+    soundSinkEngine = opaudio.SoundSink()
+    listener = opaudio.SoundListener()
+    listener.position=[0,0,0]
+    listener.velocity=[0,0,0]
+    listener.orientation=[0,0,-1,0,1,0]
+    soundSinkEngine.listener=listener
+    sourcep1=opaudio.SoundSource(position=[0,0,0])
+    sourcep2=opaudio.SoundSource(position=[0,0,0])
+    soundSinkEngine.activate()
+except Exception, mes:
+    Tools.Logger.escribir("No se pudo cargar pyAl")
+    Tools.Logger.excepcion("detalles del error")
+    Tools.FastMethods.usingPyAl=False
+    simpleplay("sfx/error.wav")
+
+
+
+
+    
+comonSounds = Tools.FastMethods.LoadSounds("cfg/sfx.snd")
